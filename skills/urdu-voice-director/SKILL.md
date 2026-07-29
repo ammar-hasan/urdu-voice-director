@@ -1,0 +1,192 @@
+---
+name: urdu-voice-director
+description: Refine and direct Urdu dialogue for believable spoken delivery while preserving meaning, character, relationships, cultural context, and caption cleanliness. Use for naturalizing written or Roman Urdu; preparing dialogue for voice actors, audiobooks, podcasts, animation, games, education, accessibility, or TTS; adding restrained pauses, subtext, pronunciation help, or emotional transitions; improving children’s, family, religious, moral, formal, or code-switched dialogue; and adapting clean Urdu to ElevenLabs, OpenAI, Google Cloud, Azure, Piper, or another named speech system without making provider markup the source text.
+---
+
+# Urdu Voice Director
+
+Treat Urdu dialogue as a scene performed by people, not as text decorated with emotion labels. Recover the likely situation and subtext first; then decide independently whether to refine the words, direct the performance, do both, or leave the line unchanged.
+
+## Non-negotiable contract
+
+- Preserve factual content, dramatic function, and intended meaning. Do not create extra lessons, motives, plot facts, or emotional intensity for polish.
+- Preserve each speaker’s age, identity, relationship, social distance, confidence, vocabulary, and intention.
+- Keep dialogue refinement separate from performance direction.
+- Write for the ear. Prefer believable speech over textbook correctness or ornamental prose.
+- Keep narration out of dialogue unless the user requests narration.
+- Keep spoken text free of stage directions in every clean or caption-safe artifact.
+- Use short, actionable direction only when it changes delivery materially.
+- Model a turn as multiple beats when intention changes within it; do not stretch one generic emotion over the whole turn.
+- Treat every provider behavior as capability- and model-specific. Never assume that brackets, SSML, Markdown, ellipses, or line breaks are silent.
+- Do not build or call a TTS engine, provider API, Narova workflow, CLI, or complex intermediate schema.
+
+## Infer before asking
+
+Infer reasonable delivery from the words, adjacent turns, scene purpose, speaker age, relationship, register, and punctuation. Ask one focused question only when competing interpretations would materially change the result—for example sincere versus sarcastic, frightened versus playful, child versus adult, or intimate versus formal. Otherwise state a brief assumption when useful and proceed.
+
+## Workflow
+
+### 1. Read the scene
+
+Build a compact internal scene card:
+
+- Who is speaking, to whom, where, and why?
+- What does each speaker want before the exchange?
+- What changes during it?
+- What is said directly, and what is implied?
+- Which relationship and register are already established?
+- Which facts and wording are protected?
+- Is the output for reading, acting, captions, or a particular TTS model?
+
+For multi-line dialogue, read the entire passage before editing the first line.
+
+### 2. Audit each turn
+
+Assign each turn one treatment:
+
+1. **Neither** — already natural and sufficiently clear.
+2. **Refinement only** — words sound written, stiff, translated, or age-inappropriate.
+3. **Direction only** — words are right but delivery is easy to misread.
+4. **Both** — wording and performance need work.
+
+Do not rewrite merely to demonstrate activity. Record material meaning changes as unacceptable.
+
+### 3. Refine the spoken Urdu
+
+- Break long written sentences into speakable thought units.
+- Preserve natural particles such as `ارے`, `اچھا`, `اوہ`, `یعنی`, `تو`, `بھئی`, `ہاں`, `نہیں`, `بس`, `دیکھو`, `سنو`, `رُکو`, and `چلو` when they carry stance or turn structure.
+- Add a particle only when it belongs to that speaker and moment.
+- Keep `آپ`/`تم`/`تُو`, verb agreement, address terms, kinship terms, and `جی` consistent with the relationship.
+- Let children reason in short, concrete steps; do not give them adult essays.
+- Preserve natural Urdu-English code-switching when it identifies the setting or speaker. Do not add English for fashion.
+- Convert Roman Urdu by meaning and context, not letter-for-letter transliteration. Flag genuinely ambiguous words or names.
+- Use standard Urdu punctuation for readability, but do not use punctuation as the only carrier of critical performance.
+
+Read [natural spoken Urdu](references/natural-spoken-urdu.md), [register and relationships](references/register-and-relationships.md), or [children and family dialogue](references/children-and-family-dialogue.md) when those issues are central.
+
+### 4. Map performance beats
+
+Mark the smallest meaningful changes in intention, attention, certainty, or emotional state. A useful beat map names:
+
+`trigger → internal shift → audible action`
+
+For example:
+
+`notices the implication → processes it → asks sincerely`
+
+Use pauses according to function: conversational beat, hesitation, word search, surprise, interruption, reluctance, realization, or reflection. Do not render all of them as identical ellipses. Read [dialogue performance](references/dialogue-performance.md), [emotional transitions](references/emotional-transitions.md), and [pauses, rhythm, and punctuation](references/pauses-rhythm-and-punctuation.md) when performance is material.
+
+### 5. Add restrained direction
+
+- Place direction immediately before the phrase or beat it changes.
+- Describe an audible action or usable intention: `[آہستہ، بات چھپانے کی کوشش میں]`, `[soft realization]`, `[brief reflective pause]`.
+- Prefer one precise cue over stacked adjectives.
+- Do not direct visible-only actions such as “looking around” as provider audio tags. Keep them in a rehearsal note if scene context needs them.
+- Do not equate anger with shouting, fear with trembling, seriousness with slowness, or warmth with smiling.
+- Do not tag every turn. Let good wording and sequence carry ordinary delivery.
+
+### 6. Clarify pronunciation sparingly
+
+Use optional diacritics only when they resolve a real ambiguity or a tested TTS error, for example `رُکو`, `کِس`, `اِس`, or `اُس`. Do not fully vocalize ordinary Urdu. Spell numbers, abbreviations, and mixed-language terms in the form most likely to be spoken correctly, but keep a normal caption spelling separately when that differs.
+
+Read [pronunciation and diacritics](references/pronunciation-and-diacritics.md) and [code-switching](references/code-switching.md) for ambiguous or mixed-language input.
+
+### 7. Produce the output bundle
+
+Always return at least these artifacts:
+
+#### A. Clean spoken Urdu
+
+Return the final words only, with speaker labels if present. Make this caption-, transcript-, and reuse-safe.
+
+#### B. Directed rehearsal script
+
+Return spoken words plus restrained, provider-agnostic cues when direction adds value. Make it clear that bracketed notes are non-spoken.
+
+For TTS work, also return:
+
+#### C. Portable synthesis plan
+
+Keep this small and readable. Use a table or labeled turns with:
+
+`speaker | clean spoken text | non-spoken delivery note | pause/beat | pronunciation note`
+
+This is the canonical direction layer. Do not invent a complex JSON representation. If the user explicitly needs machine-readable data, translate these same fields into the smallest schema their workflow requires.
+
+#### D. Provider adapter
+
+If the user names a provider/model, create one adapter using only verified controls for that exact target. Separate:
+
+- **spoken input** — what the engine may vocalize;
+- **instructions/markup** — only controls that belong in a separate field or are documented as inline;
+- **clean caption copy** — identical in words to artifact A;
+- **test notes** — uncertain Urdu behavior that requires listening.
+
+If no provider is named, produce a conservative portable adapter: one clean utterance per speaker/beat and all direction outside the spoken input. Do not emit a wall of vendor variants. Produce multiple famous-provider adapters only when the user requests comparison, portability, or batch preparation.
+
+Read [output contract](references/output-contract.md), [TTS direction](references/tts-direction.md), and the dated [provider capability matrix](references/provider-capabilities.md) before provider adaptation. Provider facts age quickly; report the documented model/locale and mark audio-dependent behavior as needing a test.
+
+### 8. Review
+
+Score the result with [evaluation](references/evaluation.md). Revise any `poor` dimension and any meaning, register, caption, or unsupported-markup failure. For consequential output, recommend native Urdu listening with the actual selected voice; text review cannot validate prosody or pronunciation.
+
+## Default response shape
+
+Use only sections that add value, but never omit the clean artifact:
+
+```text
+Assumption (only if material):
+...
+
+Clean spoken Urdu:
+...
+
+Directed rehearsal script (non-spoken cues):
+...
+
+Portable synthesis plan (for TTS tasks):
+...
+
+Provider adapter: <provider/model> (when named or requested):
+Spoken input: ...
+Instructions/markup: ...
+Clean caption copy: ...
+Needs listening test: ...
+
+Key changes:
+- ...
+```
+
+When the line needs neither refinement nor direction, say so briefly and preserve it.
+
+## Cultural and literary discipline
+
+Borrow emotional precision, subtext, restraint, rhythm, and meaningful silence from strong Urdu fiction; do not convert those qualities into invisible narration. Handle religious expressions and moral guidance naturally and respectfully. Do not intensify ordinary educational dialogue into a sermon. Read [religious and cultural language](references/religious-and-cultural-language.md) when relevant.
+
+## Examples and evaluation
+
+Load only the example closest to the task:
+
+- [Everyday siblings and friends](examples/everyday-conversation.md)
+- [Children, parent, teacher, and student](examples/children-dialogue.md)
+- [Central chocolate scene and gentle moral correction](examples/gentle-correction.md)
+- [Hesitation, interruption, anger, embarrassment, and realization](examples/hesitation-and-realization.md)
+- [Urdu-English code-switching and Roman Urdu](examples/code-switching.md)
+- [Provider-separated outputs](examples/provider-directed-output.md)
+
+Use [text eval cases](evals/text-eval-cases.md), [provider contract cases](evals/provider-contract-cases.md), [regression and adversarial cases](evals/regression-suite.md), the [human listening protocol](evals/human-listening-protocol.md), and [static acceptance tests](evals/acceptance-tests.md) when validating changes to this skill.
+
+## Evidence discipline
+
+Distinguish four kinds of guidance:
+
+- **Established** — supported by linguistic research or standards.
+- **Editorial** — careful native-speaker or performance judgment; context-sensitive, not universal.
+- **Provider-documented** — stated for a named provider/model/locale as of a date.
+- **Hypothesis** — plausible but requiring audio evaluation.
+
+Consult [research provenance](references/research-provenance.md) for sources and unresolved questions. Never present an editorial preference or untested provider response as a linguistic rule or guarantee.
+
+## Version
+
+Read `VERSION` for the installed semantic version and `CHANGELOG.md` for behavioral changes. Update both whenever the output contract, provider guidance, or evaluation standard changes.
