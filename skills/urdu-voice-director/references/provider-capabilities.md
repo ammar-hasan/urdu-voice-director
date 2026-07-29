@@ -32,12 +32,16 @@ Status date: **2026-07-29**. Recheck official documentation before production us
 
 Official guidance lists Urdu for Eleven v3 and documents bracketed audio tags for audible emotions, delivery, and reactions. It also warns that tags must describe sound, remain contextually supported, and not replace or rewrite the dialogue.
 
-Adapter:
+Adapter (voice/locale fields remain unresolved until chosen):
 
 ```text
-Spoken input (Eleven v3):
+Canonical utterance:
+ارے... یہاں تو کوئی بھی نہیں ہے۔
+اب امی کی چاکلیٹ کھا لیتا ہوں۔
+
+Provider request payload (Eleven v3 text field):
 [quietly] ارے...
-[mischievously] اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+[mischievously] اب امی کی چاکلیٹ کھا لیتا ہوں۔
 ```
 
 Use tags such as `[whispers]`, `[curious]`, or `[mischievously]` only where their documented audible meaning fits. Treat exact Urdu compliance as a hypothesis until heard with the selected voice. Do not reuse v3 tags for v2/Flash automatically.
@@ -46,30 +50,30 @@ Sources: [language support](https://help.elevenlabs.io/hc/en-us/articles/1331336
 
 ### OpenAI speech
 
-The speech API documents a separate `instructions` field for `gpt-4o-mini-tts` models and states that it does not work with `tts-1` or `tts-1-hd`. This is the right separation for this skill:
+The speech API documents a separate `instructions` field for `gpt-4o-mini-tts` models and states that it does not work with `tts-1` or `tts-1-hd`. This is the right separation for this skill. Name the Speech API surface and resolve the available voice at use time:
 
 ```text
-Spoken input:
-اوہ... یعنی جب کوئی نہ دیکھ رہا ہو، تب بھی؟
+Canonical utterance:
+یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
 
 Separate instruction:
-Speak in natural Pakistani Urdu. Begin with a soft realization; pause briefly after “اوہ”; let the question become sincere, not dramatic.
+Speak in natural conversational Urdu for the locale established by the scene. Let the inference form before the final sincere question; keep it restrained, not dramatic.
 ```
 
-Do not include the instruction in captions or spoken text. The cited API material does not establish Urdu-specific expressive reliability; test the chosen model and voice.
+Do not include the instruction in captions or the canonical utterance. Do not default to Pakistani or Indian Urdu without scene or locale evidence. The cited API material does not establish Urdu-specific expressive reliability; test the chosen model and voice.
 
 Sources: [speech API reference](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), [audio-model announcement](https://openai.com/index/introducing-our-next-generation-audio-models/).
 
 ### Google Gemini-TTS
 
-Official documentation lists Urdu (Pakistan), `ur-PK`, as Preview and describes natural-language prompting for style, accent, pace, tone, emotion, and multiple speakers. Keep prompt and text separate:
+Official Google Cloud Text-to-Speech documentation lists Urdu (Pakistan), `ur-PK`, as Preview and describes natural-language prompting for style, accent, pace, tone, emotion, and multiple speakers. Confirm this product surface, the model, and the voice; do not reuse the request structure for another Gemini surface. Keep prompt and text separate:
 
 ```text
 Text:
 احمد، رُکو!
 
 Style prompt:
-Pakistani Urdu; a child interrupts suddenly, then quickly returns to a calm, warm tone. Serious, not scolding.
+Conversational delivery appropriate to the selected `ur-PK` voice; a child interrupts suddenly. Serious, not scolding.
 ```
 
 Because Urdu is Preview, document the date/model/voice and run listening tests.
@@ -125,7 +129,7 @@ Adapter:
 
 ```text
 Utterance 1: ارے... یہاں تو کوئی بھی نہیں ہے۔
-Utterance 2: اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+Utterance 2: اب امی کی چاکلیٹ کھا لیتا ہوں۔
 
 External notes, not input:
 - Utterance 1 cautious.
@@ -164,3 +168,4 @@ Source: [Chatterbox repository](https://github.com/resemble-ai/chatterbox).
 6. Mark Preview/beta behavior.
 7. Test with the selected voice; accent and delivery depend strongly on voice data.
 8. Refresh this file and `CHANGELOG.md` when provider documentation changes.
+9. Record the exact model ID, product/API surface, locale, voice, verification date, and unresolved fields.

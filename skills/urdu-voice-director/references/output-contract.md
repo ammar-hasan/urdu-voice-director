@@ -29,13 +29,16 @@ For each requested target, state:
 ```text
 Target: provider / model / locale / voice if known
 Support status: documented / preview / unsupported / unknown
-Spoken input: exact text sent to speech
-Separate instruction: only if the provider exposes one
-Inline markup: only documented syntax
+Canonical utterance: exact words intended to be heard
+Provider request payload: exact fields/text sent to the provider
+Inline control: only documented syntax; identify whether it shares the text field
+Separate instruction: only if the provider exposes a non-spoken field
 Caption copy: clean spoken Urdu
 Divergences: spelling, segmentation, or normalization changes
 Needs listening test: concrete uncertainties
 ```
+
+Do not call a tagged text block “spoken input”: a provider may consume inline controls without vocalizing them, while another may read the same characters aloud. `Canonical utterance` names the intended speech; `provider request payload` names the transport representation.
 
 ## Multiple speakers
 
@@ -80,6 +83,6 @@ Make optional fields optional. Do not encode literary analysis, inferred biograp
 
 - Every caption word matches the clean source.
 - Provider-only tags never appear in captions.
-- Every provider-spoken word is either in the clean source or listed as a pronunciation/normalization divergence.
+- Every word intended to be spoken is either in the clean source or listed as a pronunciation/normalization divergence.
 - Direction never changes factual content.
 - Unsupported adapters are withheld, not fabricated.

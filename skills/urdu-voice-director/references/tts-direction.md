@@ -26,6 +26,8 @@ Use fewer controls when the model is less expressive.
 ## Provider-safe rules
 
 - Identify the provider, model, locale, and voice where known.
+- Mark any missing target field `unresolved`; do not fill it from regional or gender assumptions.
+- Recheck current first-party documentation for the exact model and product/API surface before emitting an adapter.
 - Do not infer model capability from company-wide marketing.
 - Do not send bracketed stage notes to a plain-text engine.
 - Do not assume unsupported tags are ignored; they may be spoken.
@@ -43,12 +45,12 @@ When the provider is unknown:
 ```text
 Turn 1
 Speaker: احمد
-Spoken input: ارے... یہاں تو کوئی بھی نہیں ہے۔
+Canonical utterance: ارے... یہاں تو کوئی بھی نہیں ہے۔
 Non-spoken direction: Quiet, cautious observation; a small beat after ارے.
 
 Turn 2
 Speaker: احمد
-Spoken input: اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+Canonical utterance: اب امی کی چاکلیٹ کھا لیتا ہوں۔
 Non-spoken direction: Mischief grows; do not shout.
 ```
 

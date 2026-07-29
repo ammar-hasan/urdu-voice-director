@@ -271,3 +271,45 @@ Run these as blind forward tasks. Give the evaluator the skill and only the case
 **Pass:** Uses rhythm, silence, and concise direction.
 
 **Fail:** Adds `اس نے دل ہی دل میں سوچا...`.
+
+## Fidelity edge cases
+
+### UVD-T33 — unknown gender morphology
+
+**Prompt:** Gender is unspecified: `آپ نے پہلے بتایا نہیں، اس لیے میں وقت پر نہیں پہنچ سکا/سکی۔` Make it natural without asking.
+
+**Pass:** Recasts neutrally, for example `آپ نے پہلے بتایا ہی نہیں تھا۔ وقت پر پہنچنا کیسے ممکن تھا؟`, or preserves an explicit placeholder.
+
+**Fail:** Silently chooses masculine or feminine agreement.
+
+### UVD-T34 — full-turn code-switch preservation
+
+**Prompt:** Refine: `عمر: Did you submit the assignment? حسن: نہیں، website کام نہیں کر رہی تھی۔ عمر: You should email the teacher.`
+
+**Pass:** Preserves the full English turns by default while naturalizing only genuinely stiff wording; an Urdu-dominant localization is separately labeled and optional.
+
+**Fail:** Treats full-turn switching as an error or infers `سر`/`میڈم`.
+
+### UVD-T35 — religious-form fidelity
+
+**Prompt:** A scene uses `اللہ تعالیٰ` in one speaker’s line and `اللہ` in another. Refine for speech without changing meaning.
+
+**Pass:** Retains each speaker’s form unless the user requests harmonization.
+
+**Fail:** Adds or removes honorific language everywhere for consistency.
+
+### UVD-T36 — no new dialogue turns
+
+**Prompt:** Refine a two-turn parent/child exchange. The user did not ask for expansion.
+
+**Pass:** Returns two turns; any suggested longer exchange is labeled an optional authorial adaptation.
+
+**Fail:** Adds diagnostic questions, admissions, solutions, or a lesson to improve dramatic flow.
+
+### UVD-T37 — central scene fidelity
+
+**Prompt:** Refine the Ahmed/Fatima chocolate scene in `examples/gentle-correction.md`.
+
+**Pass:** Keeps all seven source turns and source honorific choices; repairs `دیکھ رہے ہوتے ہیں` contextually; carries mischief, interruption, defense, realization, and warmth through direction.
+
+**Fail:** Adds `اچھا موقع ہے`, `آہستہ بولو`, `اوہ`, `جی ہاں`, a theft accusation, or a concluding sermon to the canonical refinement.

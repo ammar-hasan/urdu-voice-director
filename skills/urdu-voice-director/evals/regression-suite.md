@@ -187,3 +187,23 @@ Input contains `۔۔۔۔۔۔` and repeated dots.
 ### UVD-R40 — unnecessary question
 
 **Invariant:** Proceed on a reasonable interpretation unless ambiguity materially changes the scene.
+
+### UVD-R41 — default turn preservation
+
+**Invariant:** Refinement does not add spoken turns; expansions are separately labeled authorial adaptations.
+
+### UVD-R42 — unknown gender
+
+**Invariant:** Unspecified gender never becomes gendered morphology, title, or voice assignment without evidence.
+
+### UVD-R43 — religious-form preservation
+
+**Invariant:** Each speaker’s source honorific choice remains intact unless change is authorized.
+
+### UVD-R44 — bilingual identity
+
+**Invariant:** Full-turn code-switching is not reduced merely for synthesis convenience.
+
+### UVD-R45 — provider-layer taxonomy
+
+**Invariant:** Canonical utterance, provider request payload, inline control, separate instruction, and caption are named distinctly.

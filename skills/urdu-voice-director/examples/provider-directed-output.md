@@ -16,7 +16,7 @@ Normalize the mixed name spelling as `زویا` unless it is an official styliza
 
 - Zoya’s uncertainty is stated formally.
 - Bilal’s question is already natural.
-- The final line benefits from a self-protective hesitation.
+- The final line can carry a brief hesitation before Zoya explains her expectation. Disappointment is only one possible reading and is not established by the text.
 
 ## A. Clean spoken Urdu
 
@@ -31,7 +31,7 @@ Normalize the mixed name spelling as `زویا` unless it is an official styliza
 ```text
 زویا: [trying to sound casual; genuinely uncertain] پتا نہیں، وہ آئے گا بھی یا نہیں۔
 بلال: تم نے اسے فون کیا؟
-زویا: [small hesitation; hiding disappointment] نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔
+زویا: [small hesitation before explaining] نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔
 ```
 
 ## C. Portable synthesis plan
@@ -40,11 +40,13 @@ Normalize the mixed name spelling as `زویا` unless it is an official styliza
 |---|---|---|---|---|
 | 1 | زویا | پتا نہیں، وہ آئے گا بھی یا نہیں۔ | casual surface, real uncertainty | light stress on `بھی یا نہیں` |
 | 2 | بلال | تم نے اسے فون کیا؟ | plain practical question | no added pause |
-| 3 | زویا | نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔ | hesitation reveals disappointment | short open beat after `نہیں` |
+| 3 | زویا | نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔ | hesitation before explaining her expectation | short open beat after `نہیں` |
 
 ## D1. Eleven v3 adapter
 
-Status: Urdu documented for Eleven v3; tags still require voice-specific listening.
+Target: ElevenLabs / Eleven v3 / locale not exposed as a separate field in this example / voice unresolved.
+
+Status: Urdu documented for Eleven v3; current first-party controls and the selected voice still require verification before use.
 
 ```text
 Voice: Zoya
@@ -61,33 +63,37 @@ Voice: Zoya
 
 ## D2. OpenAI instruction-steered adapter
 
+Target: OpenAI / `gpt-4o-mini-tts` / Speech API `audio/speech` surface / locale unresolved / voice unresolved.
+
 ```text
-Spoken input, turn 1:
+Canonical utterance, turn 1:
 پتا نہیں، وہ آئے گا بھی یا نہیں۔
 
 Separate instruction:
-Natural Pakistani Urdu. She tries to sound casual, but uncertainty remains audible. Keep it restrained.
+Natural conversational Urdu. She tries to sound casual, but uncertainty remains audible. Keep it restrained. Do not impose a regional accent unless the scene specifies one.
 
-Spoken input, turn 3:
+Canonical utterance, turn 3:
 نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔
 
 Separate instruction:
-Begin with a brief hesitant beat after “نہیں”; let mild disappointment show without sounding tearful.
+Begin with a brief hesitant beat after “نہیں,” then explain the expectation plainly. Do not add sadness or disappointment unless the scene establishes it.
 ```
 
-The cited API supports separate instructions for instruction-capable speech models; Urdu performance needs an actual listening test.
+The cited API supports separate instructions for instruction-capable speech models. Verify the current model surface and available voice before building the payload; Urdu performance needs an actual listening test.
 
 ## D3. Google Gemini-TTS adapter
+
+Target: Google Cloud Text-to-Speech / Gemini-TTS / `ur-PK` Preview / model and voice unresolved.
 
 ```text
 Text:
 پتا نہیں، وہ آئے گا بھی یا نہیں۔
 
 Style prompt:
-Pakistani Urdu, quiet conversational delivery. Casual surface with genuine uncertainty underneath; restrained, not dramatic.
+Quiet conversational delivery in the requested Urdu locale. Casual surface with genuine uncertainty underneath; restrained, not dramatic.
 ```
 
-Mark `ur-PK` as Preview and record the selected model/voice/date in the evaluation log.
+Confirm whether the workflow is Google Cloud Text-to-Speech or another Gemini surface; their request structures are not interchangeable. Mark `ur-PK` as Preview and record the selected model/voice/date in the evaluation log.
 
 ## D4. Azure `ur-PK` conservative SSML
 
@@ -130,10 +136,11 @@ No tags, XML, voice labels, Markdown, or pronunciation hacks appear here.
 
 ## Emotional progression
 
-Uncertainty is covered with casual phrasing → Bilal asks a direct practical question → Zoya hesitates and reveals that she was waiting to be chosen.
+Uncertainty is covered with casual phrasing → Bilal asks a direct practical question → Zoya hesitates before explaining that she expected him to call.
 
 ## Restraint and alternatives
 
 - Do not add “he does not care about me”; that subtext is plausible but unstated.
-- Do not mark sadness on every provider; mild disappointment is enough.
+- Do not mark sadness or disappointment unless context outside these lines supports that interpretation.
+- If the user chooses the “hiding disappointment” reading, state that assumption and keep the neutral version as an alternative.
 - The best provider adapter may be the clean baseline if controls cause overacting.

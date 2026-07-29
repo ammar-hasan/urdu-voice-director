@@ -11,6 +11,8 @@ Treat Urdu dialogue as a scene performed by people, not as text decorated with e
 
 - Preserve factual content, dramatic function, and intended meaning. Do not create extra lessons, motives, plot facts, or emotional intensity for polish.
 - Preserve each speaker’s age, identity, relationship, social distance, confidence, vocabulary, and intention.
+- Preserve the source’s speaker turns, gender ambiguity, locale, code-switching pattern, titles, and religious forms unless the user authorizes adaptation or context clearly resolves them.
+- Treat added dialogue, explanation, or motivation as an **authorial adaptation**, not a refinement. Label it separately and ask permission before making it canonical.
 - Keep dialogue refinement separate from performance direction.
 - Write for the ear. Prefer believable speech over textbook correctness or ornamental prose.
 - Keep narration out of dialogue unless the user requests narration.
@@ -59,6 +61,7 @@ Do not rewrite merely to demonstrate activity. Record material meaning changes a
 - Keep `آپ`/`تم`/`تُو`, verb agreement, address terms, kinship terms, and `جی` consistent with the relationship.
 - Let children reason in short, concrete steps; do not give them adult essays.
 - Preserve natural Urdu-English code-switching when it identifies the setting or speaker. Do not add English for fashion.
+- Do not infer gendered verb forms, a teacher title such as `سر`/`میڈم`, or `ur-PK`/`ur-IN` from unspecified input. Recast neutrally or mark the choice as unresolved.
 - Convert Roman Urdu by meaning and context, not letter-for-letter transliteration. Flag genuinely ambiguous words or names.
 - Use standard Urdu punctuation for readability, but do not use punctuation as the only carrier of critical performance.
 
@@ -93,7 +96,7 @@ Read [pronunciation and diacritics](references/pronunciation-and-diacritics.md) 
 
 ### 7. Produce the output bundle
 
-Always return at least these artifacts:
+Always return the clean artifact. Add the other artifacts only when they serve the request.
 
 #### A. Clean spoken Urdu
 
@@ -101,7 +104,7 @@ Return the final words only, with speaker labels if present. Make this caption-,
 
 #### B. Directed rehearsal script
 
-Return spoken words plus restrained, provider-agnostic cues when direction adds value. Make it clear that bracketed notes are non-spoken.
+When direction adds value, return spoken words plus restrained, provider-agnostic cues. Make it clear that bracketed notes are non-spoken. Omit this artifact when the user wants refinement only and performance is unambiguous.
 
 For TTS work, also return:
 
@@ -115,16 +118,18 @@ This is the canonical direction layer. Do not invent a complex JSON representati
 
 #### D. Provider adapter
 
-If the user names a provider/model, create one adapter using only verified controls for that exact target. Separate:
+If the user names a provider/model, create one adapter using only freshly verified controls for that exact target. Identify the model ID, API/product surface, locale, and voice; if any is unknown, mark it `unresolved` instead of silently choosing. Separate:
 
-- **spoken input** — what the engine may vocalize;
-- **instructions/markup** — only controls that belong in a separate field or are documented as inline;
-- **clean caption copy** — identical in words to artifact A;
+- **canonical utterance** — the words intended to be heard, derived from artifact A;
+- **provider request payload** — the exact request fields or text blocks, without implying they are all spoken;
+- **inline control** — only syntax documented for this exact target, explicitly distinguished from the utterance;
+- **separate instruction** — direction placed in a non-spoken provider field;
+- **caption copy** — identical in words to artifact A;
 - **test notes** — uncertain Urdu behavior that requires listening.
 
 If no provider is named, produce a conservative portable adapter: one clean utterance per speaker/beat and all direction outside the spoken input. Do not emit a wall of vendor variants. Produce multiple famous-provider adapters only when the user requests comparison, portability, or batch preparation.
 
-Read [output contract](references/output-contract.md), [TTS direction](references/tts-direction.md), and the dated [provider capability matrix](references/provider-capabilities.md) before provider adaptation. Provider facts age quickly; report the documented model/locale and mark audio-dependent behavior as needing a test.
+Read [output contract](references/output-contract.md), [TTS direction](references/tts-direction.md), and the dated [provider capability matrix](references/provider-capabilities.md) before provider adaptation. Provider facts age quickly: verify the target against current first-party documentation at adaptation time, report the model/surface/locale/voice, and mark audio-dependent behavior as needing a test.
 
 ### 8. Review
 
@@ -132,7 +137,7 @@ Score the result with [evaluation](references/evaluation.md). Revise any `poor` 
 
 ## Default response shape
 
-Use only sections that add value, but never omit the clean artifact:
+Use only sections that add value. Never omit the clean artifact, but do not force directed or provider sections on a non-TTS refinement request:
 
 ```text
 Assumption (only if material):
@@ -147,10 +152,12 @@ Directed rehearsal script (non-spoken cues):
 Portable synthesis plan (for TTS tasks):
 ...
 
-Provider adapter: <provider/model> (when named or requested):
-Spoken input: ...
-Instructions/markup: ...
-Clean caption copy: ...
+Provider adapter: <provider/model/surface/locale/voice> (when named or requested):
+Canonical utterance: ...
+Provider request payload: ...
+Inline control: ...
+Separate instruction: ...
+Caption copy: ...
 Needs listening test: ...
 
 Key changes:
@@ -174,7 +181,7 @@ Load only the example closest to the task:
 - [Urdu-English code-switching and Roman Urdu](examples/code-switching.md)
 - [Provider-separated outputs](examples/provider-directed-output.md)
 
-Use [text eval cases](evals/text-eval-cases.md), [provider contract cases](evals/provider-contract-cases.md), [regression and adversarial cases](evals/regression-suite.md), the [human listening protocol](evals/human-listening-protocol.md), and [static acceptance tests](evals/acceptance-tests.md) when validating changes to this skill.
+Use [text eval cases](evals/text-eval-cases.md), [provider contract cases](evals/provider-contract-cases.md), [regression and adversarial cases](evals/regression-suite.md), the [human listening protocol](evals/human-listening-protocol.md), [evaluation results manifest](evals/results-manifest.md), and [static acceptance tests](evals/acceptance-tests.md) when validating changes to this skill. Specifications are not executed evidence; record real runs in the manifest.
 
 ## Evidence discipline
 
@@ -187,6 +194,6 @@ Distinguish four kinds of guidance:
 
 Consult [research provenance](references/research-provenance.md) for sources and unresolved questions. Never present an editorial preference or untested provider response as a linguistic rule or guarantee.
 
-## Version
+## Release metadata
 
-Read `VERSION` for the installed semantic version and `CHANGELOG.md` for behavioral changes. Update both whenever the output contract, provider guidance, or evaluation standard changes.
+`VERSION` and `CHANGELOG.md` are maintainer-facing release records, not runtime prerequisites. Maintainers must update both whenever the output contract, provider guidance, examples, or evaluation standard changes.

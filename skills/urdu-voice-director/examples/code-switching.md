@@ -12,38 +12,30 @@
 
 ### Problems found
 
-- The switching may be natural, but full English turns create a stronger bilingual characterization than necessary.
+- Full English turns are part of the source’s bilingual characterization and should be preserved by default.
 - `website` is ordinary in this context; a formal translation would be stiff.
-- The teacher relationship favors a respectful reference.
+- `the teacher` does not establish the teacher’s gender or preferred Urdu title.
 
 ### Refined clean dialogue
 
 ```text
-عمر: اسائنمنٹ جمع کرا دی؟
-حسن: نہیں، ویب سائٹ چل ہی نہیں رہی تھی۔
-عمر: سر کو ای میل کر دو۔
-```
-
-Alternative for a strongly code-switched group:
-
-```text
-عمر: Assignment submit کر دی؟
-حسن: نہیں، website چل ہی نہیں رہی تھی۔
-عمر: Sir کو email کر دو۔
+عمر: Did you submit the assignment?
+حسن: نہیں، website چل نہیں رہی تھی۔
+عمر: You should email the teacher.
 ```
 
 ### Directed dialogue
 
 ```text
-عمر: [casual check] اسائنمنٹ جمع کرا دی؟
-حسن: [mildly frustrated] نہیں، ویب سائٹ چل ہی نہیں رہی تھی۔
-عمر: [practical] سر کو ای میل کر دو۔
+عمر: [casual check] Did you submit the assignment?
+حسن: [mildly frustrated] نہیں، website چل نہیں رہی تھی۔
+عمر: [practical] You should email the teacher.
 ```
 
 ### Provider-ready notes
 
-- Test `اسائنمنٹ`, `ویب سائٹ`, and `ای میل` with the selected Urdu voice.
-- Keep official English spelling only if the voice handles Latin text naturally.
+- Test the English turns and `website` with the selected bilingual or Urdu voice.
+- If one voice cannot handle both languages naturally, segment by turn or use a documented language-control feature rather than rewriting the character by default.
 - Do not put `[in English]` around borrowed words.
 
 ### Emotional progression
@@ -52,7 +44,15 @@ Routine check → mild frustration → practical suggestion. No dramatic directi
 
 ### Restraint and alternatives
 
-Choose one of the two clean versions from character evidence; do not randomly mix their script conventions.
+Do not reduce full-turn code-switching merely to make synthesis easier. If the user explicitly asks for an Urdu-dominant localization, offer it separately and keep the source-preserving version:
+
+```text
+عمر: اسائنمنٹ جمع کرا دی؟
+حسن: نہیں، ویب سائٹ چل نہیں رہی تھی۔
+عمر: ٹیچر کو ای میل کر دو۔
+```
+
+`ٹیچر` remains gender-neutral. Use `سر`, `میڈم`, `استاد`, or `استانی` only when the scene establishes that title.
 
 ## Example 2: Roman Urdu ambiguity
 

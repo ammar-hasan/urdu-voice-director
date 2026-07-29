@@ -1,8 +1,8 @@
 # Pronunciation and diacritics
 
-Urdu normally omits short-vowel marks. Context lets a fluent reader recover them, but children, learners, and computational systems can face homograph ambiguity. Research on Urdu reading and automatic diacritization supports selective disambiguation; it does not justify fully marking every word.
+Urdu normally omits short-vowel marks. Context lets a fluent reader recover them, but children, learners, and computational systems can face homograph ambiguity. Research establishes the ambiguity and computational need; the selective policy below is an **editorial hypothesis** for modern TTS, pending provider-specific A/B listening. It does not justify fully marking every word.
 
-## Selective policy
+## Selective policy (editorial; test before adopting)
 
 Add a diacritic when all are true:
 

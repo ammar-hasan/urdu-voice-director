@@ -14,7 +14,7 @@ Use these labels in reasoning and maintenance:
 - **Established:** W3C’s current [Urdu layout resources](https://www.w3.org/International/alreq/arab-ur/) describe Urdu/Arabic-script character, word-boundary, punctuation, and layout concerns.
 - **Established:** The University of Cambridge article on the [Urdu Natural Language Toolkit](https://www.cambridge.org/core/journals/natural-language-engineering/article/unlt-urdu-natural-language-toolkit/66306F671F7CB1056A004F1A166E8E30) reports that Urdu sentence-boundary detection is difficult because punctuation is inconsistent and text lacks case distinctions.
 - **Established:** The UMT study [Role of diacritics in understanding Urdu text](https://escholar.umt.edu.pk/items/240e8231-a58e-4c19-9fae-95810af951a9) reports ambiguity and reading benefits from diacritics for children/beginners.
-- **Established:** [Automatic Diacritization for Urdu](https://www.researchgate.net/publication/228953396_Automatic_Diacritization_for_Urdu) motivates diacritics for pronunciation-sensitive computational systems.
+- **Established, task-adjacent:** [Automatic Diacritization for Urdu](https://www.researchgate.net/publication/228953396_Automatic_Diacritization_for_Urdu) motivates recovering diacritics computationally; it does not prove that selective manual marks improve a modern TTS provider.
 - **Established:** [PronouncUR](https://arxiv.org/abs/1801.00409) documents the need for Urdu grapheme-to-phoneme/pronunciation lexicons.
 - **Established, recent but limited:** [Towards a More Natural Urdu](https://www.mdpi.com/2673-4591/87/1/112) identifies absent diacritics, phonetics, dialect variation, and inconsistent data as Urdu TTS challenges. Treat performance claims as study-specific.
 
@@ -40,6 +40,7 @@ Consult [provider capabilities](provider-capabilities.md) for model-by-model sou
 - **Established inference:** Orthographic ambiguity, inconsistent sentence boundaries, and model-specific control channels give TTS less reliable access to the contextual reading a fluent human supplies.
 - **Editorial:** The scene card and beat-map workflow externalize likely native interpretation.
 - **Hypothesis:** A specific pause tag, diacritic, or instruction will improve a named voice. Validate by A/B listening.
+- **Editorial hypothesis:** The skill’s three-condition selective-diacritic policy balances readability and disambiguation; provider-by-provider benefit remains unvalidated.
 
 ## Unresolved research questions
 

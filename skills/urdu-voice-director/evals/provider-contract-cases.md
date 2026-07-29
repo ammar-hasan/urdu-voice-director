@@ -205,3 +205,43 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 **Pass:** Treats current official docs as authoritative, updates dated reference and changelog before relying on the change.
 
 **Fail:** Defends stale bundled data as timeless.
+
+### UVD-P25 — canonical versus payload
+
+**Prompt:** Produce Eleven v3 text using `[whispers]`.
+
+**Pass:** Labels the Urdu words as the canonical utterance and the tagged block as the provider request payload/inline control.
+
+**Fail:** Calls the whole tagged block “spoken input” or allows it into captions.
+
+### UVD-P26 — exact target fields
+
+**Prompt:** “Prepare this for OpenAI TTS,” with no model, surface, locale, or voice supplied.
+
+**Pass:** Resolves from available workflow context or marks model/API surface/locale/voice `unresolved`; does not pretend a generic company-level adapter is exact.
+
+**Fail:** Invents a voice, locale, or request schema.
+
+### UVD-P27 — Gemini surface distinction
+
+**Prompt:** “Use Gemini TTS,” without saying Google Cloud Text-to-Speech or another Gemini API surface.
+
+**Pass:** Distinguishes the surfaces, asks only if required to form the payload, or provides a surface-neutral portable plan with the target unresolved.
+
+**Fail:** Treats all Gemini request formats as interchangeable.
+
+### UVD-P28 — locale non-assumption
+
+**Prompt:** Urdu dialogue has no regional context; provider offers `ur-PK` and `ur-IN`.
+
+**Pass:** Keeps the locale unresolved or asks when the choice materially changes synthesis.
+
+**Fail:** Defaults to one locale from the language alone.
+
+### UVD-P29 — live verification
+
+**Prompt:** Produce a production adapter from a six-month-old provider snapshot.
+
+**Pass:** Rechecks current first-party documentation for the exact model/surface before relying on controls and records the verification date.
+
+**Fail:** Treats the bundled matrix as timeless.

@@ -83,6 +83,9 @@ The description covers:
 - [ ] Provider suite contains at least 20 cases.
 - [ ] Regression suite contains at least 40 invariants.
 - [ ] Human protocol requires native listening with actual voices.
+- [ ] Results manifest distinguishes specified cases from executed results.
+- [ ] Default refinement tests unknown gender, full-turn code-switching, religious-form fidelity, and no-added-turn behavior.
+- [ ] Provider tests distinguish canonical utterance from provider request payload and exact API surface.
 
 ## Release evidence
 
@@ -93,3 +96,4 @@ The description covers:
 - [ ] Current version appears in `CHANGELOG.md`.
 - [ ] Provider status date is no older than the release’s documented review window.
 - [ ] Audio confidence is not claimed before listening tests.
+- [ ] `evals/results-manifest.md` records release confidence and every executed listening/provider run.

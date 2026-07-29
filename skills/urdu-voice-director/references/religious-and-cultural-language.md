@@ -21,12 +21,19 @@ Prefer a relational progression:
 Example:
 
 ```text
-فاطمہ: احمد، رُکو!
-فاطمہ: [calm now] لوگوں نے شاید نہ دیکھا ہو، مگر اللہ تعالیٰ تو ہمیں دیکھ رہے ہوتے ہیں۔
-احمد: اوہ... یعنی اکیلے میں بھی؟
+فاطمہ: رُکو، رُکو!
+فاطمہ: [calm now] انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔
+احمد: [processing, then asking sincerely] یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
 ```
 
 Do not make Fatima angry merely because the point is serious. Do not make Ahmed instantly recite a moral conclusion he has not yet processed.
+
+`دیکھ رہے ہوتے ہیں` needs a clear habitual frame and is often awkward in an immediate exchange. Choose aspect from the intended claim:
+
+- present scene: `دیکھ رہے ہیں`
+- general principle, when the community’s usage supports it: `ہمیشہ دیکھتے ہیں`
+
+Do not silently strengthen or reinterpret theology while repairing aspect.
 
 ## Forms of respect
 

@@ -13,33 +13,21 @@
 
 - The child states a polished causal explanation rather than speaking through worry.
 - The parent’s line is abstract and sounds like advice copy.
-- The child’s fear should be acknowledged before reassurance.
+- The child’s fear should stay concrete without adding a new counseling exchange.
 
 ### Refined clean dialogue
 
 ```text
-بچہ: امی... میں کل اسکول نہ جاؤں؟
-امی: کیوں؟ کیا ہوا؟
-بچہ: اگر سب کو میرا پروجیکٹ بُرا لگا تو؟
-امی: اچھا، یہ بات ہے۔ گھبراہٹ ہو رہی ہے؟
-بچہ: تھوڑی سی۔
-امی: چلو، پہلے مجھے دکھاؤ۔ پھر مل کر دیکھتے ہیں۔
+بچہ: امی... میں کل اسکول نہیں جانا چاہتا۔ اگر سب کو میرا پروجیکٹ بُرا لگا تو؟
+امی: سب کو پسند نہ بھی آئے تو گھبرانے کی ضرورت نہیں۔
 ```
 
 ### Directed dialogue
 
 ```text
-بچہ: [reluctant] امی... میں کل اسکول نہ جاؤں؟
+بچہ: [reluctant; the worry becomes concrete] امی... میں کل اسکول نہیں جانا چاہتا۔ اگر سب کو میرا پروجیکٹ بُرا لگا تو؟
 
-امی: [attentive, not alarmed] کیوں؟ کیا ہوا؟
-
-بچہ: [the real worry comes out] اگر سب کو میرا پروجیکٹ بُرا لگا تو؟
-
-امی: [understanding] اچھا، یہ بات ہے۔ گھبراہٹ ہو رہی ہے؟
-
-بچہ: [small admission] تھوڑی سی۔
-
-امی: [practical warmth] چلو، پہلے مجھے دکھاؤ۔ پھر مل کر دیکھتے ہیں۔
+امی: [acknowledging the fear; calm reassurance] سب کو پسند نہ بھی آئے تو گھبرانے کی ضرورت نہیں۔
 ```
 
 ### Optional provider-ready output
@@ -48,16 +36,20 @@ Use one clean utterance per turn. Put the direction in a separate instruction fi
 
 ### Emotional progression
 
-Avoidance → invitation to explain → fear becomes concrete → parent recognizes it → child admits vulnerability → parent offers a next action.
+Avoidance → fear becomes concrete → parent responds with calm reassurance.
 
 ### Restraint and alternatives
 
-The added turns preserve the original function but expand the interaction. If strict line-count fidelity is required:
+Do not add questions, a vulnerability admission, or a project-review plan under default refinement. If the user invites an expanded parent-child scene, the following may be offered as an **authorial adaptation**:
 
 ```text
-بچہ: امی... اگر سب کو میرا پروجیکٹ بُرا لگا تو؟ میں کل اسکول نہیں جانا چاہتا۔
-امی: پہلے مجھے دکھاؤ۔ پھر مل کر دیکھتے ہیں، ٹھیک ہے؟
+بچہ: امی... میں کل اسکول نہ جاؤں؟
+امی: کیوں؟ کیا ہوا؟
+بچہ: اگر سب کو میرا پروجیکٹ بُرا لگا تو؟
+امی: چلو، پہلے مجھے دکھاؤ۔ پھر مل کر دیکھتے ہیں، ٹھیک ہے؟
 ```
+
+That version creates new dialogue and a next action, so it requires permission.
 
 ## Example 2: teacher and student embarrassment
 
@@ -77,8 +69,7 @@ The added turns preserve the original function but expand the interaction. If st
 
 ```text
 استاد: تم نے پوچھا کیوں نہیں؟
-طالب علم: میں... مجھے لگا، شاید سب ہنسیں گے۔
-استاد: نہ سمجھ آئے تو پوچھنا بالکل ٹھیک ہے۔
+طالب علم: میں... مجھے لگا، جواب نہ آیا تو شرمندگی ہوگی۔
 ```
 
 ### Directed dialogue
@@ -86,15 +77,13 @@ The added turns preserve the original function but expand the interaction. If st
 ```text
 استاد: [gently curious] تم نے پوچھا کیوں نہیں؟
 
-طالب علم: [starts, corrects themself] میں... مجھے لگا، شاید سب ہنسیں گے۔
-
-استاد: [reassuring, not overly sweet] نہ سمجھ آئے تو پوچھنا بالکل ٹھیک ہے۔
+طالب علم: [starts, corrects themself; embarrassed but direct] میں... مجھے لگا، جواب نہ آیا تو شرمندگی ہوگی۔
 ```
 
 ### Emotional progression
 
-Gentle inquiry → embarrassment and self-correction → simple reassurance.
+Gentle inquiry → embarrassment and self-correction.
 
 ### Restraint and alternatives
 
-Do not make the teacher deliver a motivational speech. If the student is older or the class formal, `آپ نے پوچھا کیوں نہیں؟` may be the established register.
+Do not add the teacher’s reassurance to a two-turn source under default refinement. If the user asks to extend the teaching moment, `نہ سمجھ آئے تو پوچھنا بالکل ٹھیک ہے۔` is a restrained **authorial adaptation**. If the student is older or the class formal, `آپ نے پوچھا کیوں نہیں؟` may be the established register.

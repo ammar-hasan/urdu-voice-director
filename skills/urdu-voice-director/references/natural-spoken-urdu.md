@@ -22,10 +22,10 @@ Written:
 Natural, respectful:
 
 ```text
-آپ نے مجھے پہلے بتایا ہی نہیں تھا۔ میں وقت پر کیسے پہنچتا؟
+آپ نے مجھے پہلے بتایا ہی نہیں تھا۔ وقت پر پہنچنا کیسے ممکن تھا؟
 ```
 
-The rewrite must not erase a character who genuinely speaks formally. “Conversational” is not a license to flatten education, profession, period, or temperament.
+The neutral rewrite avoids inferring the speaker’s gender. If gender is established, a natural alternative may use `میں وقت پر کیسے پہنچتا؟` or `میں وقت پر کیسے پہنچتی؟`. The rewrite must not erase a character who genuinely speaks formally. “Conversational” is not a license to flatten education, profession, period, or temperament.
 
 ## Preserve the work done by particles
 

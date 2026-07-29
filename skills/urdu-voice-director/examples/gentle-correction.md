@@ -1,5 +1,7 @@
 # Central worked example: gentle moral correction
 
+This primary version is a **fidelity-first refinement**. It does not add dialogue turns, motives, honorifics, or a concluding lesson. Any expanded educational version must be labeled as an authorial adaptation and approved separately.
+
 ## Original dialogue
 
 ```text
@@ -20,36 +22,32 @@
 
 ## Problems found
 
-- Ahmed’s jump from observation to theft is abrupt; his mischief should grow.
-- `اب` is possible, but `اچھا موقع ہے` makes the live calculation audible.
-- Fatima should intervene suddenly and then lower the temperature.
-- Ahmed’s `شش` needs a startled, hushed defensive beat, not triumphant shouting.
-- `انسانوں نے` is semantically sound but slightly abstract for this child exchange; `لوگوں نے` is more conversational.
-- Ahmed’s realization and sincere question need separate beats.
-- Fatima’s correction should be warm and serious, not angry or sermon-like.
-- The original does not explicitly contain a longer moral conclusion, so the core refinement must not invent one.
+- Ahmed’s cautious observation, growing mischief, startled hush, and defensive confidence are performance beats already latent in the words; they do not require new spoken motives.
+- The repeated `رُکو` carries Fatima’s sudden interruption and should not be removed merely for elegance.
+- `دیکھ رہے ہوتے ہیں` is awkward here without an explicit habitual frame. In this immediate scene, `دیکھ رہے ہیں` is the minimally invasive idiomatic choice.
+- Ahmed’s realization, processing, and sincere curiosity must be directed through the existing question rather than inserted as a new `اوہ` turn.
+- The source alternates `اللہ تعالیٰ` and `اللہ`. Preserve that choice rather than adding an honorific to Ahmed’s line.
+- Fatima’s final `بالکل` is already warm and sufficient; `جی ہاں` would add formality unsupported by the assumed child-to-child relationship.
 
 ## Refined clean dialogue
 
 ```text
 احمد: ارے... یہاں تو کوئی بھی نہیں ہے۔
 
-احمد: اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+احمد: اب امی کی چاکلیٹ کھا لیتا ہوں۔
 
-فاطمہ: احمد، رُکو!
+فاطمہ: رُکو، رُکو!
 
-احمد: شش... آہستہ بولو۔ کسی نے مجھے دیکھا ہی نہیں۔
+احمد: شش... کسی نے دیکھا ہی نہیں!
 
-فاطمہ: لوگوں نے شاید نہ دیکھا ہو...
+فاطمہ: انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔
 
-فاطمہ: مگر اللہ تعالیٰ تو ہمیں دیکھ رہے ہوتے ہیں۔
+احمد: یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
 
-احمد: اوہ...
-
-احمد: یعنی جب آس پاس کوئی نہ ہو، تب بھی اللہ تعالیٰ ہمیں دیکھ رہے ہوتے ہیں؟
-
-فاطمہ: جی ہاں، بالکل۔
+فاطمہ: بالکل۔
 ```
+
+The words change only where punctuation supports the intended beat and where the original aspect is unnatural in context.
 
 ## Directed dialogue
 
@@ -62,81 +60,99 @@ Bracketed cues are non-spoken rehearsal notes.
 
 احمد: یہاں تو کوئی بھی نہیں ہے۔
 
-احمد: [mischief growing; pleased with the idea] اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+احمد: [mischief growing as the idea occurs to him] اب امی کی چاکلیٹ کھا لیتا ہوں۔
 
-فاطمہ: [cuts in suddenly] احمد، رُکو!
+فاطمہ: [cuts in suddenly] رُکو، رُکو!
 
-احمد: [startled, then urgently hushed] شش... آہستہ بولو۔
+احمد: [startled; urgently lowering his voice] شش...
 
-احمد: [trying to recover his confidence] کسی نے مجھے دیکھا ہی نہیں۔
+احمد: [trying to recover defensive confidence] کسی نے دیکھا ہی نہیں!
 
-فاطمہ: [calm now; gently correcting] لوگوں نے شاید نہ دیکھا ہو...
+فاطمہ: [calm now; gentle but serious] انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔
 
-[brief reflective pause]
+احمد: [the defense softens; processes the implication, then asks sincerely] یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
 
-فاطمہ: [serious but warm] مگر اللہ تعالیٰ تو ہمیں دیکھ رہے ہوتے ہیں۔
-
-احمد: [the defense drops; soft realization] اوہ...
-
-[allows the thought to settle]
-
-احمد: [sincere curiosity] یعنی جب آس پاس کوئی نہ ہو، تب بھی اللہ تعالیٰ ہمیں دیکھ رہے ہوتے ہیں؟
-
-فاطمہ: [simple reassurance] جی ہاں، بالکل۔
+فاطمہ: [warm, plain certainty] بالکل۔
 ```
 
-## Optional Eleven v3-style output
+The split visual beats do not add or remove spoken words. A synthesis workflow may keep Ahmed’s final question as one utterance and express the internal shift through contour rather than segmentation.
 
-Use each speaker with the assigned voice in the provider’s dialogue workflow. Keep the clean version separately.
+## Optional Eleven v3-style adapter
+
+Target details must be refreshed against current first-party documentation and tested with the selected voice. The bracketed controls below are part of the provider request payload, not the canonical utterance or caption.
 
 ```text
+Canonical utterance:
+ارے... یہاں تو کوئی بھی نہیں ہے۔
+
+Provider request payload:
 [quietly] ارے... یہاں تو کوئی بھی نہیں ہے۔
 
-[mischievously] اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔
+Canonical utterance:
+اب امی کی چاکلیٹ کھا لیتا ہوں۔
 
-[urgently] احمد، رُکو!
+Provider request payload:
+[mischievously] اب امی کی چاکلیٹ کھا لیتا ہوں۔
 
-[startled] شش... [whispers] آہستہ بولو۔ کسی نے مجھے دیکھا ہی نہیں۔
+Canonical utterance:
+رُکو، رُکو!
 
-[calmly] لوگوں نے شاید نہ دیکھا ہو...
+Provider request payload:
+[urgently] رُکو، رُکو!
 
-مگر اللہ تعالیٰ تو ہمیں دیکھ رہے ہوتے ہیں۔
+Canonical utterance:
+شش... کسی نے دیکھا ہی نہیں!
 
-[thoughtful] اوہ...
+Provider request payload:
+[startled] شش... [whispers] کسی نے دیکھا ہی نہیں!
 
-[curious] یعنی جب آس پاس کوئی نہ ہو، تب بھی اللہ تعالیٰ ہمیں دیکھ رہے ہوتے ہیں؟
+Canonical utterance:
+انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔
 
-جی ہاں، بالکل۔
+Provider request payload:
+[calmly] انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔
+
+Canonical utterance:
+یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
+
+Provider request payload:
+[thoughtful] یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟
+
+Canonical utterance:
+بالکل۔
+
+Provider request payload:
+بالکل۔
 ```
 
-The exact tag response in Urdu is a listening-test hypothesis. Remove a tag if the chosen voice overacts or changes language detection.
+Exact tag compliance in Urdu remains an audio-test hypothesis. Remove a tag if the chosen voice overacts, vocalizes controls, or changes language behavior.
 
 ## Portable synthesis plan
 
-| Turn | Speaker | Clean spoken text | Delivery note | Beat/pause | Emphasis |
+| Turn | Speaker | Canonical utterance | Delivery note | Beat/pause | Emphasis |
 |---|---|---|---|---|---|
 | 1 | احمد | ارے... یہاں تو کوئی بھی نہیں ہے۔ | cautious observation | micro-beat after `ارے` | `کوئی بھی` lightly |
-| 2 | احمد | اچھا موقع ہے۔ امی کی چاکلیٹ کھا لیتا ہوں۔ | mischief grows | reset between sentences | `اچھا موقع` |
-| 3 | فاطمہ | احمد، رُکو! | sudden intervention | immediate | `رُکو` |
-| 4 | احمد | شش... آہستہ بولو۔ کسی نے مجھے دیکھا ہی نہیں۔ | startled → hushed urgency → defensive confidence | shift after first sentence | `نہیں` |
-| 5 | فاطمہ | لوگوں نے شاید نہ دیکھا ہو... مگر اللہ تعالیٰ تو ہمیں دیکھ رہے ہوتے ہیں۔ | calm correction → warm seriousness | reflective beat after first clause | `مگر`, `اللہ تعالیٰ` naturally |
-| 6 | احمد | اوہ... یعنی جب آس پاس کوئی نہ ہو، تب بھی اللہ تعالیٰ ہمیں دیکھ رہے ہوتے ہیں؟ | realization → processing → sincere question | let `اوہ` settle | `تب بھی` |
-| 7 | فاطمہ | جی ہاں، بالکل۔ | warm certainty | no dramatic pause | — |
+| 2 | احمد | اب امی کی چاکلیٹ کھا لیتا ہوں۔ | mischief grows | natural sentence flow | intention carried by contour |
+| 3 | فاطمہ | رُکو، رُکو! | sudden intervention | immediate | second `رُکو` remains urgent |
+| 4 | احمد | شش... کسی نے دیکھا ہی نہیں! | startled → hushed urgency → defensive confidence | shift after `شش` | `نہیں` |
+| 5 | فاطمہ | انسانوں نے شاید نہ دیکھا ہو، لیکن اللہ تعالیٰ ہمیں دیکھ رہے ہیں۔ | calm correction → warm seriousness | light clause boundary | `لیکن` naturally |
+| 6 | احمد | یعنی اگر کوئی نہ بھی دیکھے، تب بھی اللہ دیکھ رہے ہیں؟ | realization → processing → sincere question | allow the inference to form | `تب بھی` |
+| 7 | فاطمہ | بالکل۔ | warm certainty | no dramatic pause | — |
 
 ## Emotional progression
 
 ### Ahmed
 
-Cautious scan → an opportunity occurs to him → mischief grows → Fatima startles him → he lowers his voice urgently → he tries to defend the act through secrecy → the distinction between unseen and right begins to land → he processes → asks sincerely.
+Cautious observation → mischief grows → Fatima startles him → he urgently lowers his voice → defensive confidence → the implication begins to land → reflective processing → sincere curiosity. These are delivery readings of the existing turns, not newly asserted plot facts.
 
 ### Fatima
 
-Urgent interruption → immediate de-escalation → gentle explanation → serious but warm principle → brief confirmation. She never needs anger to make the point matter.
+Sudden intervention → immediate de-escalation → gentle correction → serious but warm delivery → brief confirmation. She never needs anger or a sermon to make the point matter.
 
 ## Restraint and alternative interpretations
 
-- Do not add crying, trembling, guilt, or a confession; the text supports realization, not a full conversion scene.
-- Do not add repeated reverence cues around `اللہ تعالیٰ`; ordinary sincerity is enough.
-- `اسی لیے ہمیں اکیلے میں بھی ہمیشہ صحیح کام کرنا چاہیے۔` is a plausible **authorial extension**, not a fidelity-preserving rewrite. Add it only if the user requests a clearer educational conclusion.
-- If Ahmed is a very young child, `جب آس پاس کوئی نہ ہو` may become `جب کوئی پاس نہ ہو`; test age and household vocabulary.
-- If `جی ہاں` sounds too formal between these siblings, retain the original `بالکل۔` The user’s relationship context decides.
+- Do not call the act “theft” unless the scene establishes ownership and the user wants that framing.
+- Do not add `اچھا موقع ہے`, `آہستہ بولو`, `اوہ`, `جی ہاں`, or a concluding lesson to the primary refinement; each changes the spoken content or register.
+- `اسی لیے ہمیں اکیلے میں بھی ہمیشہ صحیح کام کرنا چاہیے۔` can be offered only as an **optional educational adaptation**, never as a meaning-preserving correction.
+- If the scene describes a general habitual principle rather than the present moment, a native reviewer may prefer `اللہ تعالیٰ ہمیں ہمیشہ دیکھتے ہیں`; that is a theological/register choice to confirm, not a mechanical replacement.
+- If Ahmed’s first line is playful rather than cautious, change only the direction, not the words.
