@@ -4,10 +4,26 @@
 
 ## Install the skill
 
+The recommended installation method uses the open [`skills` CLI](https://github.com/vercel-labs/skills), which discovers this repository’s skill automatically:
+
 ```bash
-git clone https://github.com/ammar-hasan/urdu-voice-director.git
-cp -R urdu-voice-director/skills/urdu-voice-director \
-  "${CODEX_HOME:-$HOME/.codex}/skills/"
+npx skills add ammar-hasan/urdu-voice-director
+```
+
+The CLI detects supported agents and lets you choose project or global scope. For a global, non-interactive Codex installation:
+
+```bash
+npx skills add ammar-hasan/urdu-voice-director \
+  --skill urdu-voice-director \
+  --global \
+  --agent codex \
+  --yes
+```
+
+To inspect the repository without installing:
+
+```bash
+npx skills add ammar-hasan/urdu-voice-director --list
 ```
 
 Then invoke it with a prompt such as:
@@ -18,6 +34,16 @@ Preserve a clean version. Add restrained rehearsal direction where it helps.
 ```
 
 The skill lives in [`skills/urdu-voice-director`](skills/urdu-voice-director).
+
+### Manual fallback
+
+If the CLI cannot be used, clone the repository and copy the skill into your agent’s skill directory:
+
+```bash
+git clone https://github.com/ammar-hasan/urdu-voice-director.git
+cp -R urdu-voice-director/skills/urdu-voice-director \
+  "${CODEX_HOME:-$HOME/.codex}/skills/"
+```
 
 Current release: **0.1.1 unvalidated beta**. The repository includes 37 dialogue cases, 29 provider-contract cases, and 45 regression invariants. Native-listener and actual-provider audio evaluation is still required; see the [results manifest](skills/urdu-voice-director/evals/results-manifest.md).
 

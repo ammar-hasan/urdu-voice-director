@@ -210,8 +210,7 @@ function App() {
   const displayLines = useMemo(() => example[mode], [example, mode]);
 
   const copyInstall = async () => {
-    const command =
-      'git clone https://github.com/ammar-hasan/urdu-voice-director.git\ncp -R urdu-voice-director/skills/urdu-voice-director "${CODEX_HOME:-$HOME/.codex}/skills/"';
+    const command = "npx skills add ammar-hasan/urdu-voice-director";
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
@@ -697,18 +696,18 @@ function App() {
         <section className="install section" id="install">
           <div className="install-copy">
             <p className="eyebrow">INSTALL THE STANDALONE SKILL</p>
-            <h2>One folder. No runtime. No provider account.</h2>
+            <h2>One command. Any supported agent.</h2>
             <p>
-              Clone the repository, copy the skill into your Codex skills
-              directory, and invoke it by name. The Markdown references and
-              examples are the product.
+              The open <code>skills</code> CLI discovers the skill from this
+              repository and configures it for Codex, Claude Code, Cursor, and
+              other supported agents. No permanent CLI installation is needed.
             </p>
             <ol>
               <li>
-                <span>1</span> Clone the repository
+                <span>1</span> Run the install command
               </li>
               <li>
-                <span>2</span> Copy the skill folder
+                <span>2</span> Choose your agent and scope
               </li>
               <li>
                 <span>3</span> Start with <code>$urdu-voice-director</code>
@@ -722,21 +721,18 @@ function App() {
             </div>
             <pre>
               <code>
-                <span className="comment"># Clone the skill repository</span>
-                {"\n"}git clone https://github.com/ammar-hasan/
+                <span className="comment"># Interactive install · recommended</span>
+                {"\n"}npx skills add ammar-hasan/
                 <br />
-                {"  "}urdu-voice-director.git{"\n\n"}
-                <span className="comment"># Install for Codex</span>
-                {"\n"}cp -R urdu-voice-director/skills/
-                <br />
-                {"  "}urdu-voice-director{" "}
-                <span className="string">
-                  &quot;${"{CODEX_HOME:-$HOME/.codex}"}/skills/&quot;
-                </span>
+                {"  "}urdu-voice-director
               </code>
             </pre>
             <p>
-              Then ask:{" "}
+              For a global, non-interactive Codex install, add{" "}
+              <span>
+                --skill urdu-voice-director -g -a codex -y
+              </span>
+              . Then ask:{" "}
               <span>
                 Use $urdu-voice-director to refine this dialogue for natural
                 speech.

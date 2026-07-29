@@ -10,6 +10,10 @@ Provider documentation and listening observations must include an “as of” da
 
 ## [Unreleased]
 
+### Documentation
+
+- Made the verified `npx skills add ammar-hasan/urdu-voice-director` workflow the primary installation method; retained manual copying as a fallback.
+
 ### Research queue
 
 - Validate all central examples with native speakers across Pakistani and Indian Urdu contexts, plus more than one household, age group, and bilingual background.
