@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ammar-hasan.github.io/urdu-voice-director/
