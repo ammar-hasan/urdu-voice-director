@@ -10,16 +10,38 @@ Provider documentation and listening observations must include an “as of” da
 
 ## [Unreleased]
 
-### Documentation
-
-- Made the verified `npx skills add ammar-hasan/urdu-voice-director` workflow the primary installation method; retained manual copying as a fallback.
-
 ### Research queue
 
-- Validate all central examples with native speakers across Pakistani and Indian Urdu contexts, plus more than one household, age group, and bilingual background.
-- Run the listening suite with current Eleven v3, OpenAI instruction-steered TTS, Google Gemini-TTS Urdu Preview, Azure `ur-PK`, Google Chirp 3 `ur-IN`, and Piper `ur_PK-fasih-medium`.
+- Execute the 20-scene contrastive benchmark with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.
+- Run the eight-scene audio/ablation subset with current Eleven v3, OpenAI instruction-steered TTS, Google Gemini-TTS Urdu Preview, Azure `ur-PK`, Google Chirp 3 `ur-IN`, and the available Piper Urdu voices.
 - Recheck whether Qwen3-TTS, XTTS-v2, or Chatterbox adds official Urdu support.
 - Measure whether selective diacritics improve or harm pronunciation across provider and local voices.
+
+## [0.2.0] - 2026-07-29
+
+### Added
+
+- Made Urdu literary memory, social worlds, relationship systems, rhythm, and cultural associations explicit in the north-star principle.
+- Added a private `Recover the living scene` workflow step covering viewpoint, source-supported concrete anchors, relationship, change, and the unspoken, with a strict anti-invention guard.
+- Added `references/urdu-literary-imagination.md`, a practical source-backed guide to scene, presence, social syntax, implication, rhythm, restraint, memory, silence, fictional orality, and direct-Urdu discipline.
+- Added 12 contrastive scene-recovery examples covering ordinary family speech, concealment, sibling tension, memory, embarrassment, disappointment, humour, code-switching, religious language, migration/absence, audiobook narration, and direction-only treatment.
+- Added optional non-spoken performance context for audiobook, drama, animation, game, and TTS work without making it a default output section.
+- Added `imaginative fidelity` and `oral transfer` to the existing evaluation framework.
+- Added a 20-scene blinded contrastive benchmark comparing 0.1.1, 0.2.0, and a generic natural-Urdu prompt, plus an eight-scene audio/ablation subset.
+
+### Changed
+
+- Made the direct Urdu source—not an English or Hindi back-translation—the semantic and imaginative reference.
+- Clarified that literary vitality comes from presence, viewpoint, sequence, social relation, and restraint rather than named-author imitation, Persianised diction, ornament, or heightened emotion.
+- Expanded the text suite from 37 to 49 cases, provider-contract suite from 29 to 32 cases, and regression suite from 45 to 65 invariants.
+- Expanded native editorial and listening records to preserve reviewer variation and exact provider/model/surface/locale/voice/payload metadata.
+- Refreshed provider facts as of 2026-07-29: OpenAI’s TTS guide now explicitly lists Urdu while warning that built-in voices are optimized for English; current Piper catalog entries and Google Chirp controls are recorded without implying audio validation.
+- Made the verified `npx skills add ammar-hasan/urdu-voice-director` workflow the primary installation method; retained manual copying as a fallback.
+
+### Evidence
+
+- Added literary-history, fictional-orality, Urdu grammar/knowledge benchmark, tokenization, Roman Urdu, and code-switching sources with established/editorial/provider/hypothesis labels.
+- Static repository validation is recorded separately in `evals/results-manifest.md`; contrastive model, native-reader, native-listener, and provider-audio tests remain unexecuted until artifacts are logged.
 
 ## [0.1.1] - 2026-07-29
 

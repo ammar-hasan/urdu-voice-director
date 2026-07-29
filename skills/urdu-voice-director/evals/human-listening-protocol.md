@@ -12,6 +12,23 @@ Recruit at minimum:
 
 Do not treat majority vote as proof of a universal rule. Record differences in regional, generational, and bilingual preference.
 
+Where reviewers are comfortable, record self-described Pakistani or Indian Urdu context, region/city, age group, literary familiarity, children’s-dialogue familiarity, bilingual background, and relevant writing, acting, teaching, linguistic, or voice experience. Do not infer identity from accent or location.
+
+## Native Urdu editorial pass
+
+Before synthesis, blind-review the text variants and ask:
+
+- Does this sound like Urdu produced from inside the scene?
+- Does it preserve the same people and relationships?
+- Does it make the scene more present?
+- Has it added anything unsupported?
+- Is it too formal, Hindi-influenced, Persianised, translated, generic, or artificial?
+- Would this person plausibly say these words?
+- Which version is more alive without becoming more decorative?
+- Which disagreements reflect legitimate variation rather than errors?
+
+Keep disagreements and minority judgments in the run record.
+
 ## Systems
 
 Evaluate:
@@ -29,8 +46,10 @@ If a system lacks official Urdu support, do not use it as evidence of the skill�
 - Match loudness and file format.
 - Do not tell listeners which is “improved.”
 - Keep speaker/voice constant within a comparison.
+- Keep canonical utterances and captions identical unless a documented pronunciation divergence is the variable under test.
 - Change one direction variable at a time where possible.
 - Include a repeat to estimate listener consistency.
+- Preserve exact request payloads, model IDs, API/product surfaces, voices, locales, dates, and controls.
 
 ## Listener questions
 
@@ -46,6 +65,10 @@ Rate `poor`, `acceptable`, `strong`, or `excellent`:
 - Does the emotional change happen at the right words?
 - Are borrowed English words intelligible?
 - Is any direction tag spoken aloud or audible as an artifact?
+- Does the line preserve viewpoint and supported subtext?
+- Has any context, narration, or internal thought leaked into speech?
+- Is there accent drift or loss of voice continuity across split utterances?
+- Are any words swallowed, repeated, or added?
 
 Ask one free-response question: “Which word, pause, or tone first sounded wrong, and why?”
 
@@ -70,11 +93,16 @@ Include:
 Skill version:
 Date:
 Provider/model:
+Product/API surface:
 Voice:
 Locale:
+Source input:
 Input variant:
 Direction/markup:
+Narrative context:
+Request payload:
 Caption variant:
+Pronunciation/normalization divergence:
 Listener background (self-described):
 
 Believability:
@@ -87,6 +115,8 @@ Relationship/register:
 Transition timing:
 Code-switching:
 Artifacts:
+Audio link or artifact reference:
+Reviewer disagreement:
 
 First wrong moment:
 Preferred variant:
@@ -105,3 +135,16 @@ Do not claim audio confidence until:
 - disagreements are documented rather than erased.
 
 For a broad skill release, test at least 20 diverse turns and 5 complete exchanges on every provider profile that the skill recommends.
+
+## Representative release subset and ablation
+
+Use the eight cases named in [contrastive benchmark](contrastive-benchmark.md) unless the release changes require another balanced subset. Where the provider permits it, compare:
+
+1. clean text only;
+2. punctuation adjustment;
+3. restrained direction;
+4. non-spoken narrative context;
+5. provider-specific controls;
+6. selective pronunciation intervention.
+
+ASR output can flag swallowed, substituted, or added words, but it cannot establish naturalness, relationship, cultural fit, pause function, or emotional progression. Never treat transcription accuracy as the complete verdict.

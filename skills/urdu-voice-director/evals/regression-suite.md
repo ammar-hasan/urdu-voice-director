@@ -207,3 +207,85 @@ Input contains `۔۔۔۔۔۔` and repeated dots.
 ### UVD-R45 — provider-layer taxonomy
 
 **Invariant:** Canonical utterance, provider request payload, inline control, separate instruction, and caption are named distinctly.
+
+## Literary fidelity and oral transfer
+
+### UVD-R46 — unsupported scenery
+
+**Invariant:** Scene recovery never adds an object, weather, action, sound, or setting detail absent from the source or authorized context.
+
+### UVD-R47 — invented interiority
+
+**Invariant:** No internal thought, motive, memory, or realization is invented to make a line feel literary.
+
+### UVD-R48 — symbolic inflation
+
+**Invariant:** An ordinary source object is not labeled or rewritten as a symbol without source support.
+
+### UVD-R49 — source ambiguity
+
+**Invariant:** Ambiguous motive, irony, relationship, emotion, locale, or outcome remains ambiguous unless context resolves it.
+
+### UVD-R50 — direct-Urdu source
+
+**Invariant:** The Urdu source remains canonical; an English paraphrase or back-translation never replaces it as the semantic reference.
+
+### UVD-R51 — viewpoint
+
+**Invariant:** Scene interpretation does not give a speaker or narrator knowledge outside the established viewpoint.
+
+### UVD-R52 — concrete anchor
+
+**Invariant:** When the source contains a useful concrete anchor, the result protects it instead of replacing it with abstract emotion or an invented detail.
+
+### UVD-R53 — implication
+
+**Invariant:** Supported subtext remains playable and implicit; it is not explained inside the dialogue.
+
+### UVD-R54 — meaningful silence
+
+**Invariant:** A source-supported absent answer or withheld statement is not filled with new speech.
+
+### UVD-R55 — ordinary line
+
+**Invariant:** An ordinary line stays ordinary when scene, character, and dramatic function require no heightened treatment.
+
+### UVD-R56 — narration boundary
+
+**Invariant:** Narration, speech frames, visible action, and temporal context remain outside the canonical utterance unless the source quotes them as speech.
+
+### UVD-R57 — named-author imitation
+
+**Invariant:** The skill never imitates or offers a preset for a named author; it may discuss source-bounded craft qualities.
+
+### UVD-R58 — ornament is not quality
+
+**Invariant:** Persianised, classical, poetic, or ornate diction is not introduced as an automatic improvement.
+
+### UVD-R59 — context isolation
+
+**Invariant:** Optional `Context`, `Audible action`, and `Do not add` fields never enter canonical speech, captions, or an undifferentiated provider text field.
+
+### UVD-R60 — Urdu-derived provider direction
+
+**Invariant:** An English provider instruction is derived from the Urdu scene interpretation, not from a generic English emotion rewrite.
+
+### UVD-R61 — Roman Urdu reconstruction
+
+**Invariant:** Roman Urdu is interpreted through speaker, relationship, setting, and surrounding turns before script conversion; ambiguous forms are not resolved letter by letter.
+
+### UVD-R62 — designed orality
+
+**Invariant:** Dialogue uses selected speech features for a function; it does not accumulate transcript noise or make every character generically colloquial.
+
+### UVD-R63 — cultural concept preservation
+
+**Invariant:** A relationship term, social act, religious form, or culturally specific implication is not replaced by a generic English emotion category.
+
+### UVD-R64 — memory boundary
+
+**Invariant:** Memory or migration is used only when the source establishes it; a place name, old object, or absence alone does not authorize nostalgia or trauma.
+
+### UVD-R65 — over-engineering rejection
+
+**Invariant:** A proposed output field, taxonomy, file, or adapter is rejected if it does not materially improve fidelity, scene recovery, spoken naturalness, provider safety, or testability.

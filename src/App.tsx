@@ -130,6 +130,39 @@ const examples: Example[] = [
     note:
       "Full-turn switching is character evidence. It is not erased for synthesis convenience, and the teacher’s gender is not guessed.",
   },
+  {
+    id: "retained-key",
+    number: "04",
+    title: "Memory without invention",
+    urduTitle: "یاد، مگر بناوٹ کے بغیر",
+    relation: "Two adults · returning to a former family home",
+    arc: "recognition → changed reality → restrained disclosure",
+    original: [
+      "نسرین: یہ چابی اب بھی اسی دروازے میں لگتی ہے؟",
+      "فیاض: دروازہ تو بدل گیا۔ چابی میں نے رکھ لی۔",
+    ],
+    clean: [
+      "نسرین: یہ چابی اب بھی اسی دروازے میں لگتی ہے؟",
+      "فیاض: دروازہ تو بدل گیا... چابی میں نے رکھ لی۔",
+    ],
+    directed: [
+      "نسرین: یہ چابی اب بھی اسی دروازے میں لگتی ہے؟",
+      "فیاض: [دروازے کی تبدیلی کے بعد مختصر توقف؛ اگلی بات سادہ] دروازہ تو بدل گیا...",
+      "فیاض: چابی میں نے رکھ لی۔",
+    ],
+    provider: [
+      "Context · non-spoken",
+      "They are revisiting a former family home. The key and changed door are the only authorized anchors.",
+      "",
+      "Canonical utterance",
+      "دروازہ تو بدل گیا... چابی میں نے رکھ لی۔",
+      "",
+      "Do not add",
+      "Partition, exile, symbolic meaning, grief, or a motive for keeping the key.",
+    ],
+    note:
+      "The scene becomes present through the key, changed door, and sequence already in the source—not invented nostalgia or symbolism.",
+  },
 ];
 
 const modes: { id: Mode; label: string; urdu: string }[] = [
@@ -142,10 +175,11 @@ const modes: { id: Mode; label: string; urdu: string }[] = [
 const steps = [
   ["01", "Read the scene", "منظر سمجھیں", "Who wants what—and what changes?"],
   ["02", "Protect meaning", "معنی محفوظ رکھیں", "Facts, identity, age, and relationship stay intact."],
-  ["03", "Refine the words", "بول چال نکھاریں", "Turn written Urdu into speakable thought units."],
-  ["04", "Map the beats", "جذباتی موڑ", "Name hesitation, interruption, realization, and intent."],
-  ["05", "Adapt carefully", "موزوں صورت", "Translate direction only into controls a provider supports."],
-  ["06", "Listen in Urdu", "سن کر پرکھیں", "Native listening—not text confidence—closes the loop."],
+  ["03", "Recover the living scene", "زندہ منظر پائیں", "Viewpoint, supported anchors, relationship, change, and the unspoken."],
+  ["04", "Find the social voice", "کردار کی زبان", "Let address, register, age, and code-switching belong to the person."],
+  ["05", "Refine for the ear", "بول چال نکھاریں", "Turn written Urdu into speakable thought units."],
+  ["06", "Direct and adapt", "ادائیگی اور صورت", "Map beats, then use only controls the exact provider supports."],
+  ["07", "Listen in Urdu", "سن کر پرکھیں", "Native listening—not text confidence—closes the loop."],
 ];
 
 const useCases = [
@@ -182,8 +216,8 @@ const providers = [
   {
     group: "Prompt-steered",
     name: "OpenAI · Gemini-TTS",
-    status: "Separate instruction",
-    detail: "Spoken Urdu stays apart from tone, pace, and performance instructions.",
+    status: "Urdu listed · Gemini ur-PK Preview",
+    detail: "Separate instructions; exact model, locale, voice, and Urdu delivery still need listening.",
     tone: "saffron",
   },
   {
@@ -196,8 +230,8 @@ const providers = [
   {
     group: "Conservative local",
     name: "Piper Urdu",
-    status: "Plain utterances",
-    detail: "Direction remains external; segmentation and careful text do the work.",
+    status: "Catalog artifacts · audio unvalidated",
+    detail: "Direction remains external; the current catalog includes two ur-PK voices.",
     tone: "ink",
   },
 ];
@@ -234,6 +268,7 @@ function App() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#method">Method</a>
+          <a href="#imagination">Imagination</a>
           <a href="#lab">Examples</a>
           <a href="#providers">Providers</a>
           <a href="#install">Install</a>
@@ -254,13 +289,14 @@ function App() {
             </p>
             <p className="eyebrow">LANGUAGE · SUBTEXT · PERFORMANCE</p>
             <h1>
-              Write the line.
+              Recover the scene.
               <br />
               <em>Direct the life inside it.</em>
             </h1>
             <p className="hero-lede">
-              A standalone agent skill for refining Urdu dialogue into natural,
-              culturally aware spoken performance—without letting TTS markup
+              A standalone agent skill that interprets Urdu from inside its
+              literary and social world, then turns that understanding into
+              natural speech—without inventing the scene or letting TTS markup
               contaminate the words.
             </p>
             <div className="hero-actions">
@@ -268,7 +304,7 @@ function App() {
                 Enter the dialogue lab
               </a>
               <a className="text-link" href="#install">
-                Install v0.1.1 <span aria-hidden="true">↓</span>
+                Install v0.2.0 <span aria-hidden="true">↓</span>
               </a>
             </div>
             <dl className="hero-stats">
@@ -277,7 +313,7 @@ function App() {
                 <dd>separate outputs</dd>
               </div>
               <div>
-                <dt>111</dt>
+                <dt>166</dt>
                 <dd>eval specifications</dd>
               </div>
               <div>
@@ -299,7 +335,7 @@ function App() {
               <span>د</span>
               <span>و</span>
             </div>
-            <p className="urdu-kicker">لکھے ہوئے لفظ سے</p>
+            <p className="urdu-kicker">منظر کی بازیافت سے</p>
             <h2>جیتی جاگتی آواز تک</h2>
             <div className="utterance-card">
               <span className="speaker">احمد</span>
@@ -389,16 +425,92 @@ function App() {
           </div>
         </section>
 
+        <section className="imagination section" id="imagination">
+          <div className="section-heading split-heading">
+            <div>
+              <p className="eyebrow">URDU IMAGINATIVE SCENE</p>
+              <h2>Literary life is not ornament.</h2>
+            </div>
+            <p>
+              Urdu carries social worlds, memory, viewpoint, implication, and
+              rhythm in its own forms. The skill recovers only what the source
+              can support—and keeps ordinary speech ordinary.
+            </p>
+          </div>
+
+          <div className="scene-path" aria-label="Urdu scene recovery workflow">
+            {[
+              ["Source", "اصل متن"],
+              ["Fidelity", "معنی"],
+              ["Living scene", "زندہ منظر"],
+              ["Social voice", "کردار کی زبان"],
+              ["Spoken Urdu", "بولی ہوئی اردو"],
+              ["Performance", "ادائیگی"],
+              ["Provider", "مخصوص صورت"],
+            ].map(([english, urdu], index) => (
+              <div className="scene-node" key={english}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{english}</strong>
+                <small lang="ur" dir="rtl">
+                  {urdu}
+                </small>
+              </div>
+            ))}
+          </div>
+
+          <div className="imagination-grid">
+            <article>
+              <span lang="ur" dir="rtl">نظر</span>
+              <h3>Viewpoint</h3>
+              <p>
+                Ask who notices, what they can know, and which sequence belongs
+                to this consciousness.
+              </p>
+            </article>
+            <article>
+              <span lang="ur" dir="rtl">نشان</span>
+              <h3>Concrete anchors</h3>
+              <p>
+                Let one source-supported key, cup, sound, or repeated word carry
+                presence. Never manufacture atmosphere.
+              </p>
+            </article>
+            <article>
+              <span lang="ur" dir="rtl">رشتہ</span>
+              <h3>Social syntax</h3>
+              <p>
+                Pronouns, agreement, titles, turn length, and who may interrupt
+                reveal the relationship.
+              </p>
+            </article>
+            <article>
+              <span lang="ur" dir="rtl">خاموشی</span>
+              <h3>Implication & silence</h3>
+              <p>
+                Keep the unspoken playable. Do not explain subtext or invent an
+                inner monologue inside the line.
+              </p>
+            </article>
+          </div>
+
+          <p className="imagination-guard">
+            <strong>Strict guard</strong>
+            Do not add objects, actions, motives, memories, symbolism, cultural
+            assumptions, or emotions unsupported by the source.
+          </p>
+        </section>
+
         <section className="method section" id="method">
           <div className="section-heading split-heading">
             <div>
               <p className="eyebrow">SCENE-FIRST WORKFLOW</p>
               <h2>Understand before you edit.</h2>
             </div>
-            <p>
-              A native reader silently recovers hesitation, respect, intent,
-              and emotional change. The skill makes that reasoning explicit.
-            </p>
+              <p>
+              A native reader silently recovers viewpoint, relationship,
+              hesitation, intent, and emotional change. The skill makes that
+              reasoning explicit without exposing it by default.
+              </p>
           </div>
           <div className="steps">
             {steps.map(([number, title, urdu, text]) => (
@@ -566,6 +678,12 @@ function App() {
               </strong>
             </article>
           </div>
+          <p className="optional-context-note">
+            <strong>Optional performance context</strong>
+            Audiobook, drama, animation, game, or TTS work may add a small
+            non-spoken block—context, canonical utterance, audible action, and
+            “do not add.” It never enters captions or canonical speech.
+          </p>
         </section>
 
         <section className="use-cases section">
@@ -651,6 +769,14 @@ function App() {
                 the change from defensiveness to sincere curiosity.”
               </p>
             </article>
+            <article>
+              <span>05</span>
+              <p>
+                “Recover the living scene from this Urdu passage. Make it more
+                present without adding scenery, motives, symbolism, or
+                narration to the dialogue.”
+              </p>
+            </article>
           </div>
         </section>
 
@@ -660,9 +786,9 @@ function App() {
             <h2>Text review finds the line. Native listening proves the voice.</h2>
             <p>
               The evaluation framework scores meaning, naturalness, character,
-              age, relationship, emotional progression, pauses, restraint,
-              culture, pronunciation, TTS suitability, caption cleanliness,
-              and narration discipline.
+              age, relationship, imaginative fidelity, viewpoint, subtext,
+              oral transfer, emotional progression, culture, pronunciation,
+              caption cleanliness, and narration discipline.
             </p>
             <a
               className="text-link light-link"
@@ -673,21 +799,25 @@ function App() {
           </div>
           <div className="eval-figure">
             <div className="eval-ring">
-              <strong>111</strong>
+              <strong>166</strong>
               <span>SPECIFICATIONS · NOT AUDIO RESULTS</span>
             </div>
             <dl>
               <div>
-                <dt>37</dt>
+                <dt>49</dt>
                 <dd>dialogue cases</dd>
               </div>
               <div>
-                <dt>29</dt>
+                <dt>32</dt>
                 <dd>provider contracts</dd>
               </div>
               <div>
-                <dt>45</dt>
+                <dt>65</dt>
                 <dd>regression guards</dd>
+              </div>
+              <div>
+                <dt>20</dt>
+                <dd>blind benchmark scenes</dd>
               </div>
             </dl>
           </div>
@@ -767,8 +897,11 @@ function App() {
           <a href="https://github.com/ammar-hasan/urdu-voice-director/tree/main/skills/urdu-voice-director/evals">
             Evals
           </a>
+          <a href="https://github.com/ammar-hasan/urdu-voice-director/blob/main/docs/research-assessment.md">
+            Research
+          </a>
         </div>
-        <p className="copyright">Version 0.1.1 · Unvalidated beta · Built for the ear.</p>
+        <p className="copyright">Version 0.2.0 · Statically validated beta · Built from the Urdu scene.</p>
       </footer>
     </div>
   );

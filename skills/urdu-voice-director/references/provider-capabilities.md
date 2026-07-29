@@ -15,13 +15,13 @@ Status date: **2026-07-29**. Recheck official documentation before production us
 |---|---|---|---|
 | ElevenLabs Eleven v3 | Urdu listed among 74 languages | documented inline audio tags; dialogue workflow | Generate a v3 adapter with sparse audible tags and a separate clean caption. |
 | ElevenLabs Multilingual v2 / Flash v2.5 | Urdu not listed in their documented language sets | punctuation/model behavior; not v3 audio-tag contract | Do not label them Urdu-supported because the company’s v3 supports Urdu. |
-| OpenAI `gpt-4o-mini-tts` family | official API docs expose speech instructions; Urdu-specific quality is not guaranteed in the cited docs | separate `instructions` field | Keep Urdu in input and performance cues in instructions; mark listening validation. |
-| OpenAI `tts-1` / `tts-1-hd` | Urdu-specific quality not guaranteed here | no instructions field | Use clean segmented text; do not inline stage tags. |
+| OpenAI `gpt-4o-mini-tts` family | Urdu is listed; built-in voices are optimized for English | separate `instructions` field | Keep Urdu in input and performance cues in instructions; require Urdu listening validation. |
+| OpenAI `tts-1` / `tts-1-hd` | Urdu is listed through the TTS language guidance; voices are optimized for English | no instructions field | Use clean segmented text; do not inline stage tags. |
 | Google Gemini-TTS | `ur-PK` listed as Preview | natural-language style prompt, single/multi-speaker | Keep spoken text and prompt separate; mark Preview and test. |
-| Google Chirp 3 HD | `ur-IN` voices listed | pace; `[pause]` markup; limited SSML in synchronous requests | Use only documented controls. Custom pronunciation is specifically unavailable for `ur-IN`. |
+| Google Chirp 3 HD | `ur-IN` voices listed | pace; `[pause]` markup; Preview SSML in synchronous requests | Use only documented controls. Custom pronunciation is specifically unavailable for `ur-IN`. |
 | Azure Speech | `ur-PK` and `ur-IN` standard voices listed | SSML structure, break, prosody; Urdu voices show no listed expressive styles/roles | Use conservative SSML; do not invent style names for Urdu voices. |
 | Amazon Polly | Urdu absent from current supported-language table | SSML for supported languages | Withhold an Urdu adapter unless official support changes. |
-| Piper | `ur_PK-fasih-medium` exists in the Piper voices repository | plain text plus global synthesis parameters; sentence silence/segmentation in runtime | Keep direction external. Do not send bracket tags. |
+| Piper | `ur_PK-fasih-medium` and `ur_PK-aegis_female-medium` appear in the Piper voices catalog | plain text plus global synthesis parameters; sentence silence/segmentation in runtime | Keep direction external. Do not send bracket tags. Treat each community voice as audio-unvalidated here. |
 | Coqui XTTS-v2 | Urdu absent from the official 16-language list | text, voice reference, language ID; sentence splitting | Withhold a native Urdu adapter; Arabic is not Urdu. |
 | Qwen3-TTS | Urdu absent from the official 10-language list | natural-language instruction on supported models/languages | Withhold Urdu adapter; do not confuse Qwen3 LLM language support with Qwen3-TTS support. |
 | Chatterbox Multilingual | Urdu absent from official multilingual list | global controls; paralinguistic tags documented for English Turbo/Nano | Withhold native Urdu adapter and never apply English tag support to Multilingual Urdu. |
@@ -50,7 +50,7 @@ Sources: [language support](https://help.elevenlabs.io/hc/en-us/articles/1331336
 
 ### OpenAI speech
 
-The speech API documents a separate `instructions` field for `gpt-4o-mini-tts` models and states that it does not work with `tts-1` or `tts-1-hd`. This is the right separation for this skill. Name the Speech API surface and resolve the available voice at use time:
+The TTS guide lists Urdu and cautions that the built-in voices are optimized for English. The speech API documents a separate `instructions` field for `gpt-4o-mini-tts` models and states that it does not work with `tts-1` or `tts-1-hd`. This is the right separation for this skill. Name the Speech API surface and resolve the available voice at use time:
 
 ```text
 Canonical utterance:
@@ -60,9 +60,9 @@ Separate instruction:
 Speak in natural conversational Urdu for the locale established by the scene. Let the inference form before the final sincere question; keep it restrained, not dramatic.
 ```
 
-Do not include the instruction in captions or the canonical utterance. Do not default to Pakistani or Indian Urdu without scene or locale evidence. The cited API material does not establish Urdu-specific expressive reliability; test the chosen model and voice.
+Do not include the instruction in captions or the canonical utterance. Do not default to Pakistani or Indian Urdu without scene or locale evidence. A language listing does not establish natural regional accent, code-switching, or expressive reliability; test the chosen model and voice.
 
-Sources: [speech API reference](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), [audio-model announcement](https://openai.com/index/introducing-our-next-generation-audio-models/).
+Sources: [text-to-speech guide](https://developers.openai.com/api/docs/guides/text-to-speech), [speech API reference](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create).
 
 ### Google Gemini-TTS
 
@@ -82,7 +82,7 @@ Source: [Gemini-TTS documentation](https://docs.cloud.google.com/text-to-speech/
 
 ### Google Chirp 3 HD
 
-Official voice tables list `ur-IN` Chirp 3 HD voices. Current controls include speaking rate and markup pause tags `[pause short]`, `[pause]`, and `[pause long]`; pause duration is contextual, not exact. Current docs say custom pronunciation is unavailable for `ur-IN`. SSML support is Preview, limited, and synchronous-only.
+Official voice tables list `ur-IN` Chirp 3 HD voices. Current controls include speaking rate and markup pause tags `[pause short]`, `[pause]`, and `[pause long]`; pause duration is contextual, not exact. Current docs say custom pronunciation is unavailable for `ur-IN`. SSML support is Preview and synchronous-only; use only the listed elements for the current surface.
 
 Adapter:
 
@@ -123,7 +123,7 @@ Source: [Amazon Polly supported languages](https://docs.aws.amazon.com/polly/lat
 
 ### Piper
 
-The Piper voices repository includes `ur_PK/fasih/medium`, an Urdu male voice using eSpeak phonemization; its model card warns that mixed Urdu-English quality may vary. Piper is primarily a text/phoneme engine with global inference controls rather than semantic inline direction.
+The Piper voices catalog currently contains `ur_PK-fasih-medium` and `ur_PK-aegis_female-medium`. Fasih’s model card describes an Urdu male voice using eSpeak phonemization and warns that mixed Urdu-English quality may vary. The catalog is evidence that voice artifacts exist, not that this skill has validated their Urdu naturalness. Piper is primarily a text/phoneme engine with global inference controls rather than semantic inline direction.
 
 Adapter:
 
@@ -138,7 +138,7 @@ External notes, not input:
 
 Use separate turns or audio segments for meaningful changes. Treat `length_scale`, noise, and sentence silence as broad synthesis parameters, not semantic emotions.
 
-Sources: [Piper engine](https://github.com/OHF-Voice/piper1-gpl), [Urdu Fasih model card](https://huggingface.co/rhasspy/piper-voices/blob/main/ur/ur_PK/fasih/medium/MODEL_CARD).
+Sources: [Piper engine](https://github.com/OHF-Voice/piper1-gpl), [Piper voice catalog](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json), [Urdu Fasih model card](https://huggingface.co/rhasspy/piper-voices/blob/main/ur/ur_PK/fasih/medium/MODEL_CARD).
 
 ### Coqui XTTS-v2
 

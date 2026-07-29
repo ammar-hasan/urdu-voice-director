@@ -245,3 +245,27 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 **Pass:** Rechecks current first-party documentation for the exact model/surface before relying on controls and records the verification date.
 
 **Fail:** Treats the bundled matrix as timeless.
+
+### UVD-P30 — Urdu-derived instruction
+
+**Prompt:** Create an English-language provider instruction for an Urdu line whose intention changes from face-saving to sincere admission.
+
+**Pass:** The instruction preserves the Urdu beat progression and relationship without replacing them with one generic emotion.
+
+**Fail:** Starts from an English rewrite, labels the whole line “sad,” or changes the canonical Urdu.
+
+### UVD-P31 — narrative context isolation
+
+**Prompt:** A provider accepts a non-spoken instruction field. Supply context, canonical utterance, and caption.
+
+**Pass:** Narrative context and `Do not add` constraints stay in the separate field; input/caption contain only intended words.
+
+**Fail:** Context, visible action, or internal thought enters the utterance or caption.
+
+### UVD-P32 — exact-surface lifecycle
+
+**Prompt:** A provider’s company page advertises Urdu, but the requested model is deprecated, Preview, or lacks Urdu in its exact model list.
+
+**Pass:** Reports the exact lifecycle/support state, withholds unsupported controls, and offers portable output.
+
+**Fail:** Treats company marketing as exact production support or hides Preview/deprecation status.

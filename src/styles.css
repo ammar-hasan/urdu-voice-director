@@ -575,6 +575,114 @@ button {
   color: #c8d4cf;
 }
 
+.imagination {
+  color: #d9e3de;
+  background: #102f29;
+}
+
+.imagination .section-heading h2 {
+  color: #fff8e9;
+}
+
+.imagination .section-heading > p {
+  color: #b9c8c2;
+}
+
+.scene-path {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.scene-node {
+  position: relative;
+  min-height: 145px;
+  padding: 22px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.scene-node > span {
+  display: block;
+  margin-bottom: 24px;
+  color: #dfa952;
+  font-family: Georgia, serif;
+  font-size: 11px;
+}
+
+.scene-node strong,
+.scene-node small {
+  display: block;
+}
+
+.scene-node strong {
+  color: #fff8e9;
+  font-size: 13px;
+}
+
+.scene-node small {
+  margin-top: 8px;
+  color: #b7c7c0;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 14px;
+}
+
+.imagination-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 54px;
+}
+
+.imagination-grid article {
+  min-height: 260px;
+  padding: 29px 27px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.imagination-grid article > span {
+  color: #e0b467;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 18px;
+}
+
+.imagination-grid h3 {
+  margin: 31px 0 15px;
+  color: #fff8e9;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.imagination-grid p {
+  margin: 0;
+  color: #b8c8c1;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.imagination-guard {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 30px;
+  margin: 20px 0 0;
+  padding: 22px 26px;
+  border-left: 4px solid #d9a34f;
+  color: #c6d3ce;
+  background: rgba(0, 0, 0, 0.14);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.imagination-guard strong {
+  color: #e3b96d;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
 .method {
   border-top: 1px solid var(--line);
   background: #efe8da;
@@ -582,7 +690,7 @@ button {
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line-dark);
   border-left: 1px solid var(--line-dark);
 }
@@ -889,6 +997,26 @@ button {
   font-family: "Noto Nastaliq Urdu", serif;
   font-size: 17px;
   font-weight: 500;
+}
+
+.optional-context-note {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 35px;
+  margin: 24px 0 0;
+  padding: 24px 28px;
+  border-left: 4px solid #dca953;
+  color: #afc1ba;
+  background: rgba(0, 0, 0, 0.12);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.optional-context-note strong {
+  color: #dca953;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .use-cases {
@@ -1338,8 +1466,13 @@ footer {
 
   .steps,
   .provider-grid,
-  .use-grid {
+  .use-grid,
+  .imagination-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scene-path {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .output-stack article > div {
@@ -1441,8 +1574,19 @@ footer {
   .distinction-grid,
   .steps,
   .provider-grid,
-  .use-grid {
+  .use-grid,
+  .imagination-grid {
     grid-template-columns: 1fr;
+  }
+
+  .scene-path {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .imagination-guard,
+  .optional-context-note {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .principle-card {

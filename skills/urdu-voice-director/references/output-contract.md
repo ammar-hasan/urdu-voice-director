@@ -12,6 +12,26 @@ Canonical source of truth. Contains only words intended to be heard. Speaker lab
 
 Human-readable script with explicitly non-spoken cues. It may contain scene actions useful to an actor, but label them as rehearsal notes rather than provider tags.
 
+### Optional performance context
+
+For audiobook, drama, animation, game, or TTS work, include this only when the performer needs narrative orientation that must not enter the line:
+
+```text
+Context:
+What has just happened and any source-established performance condition.
+
+Canonical utterance:
+The exact Urdu words intended to be heard.
+
+Audible action:
+The playable change or intention.
+
+Do not add:
+Unsupported emotional or narrative assumptions.
+```
+
+This block is non-spoken metadata. Never copy it into captions, speaker labels, or the provider text field.
+
 ### 3. Portable synthesis plan
 
 Use this compact table for TTS tasks:
@@ -85,4 +105,6 @@ Make optional fields optional. Do not encode literary analysis, inferred biograp
 - Provider-only tags never appear in captions.
 - Every word intended to be spoken is either in the clean source or listed as a pronunciation/normalization divergence.
 - Direction never changes factual content.
+- Context never becomes canonical speech.
+- Provider instructions are derived from the Urdu scene interpretation, even when written in English.
 - Unsupported adapters are withheld, not fabricated.

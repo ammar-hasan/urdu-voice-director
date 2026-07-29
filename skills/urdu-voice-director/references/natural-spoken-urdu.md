@@ -9,6 +9,12 @@ Use this reference when a line is correct on paper but does not sound like somet
 3. Lexical identity and Roman Urdu
 4. Read-aloud test
 
+## Design speech; do not transcribe noise
+
+Fictional and scripted dialogue creates the impression of speech through selected fragments, particles, repetition, hesitation, and response forms. It is not a literal transcript. Add a disfluency only when it buys time, repairs a thought, protects face, marks interruption, or otherwise changes the moment.
+
+Do not make every character generically colloquial. Education, age, relationship, period, profession, region, and temperament may justify different sentence lengths and degrees of formality.
+
 ## Write thought units, not essay sentences
 
 Spontaneous speech is planned incrementally. Let a speaker notice, react, qualify, and finish rather than delivering every premise in one polished sentence.
@@ -99,7 +105,7 @@ Do not “repair” every fragment into a complete formal sentence.
 
 ## Roman Urdu conversion
 
-Infer intended words from the whole turn:
+Reconstruct the speaker, relationship, setting, and intended words from the whole turn before choosing script, register, or borrowed vocabulary:
 
 ```text
 acha tum ne us ko call ki thi?

@@ -29,6 +29,9 @@ The description covers:
 ## Core behavior
 
 - [ ] Scene understanding precedes editing.
+- [ ] The workflow explicitly follows source → fidelity → Urdu imaginative scene → social voice → clean speech → performance → provider.
+- [ ] “Recover the living scene” privately checks viewpoint, supported anchors, relationship, change, and the unspoken.
+- [ ] Scene recovery forbids unsupported objects, actions, motives, memories, symbolism, cultural assumptions, and emotions.
 - [ ] Meaning and character fidelity are hard requirements.
 - [ ] Dialogue refinement and performance direction are explicitly distinct.
 - [ ] Lines may receive neither, either, or both operations.
@@ -37,6 +40,9 @@ The description covers:
 - [ ] Silence types are distinguished.
 - [ ] Emotion is not equated with volume or speed.
 - [ ] Literary depth excludes unrequested narration.
+- [ ] Urdu is the semantic reference rather than the surface translation of an English or Hindi interpretation.
+- [ ] Literary vitality is not equated with ornament, Persianised diction, classical vocabulary, or named-author imitation.
+- [ ] Ordinary dialogue is allowed to remain ordinary.
 - [ ] Performance cues are short, actionable, local, and restrained.
 
 ## Output safety
@@ -44,6 +50,7 @@ The description covers:
 - [ ] Clean spoken Urdu is always required.
 - [ ] Directed rehearsal output labels cues as non-spoken.
 - [ ] TTS tasks include a portable synthesis plan.
+- [ ] Optional narrative context is non-spoken, source-bounded, and absent when unnecessary.
 - [ ] Provider input, instruction/markup, and captions are separate.
 - [ ] Multiple providers derive from one clean source.
 - [ ] Unknown providers receive conservative clean utterances.
@@ -59,6 +66,8 @@ The description covers:
 - [ ] Religious language guidance is respectful and non-preachy.
 - [ ] Urdu-English code-switching and product names are covered.
 - [ ] Roman Urdu ambiguity is covered.
+- [ ] Roman Urdu conversion reconstructs context and relationships before script conversion.
+- [ ] Full-turn code-switching and direct-Urdu discipline are covered.
 
 ## Provider evidence
 
@@ -69,7 +78,7 @@ The description covers:
 - [ ] Google Chirp 3 `ur-IN` pause and pronunciation limits are stated.
 - [ ] Azure Urdu voices are not assigned unsupported expressive styles.
 - [ ] Amazon Polly Urdu output is withheld under the current list.
-- [ ] Piper direction stays external.
+- [ ] Piper voice artifacts are distinguished from executed quality validation, and direction stays external.
 - [ ] XTTS-v2, Qwen3-TTS, and Chatterbox do not inherit Urdu support from neighboring products/languages.
 
 ## Examples and evals
@@ -79,10 +88,15 @@ The description covers:
 - [ ] Examples cover siblings, friends, parent/child, teacher/student, correction, embarrassment, anger, whisper, interruption, realization, uncertainty, teasing, respect, code-switching, and religious education.
 - [ ] Every detailed example includes original, problems, clean, directed, progression, and restraint/alternatives.
 - [ ] Provider example preserves clean captions.
-- [ ] Text eval suite contains at least 30 cases.
+- [ ] Literary scene-recovery examples contain 10–12 contrastive cases and include an ordinary no-change case.
+- [ ] Text eval suite contains at least 45 cases.
 - [ ] Provider suite contains at least 20 cases.
-- [ ] Regression suite contains at least 40 invariants.
+- [ ] Regression suite contains at least 60 invariants.
+- [ ] Contrastive benchmark contains exactly 20 scenes in the documented category distribution.
+- [ ] Contrastive benchmark compares released, revised, and generic-prompt arms with blinded property scoring.
+- [ ] Ablation protocol distinguishes clean text, punctuation, direction, context, provider control, and pronunciation intervention.
 - [ ] Human protocol requires native listening with actual voices.
+- [ ] Human protocol records reviewer variation and exact provider/model/surface/locale/voice/payload metadata.
 - [ ] Results manifest distinguishes specified cases from executed results.
 - [ ] Default refinement tests unknown gender, full-turn code-switching, religious-form fidelity, and no-added-turn behavior.
 - [ ] Provider tests distinguish canonical utterance from provider request payload and exact API surface.
@@ -93,6 +107,10 @@ The description covers:
 - [ ] No unresolved placeholder markers remain.
 - [ ] Markdown links resolve locally.
 - [ ] Source URLs are reachable or explicitly archived/replaced.
+- [ ] No referenced example, eval, or source is missing.
+- [ ] No provider claim lacks a verification date.
+- [ ] No unsupported model or locale claim is promoted.
+- [ ] No duplicate or contradictory core instruction remains.
 - [ ] Current version appears in `CHANGELOG.md`.
 - [ ] Provider status date is no older than the release’s documented review window.
 - [ ] Audio confidence is not claimed before listening tests.

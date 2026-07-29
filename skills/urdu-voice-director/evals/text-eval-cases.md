@@ -313,3 +313,101 @@ Run these as blind forward tasks. Give the evaluator the skill and only the case
 **Pass:** Keeps all seven source turns and source honorific choices; repairs `دیکھ رہے ہوتے ہیں` contextually; carries mischief, interruption, defense, realization, and warmth through direction.
 
 **Fail:** Adds `اچھا موقع ہے`, `آہستہ بولو`, `اوہ`, `جی ہاں`, a theft accusation, or a concluding sermon to the canonical refinement.
+
+## Literary scene recovery and oral transfer
+
+### UVD-T38 — unsupported scenery
+
+**Prompt:** Add literary life to: `علی: وہ آج نہیں آئے۔` No setting or weather is given.
+
+**Pass:** Improves only source-supported rhythm or direction, or leaves the line unchanged.
+
+**Fail:** Adds rain, a doorway, an empty chair, evening light, or another atmospheric object.
+
+### UVD-T39 — concrete anchor already present
+
+**Prompt:** `یہ چابی اب بھی اسی دروازے میں لگتی ہے؟ دروازہ تو بدل گیا۔ چابی میں نے رکھ لی۔` The speakers revisit a former family home.
+
+**Pass:** Recognizes the key and changed door as sufficient anchors while preserving the unknown reason for keeping the key.
+
+**Fail:** Names the key a symbol, invents exile/Partition, or adds nostalgia as fact.
+
+### UVD-T40 — viewpoint boundary
+
+**Prompt:** A child hears adults stop talking when entering the room. The child does not know what they discussed.
+
+**Pass:** Keeps the child’s knowledge limited to the silence and observable reaction.
+
+**Fail:** Reveals the adults’ topic, motive, or internal thoughts.
+
+### UVD-T41 — implication remains implicit
+
+**Prompt:** `ندا: تم نے کہا تھا، تم آؤ گے۔ حمزہ: کام تھا۔ ندا: اچھا۔`
+
+**Pass:** Preserves ambiguity in `اچھا`; any disappointed reading is labeled one interpretation or kept in direction.
+
+**Fail:** Rewrites the last line as an explicit accusation, betrayal, or confession.
+
+### UVD-T42 — meaningful silence
+
+**Prompt:** A parent asks, `تم نے پیسے لیے تھے؟` The source specifies that the child does not answer.
+
+**Pass:** Preserves the absent response as silence or non-spoken context.
+
+**Fail:** Invents a denial, thought, confession, or explanation.
+
+### UVD-T43 — ordinary stays ordinary
+
+**Prompt:** `ابو، چائے بن گئی ہے۔`
+
+**Pass:** Leaves an ordinary household notification ordinary unless supplied context changes it.
+
+**Fail:** Adds memory, symbolism, tenderness tags, ellipses, or ornate diction.
+
+### UVD-T44 — narration stays outside speech
+
+**Prompt:** `بارش رک چکی تھی۔ صحن میں پانی چمک رہا تھا۔ فریحہ نے کہا، "وہ آج بھی نہیں آئے۔"` Prepare for an audiobook.
+
+**Pass:** Keeps narration, canonical utterance, and optional performance context distinct.
+
+**Fail:** Makes Fariha speak the rain/courtyard description or inserts inner thought.
+
+### UVD-T45 — no named-author imitation
+
+**Prompt:** “Rewrite this line exactly like Manto.”
+
+**Pass:** Declines imitation as a method; offers source-bounded qualities such as economy, irony, or restraint without claiming the author’s style.
+
+**Fail:** Produces or labels an imitation of a named author.
+
+### UVD-T46 — direct-Urdu discipline
+
+**Prompt:** Refine a supplied Urdu scene for speech and explain your method.
+
+**Pass:** Treats the Urdu source as canonical and reasons from its wording, relationships, and sequence.
+
+**Fail:** Creates an English canonical paraphrase, translates it back, or treats an English gloss as more authoritative than the Urdu.
+
+### UVD-T47 — Hindi vocabulary substitution
+
+**Prompt:** A Pakistani Urdu family scene uses established ordinary vocabulary. Make it “more literary.”
+
+**Pass:** Preserves the locale and speaker vocabulary; literary vitality comes from scene, sequence, and subtext.
+
+**Fail:** Inserts Hindi literary vocabulary, Persianised ornament, or classical diction as an automatic quality upgrade.
+
+### UVD-T48 — performance context safety
+
+**Prompt:** Prepare an animation line using a context block. Source: the speaker’s excuse will be contradicted in the next scene. Utterance: `میں نے کسی کو نہیں بتایا۔`
+
+**Pass:** Keeps the exact utterance canonical; context and “trying to sound certain” stay non-spoken; `Do not add` excludes guilt/confession.
+
+**Fail:** Adds hesitation to the words, leaks context into captions, or declares guilt.
+
+### UVD-T49 — literary vitality without transcript noise
+
+**Prompt:** Make a three-turn sibling exchange feel spoken.
+
+**Pass:** Uses only functional fragments, particles, repetition, or pauses and preserves distinct voices.
+
+**Fail:** Adds filler to every turn, makes both speakers generically colloquial, or reproduces distracting transcript-level disfluency.

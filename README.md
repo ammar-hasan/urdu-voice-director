@@ -1,6 +1,8 @@
 # Urdu Voice Director
 
-`urdu-voice-director` is a standalone agent skill for refining Urdu dialogue into natural spoken performance. It preserves meaning, character, relationships, cultural context, and clean captions while keeping provider-specific TTS controls in a separate output layer.
+`urdu-voice-director` is a standalone agent skill for recovering the living scene already supported by Urdu, then refining it into natural spoken performance. It treats Urdu as the source of interpretation—with its own literary memory, social relationships, rhythm, cultural associations, and meaningful silences—while keeping fidelity above embellishment.
+
+It preserves meaning, character, viewpoint, relationships, register, cultural context, and clean captions. Narration, rehearsal context, and provider-specific TTS controls remain separate from the words intended to be heard.
 
 ## Install the skill
 
@@ -29,8 +31,9 @@ npx skills add ammar-hasan/urdu-voice-director --list
 Then invoke it with a prompt such as:
 
 ```text
-Use $urdu-voice-director to refine this dialogue for natural spoken Urdu.
-Preserve a clean version. Add restrained rehearsal direction where it helps.
+Use $urdu-voice-director to recover this scene from the Urdu source, then
+refine the dialogue for natural speech. Preserve a clean version and add
+restrained rehearsal direction only where it helps.
 ```
 
 The skill lives in [`skills/urdu-voice-director`](skills/urdu-voice-director).
@@ -45,7 +48,43 @@ cp -R urdu-voice-director/skills/urdu-voice-director \
   "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
-Current release: **0.1.1 unvalidated beta**. The repository includes 37 dialogue cases, 29 provider-contract cases, and 45 regression invariants. Native-listener and actual-provider audio evaluation is still required; see the [results manifest](skills/urdu-voice-director/evals/results-manifest.md).
+Current release: **0.2.0 statically validated beta**. The repository includes 49 dialogue cases, 32 provider-contract cases, 65 regression invariants, and a 20-scene blinded contrastive benchmark. Model-output comparison, native-reader review, native listening, and actual-provider audio evaluation are still required; see the [results manifest](skills/urdu-voice-director/evals/results-manifest.md).
+
+## How the skill thinks
+
+```text
+Source
+  ↓
+Meaning and fidelity
+  ↓
+Urdu imaginative scene
+  ↓
+Character and social voice
+  ↓
+Clean spoken realization
+  ↓
+Performance realization
+  ↓
+Provider realization
+```
+
+The scene-recovery step privately asks what is source-supported, whose viewpoint shapes the moment, which concrete details anchor it, which relationship governs the language, what changes, and what remains unspoken. It is strictly forbidden from inventing scenery, motives, memories, symbolism, cultural assumptions, or emotion.
+
+Depending on the request, the skill can return:
+
+- clean spoken Urdu for captions and transcripts;
+- a directed rehearsal script with non-spoken cues;
+- a small portable synthesis plan;
+- optional non-spoken narrative context for performance;
+- an exact-model provider adapter when current first-party documentation supports it.
+
+Provider markup is always derived from the same canonical Urdu and never becomes the source text.
+
+## Research and evaluation
+
+The [research assessment](docs/research-assessment.md) explains the original design, the Urdu-literary gap, current multilingual-model and TTS evidence, the restrained change plan, and the limits of static validation.
+
+The installable skill keeps detailed guidance under [`references/`](skills/urdu-voice-director/references), worked transformations under [`examples/`](skills/urdu-voice-director/examples), and test specifications plus executed evidence under [`evals/`](skills/urdu-voice-director/evals).
 
 ## Website
 

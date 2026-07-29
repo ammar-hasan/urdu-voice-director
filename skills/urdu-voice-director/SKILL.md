@@ -1,17 +1,22 @@
 ---
 name: urdu-voice-director
-description: Refine and direct Urdu dialogue for believable spoken delivery while preserving meaning, character, relationships, cultural context, and caption cleanliness. Use for naturalizing written or Roman Urdu; preparing dialogue for voice actors, audiobooks, podcasts, animation, games, education, accessibility, or TTS; adding restrained pauses, subtext, pronunciation help, or emotional transitions; improving children’s, family, religious, moral, formal, or code-switched dialogue; and adapting clean Urdu to ElevenLabs, OpenAI, Google Cloud, Azure, Piper, or another named speech system without making provider markup the source text.
+description: Recover the living Urdu scene, then refine and direct its dialogue for believable spoken delivery while preserving meaning, character, relationships, cultural context, and caption cleanliness. Use for naturalizing written or Roman Urdu; bringing literary scene, viewpoint, subtext, rhythm, memory, or silence into speech without invention; preparing dialogue for voice actors, audiobooks, podcasts, animation, games, education, accessibility, or TTS; improving children’s, family, religious, moral, formal, or code-switched dialogue; and adapting clean Urdu to ElevenLabs, OpenAI, Google Cloud, Azure, Piper, or another named speech system without making provider markup the source text.
 ---
 
 # Urdu Voice Director
 
-Treat Urdu dialogue as a scene performed by people, not as text decorated with emotion labels. Recover the likely situation and subtext first; then decide independently whether to refine the words, direct the performance, do both, or leave the line unchanged.
+Treat Urdu as a language with its own literary memory, social worlds, relationship systems, rhythm, cultural associations, and ways of making experience visible. Recover the scene from inside the Urdu before adapting it for performance or a provider; do not make Urdu the surface translation of an English or Hindi interpretation.
+
+Treat dialogue as a scene performed by people, not as text decorated with emotion labels. Recover the supported situation and subtext first; then decide independently whether to refine the words, direct the performance, do both, or leave the line unchanged. Literary life means presence, precision, implication, and restraint—not ornament.
 
 ## Non-negotiable contract
 
 - Preserve factual content, dramatic function, and intended meaning. Do not create extra lessons, motives, plot facts, or emotional intensity for polish.
+- Treat the Urdu source as the semantic reference. Do not create an English paraphrase and translate it back as the canonical result.
 - Preserve each speaker’s age, identity, relationship, social distance, confidence, vocabulary, and intention.
 - Preserve the source’s speaker turns, gender ambiguity, locale, code-switching pattern, titles, and religious forms unless the user authorizes adaptation or context clearly resolves them.
+- Do not replace Urdu cultural concepts with generic English emotion labels, assume Hindi literary vocabulary is neutral Urdu, or change locale, gender, relationship, title, religious form, or register without evidence.
+- Reconstruct context and relationships before converting Roman Urdu. Preserve full-turn code-switching when it belongs to the character.
 - Treat added dialogue, explanation, or motivation as an **authorial adaptation**, not a refinement. Label it separately and ask permission before making it canonical.
 - Keep dialogue refinement separate from performance direction.
 - Write for the ear. Prefer believable speech over textbook correctness or ornamental prose.
@@ -28,21 +33,36 @@ Infer reasonable delivery from the words, adjacent turns, scene purpose, speaker
 
 ## Workflow
 
+Follow this order: `source → meaning and fidelity → Urdu imaginative scene → character and social voice → clean spoken realization → performance realization → provider realization`.
+
 ### 1. Read the scene
 
 Build a compact internal scene card:
 
-- Who is speaking, to whom, where, and why?
-- What does each speaker want before the exchange?
-- What changes during it?
-- What is said directly, and what is implied?
-- Which relationship and register are already established?
-- Which facts and wording are protected?
+- Who is speaking to whom, and what setting or purpose does the source establish?
+- Which facts, speaker turns, and wording are protected?
+- Which age, identity, relationship, register, locale, and constraints are established?
+- Which of those remain unresolved?
 - Is the output for reading, acting, captions, or a particular TTS model?
 
 For multi-line dialogue, read the entire passage before editing the first line.
 
-### 2. Audit each turn
+### 2. Recover the living scene
+
+Privately determine:
+
+1. What can be pictured, heard, or otherwise sensed?
+2. Whose viewpoint shapes the moment?
+3. Which one or two source-supported details anchor the scene?
+4. Which relationship governs the language?
+5. What changes during the moment?
+6. What is understood but not spoken?
+
+Do not add objects, actions, motives, memories, symbolism, cultural assumptions, or emotions that are not supported by the source or authorized context. Do not expose this analysis by default. Read [Urdu literary imagination](references/urdu-literary-imagination.md) when scene, narration, memory, literary depth, or subtext is material.
+
+For a routine, explicit line, make this a light or no-op pass: confirm the relationship and source limits, then continue. Do not invent sensory details merely to answer every question.
+
+### 3. Audit each turn
 
 Assign each turn one treatment:
 
@@ -53,7 +73,7 @@ Assign each turn one treatment:
 
 Do not rewrite merely to demonstrate activity. Record material meaning changes as unacceptable.
 
-### 3. Refine the spoken Urdu
+### 4. Refine the spoken Urdu
 
 - Break long written sentences into speakable thought units.
 - Preserve natural particles such as `ارے`, `اچھا`, `اوہ`, `یعنی`, `تو`, `بھئی`, `ہاں`, `نہیں`, `بس`, `دیکھو`, `سنو`, `رُکو`, and `چلو` when they carry stance or turn structure.
@@ -63,11 +83,12 @@ Do not rewrite merely to demonstrate activity. Record material meaning changes a
 - Preserve natural Urdu-English code-switching when it identifies the setting or speaker. Do not add English for fashion.
 - Do not infer gendered verb forms, a teacher title such as `سر`/`میڈم`, or `ur-PK`/`ur-IN` from unspecified input. Recast neutrally or mark the choice as unresolved.
 - Convert Roman Urdu by meaning and context, not letter-for-letter transliteration. Flag genuinely ambiguous words or names.
+- Derive provider instructions from the Urdu scene interpretation even when the provider requires English instructions.
 - Use standard Urdu punctuation for readability, but do not use punctuation as the only carrier of critical performance.
 
 Read [natural spoken Urdu](references/natural-spoken-urdu.md), [register and relationships](references/register-and-relationships.md), or [children and family dialogue](references/children-and-family-dialogue.md) when those issues are central.
 
-### 4. Map performance beats
+### 5. Map performance beats
 
 Mark the smallest meaningful changes in intention, attention, certainty, or emotional state. A useful beat map names:
 
@@ -79,7 +100,7 @@ For example:
 
 Use pauses according to function: conversational beat, hesitation, word search, surprise, interruption, reluctance, realization, or reflection. Do not render all of them as identical ellipses. Read [dialogue performance](references/dialogue-performance.md), [emotional transitions](references/emotional-transitions.md), and [pauses, rhythm, and punctuation](references/pauses-rhythm-and-punctuation.md) when performance is material.
 
-### 5. Add restrained direction
+### 6. Add restrained direction
 
 - Place direction immediately before the phrase or beat it changes.
 - Describe an audible action or usable intention: `[آہستہ، بات چھپانے کی کوشش میں]`, `[soft realization]`, `[brief reflective pause]`.
@@ -88,13 +109,13 @@ Use pauses according to function: conversational beat, hesitation, word search, 
 - Do not equate anger with shouting, fear with trembling, seriousness with slowness, or warmth with smiling.
 - Do not tag every turn. Let good wording and sequence carry ordinary delivery.
 
-### 6. Clarify pronunciation sparingly
+### 7. Clarify pronunciation sparingly
 
 Use optional diacritics only when they resolve a real ambiguity or a tested TTS error, for example `رُکو`, `کِس`, `اِس`, or `اُس`. Do not fully vocalize ordinary Urdu. Spell numbers, abbreviations, and mixed-language terms in the form most likely to be spoken correctly, but keep a normal caption spelling separately when that differs.
 
 Read [pronunciation and diacritics](references/pronunciation-and-diacritics.md) and [code-switching](references/code-switching.md) for ambiguous or mixed-language input.
 
-### 7. Produce the output bundle
+### 8. Produce the output bundle
 
 Always return the clean artifact. Add the other artifacts only when they serve the request.
 
@@ -107,6 +128,24 @@ Return the final words only, with speaker labels if present. Make this caption-,
 When direction adds value, return spoken words plus restrained, provider-agnostic cues. Make it clear that bracketed notes are non-spoken. Omit this artifact when the user wants refinement only and performance is unambiguous.
 
 For TTS work, also return:
+
+When audiobook, drama, animation, game, or TTS performance needs narrative orientation, optionally place this small **non-spoken** block before the portable plan:
+
+```text
+Context:
+What has just happened and any source-established performance condition.
+
+Canonical utterance:
+The exact Urdu words intended to be heard.
+
+Audible action:
+The playable change or intention.
+
+Do not add:
+Unsupported emotional or narrative assumptions.
+```
+
+Never put this context in captions or canonical speech. Omit it when the wording and direction already make the moment clear.
 
 #### C. Portable synthesis plan
 
@@ -131,7 +170,7 @@ If no provider is named, produce a conservative portable adapter: one clean utte
 
 Read [output contract](references/output-contract.md), [TTS direction](references/tts-direction.md), and the dated [provider capability matrix](references/provider-capabilities.md) before provider adaptation. Provider facts age quickly: verify the target against current first-party documentation at adaptation time, report the model/surface/locale/voice, and mark audio-dependent behavior as needing a test.
 
-### 8. Review
+### 9. Review
 
 Score the result with [evaluation](references/evaluation.md). Revise any `poor` dimension and any meaning, register, caption, or unsupported-markup failure. For consequential output, recommend native Urdu listening with the actual selected voice; text review cannot validate prosody or pronunciation.
 
@@ -168,7 +207,7 @@ When the line needs neither refinement nor direction, say so briefly and preserv
 
 ## Cultural and literary discipline
 
-Borrow emotional precision, subtext, restraint, rhythm, and meaningful silence from strong Urdu fiction; do not convert those qualities into invisible narration. Handle religious expressions and moral guidance naturally and respectfully. Do not intensify ordinary educational dialogue into a sermon. Read [religious and cultural language](references/religious-and-cultural-language.md) when relevant.
+Use viewpoint, source-supported concrete detail, social context, emotional precision, subtext, restraint, rhythm, memory, and meaningful silence to recover what the source already holds. Do not imitate named authors, treat Persianised or classical diction as inherently superior, make every line poetic, or convert literary qualities into invisible narration. Handle religious expressions and moral guidance naturally and respectfully. Do not intensify ordinary educational dialogue into a sermon. Read [Urdu literary imagination](references/urdu-literary-imagination.md) or [religious and cultural language](references/religious-and-cultural-language.md) when relevant.
 
 ## Examples and evaluation
 
@@ -180,8 +219,9 @@ Load only the example closest to the task:
 - [Hesitation, interruption, anger, embarrassment, and realization](examples/hesitation-and-realization.md)
 - [Urdu-English code-switching and Roman Urdu](examples/code-switching.md)
 - [Provider-separated outputs](examples/provider-directed-output.md)
+- [Contrastive literary scene recovery](examples/literary-scene-recovery.md)
 
-Use [text eval cases](evals/text-eval-cases.md), [provider contract cases](evals/provider-contract-cases.md), [regression and adversarial cases](evals/regression-suite.md), the [human listening protocol](evals/human-listening-protocol.md), [evaluation results manifest](evals/results-manifest.md), and [static acceptance tests](evals/acceptance-tests.md) when validating changes to this skill. Specifications are not executed evidence; record real runs in the manifest.
+Use [text eval cases](evals/text-eval-cases.md), [provider contract cases](evals/provider-contract-cases.md), [regression and adversarial cases](evals/regression-suite.md), the [contrastive benchmark](evals/contrastive-benchmark.md), the [human listening protocol](evals/human-listening-protocol.md), [evaluation results manifest](evals/results-manifest.md), and [static acceptance tests](evals/acceptance-tests.md) when validating changes to this skill. Specifications are not executed evidence; record real runs in the manifest.
 
 ## Evidence discipline
 

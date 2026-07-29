@@ -1,4 +1,4 @@
 interface:
   display_name: "Urdu Voice Director"
-  short_description: "Direct natural spoken Urdu for voice and TTS"
-  default_prompt: "Use $urdu-voice-director to refine this Urdu dialogue for natural speech. Always preserve a clean version; add directed or provider-specific output only when the request needs it."
+  short_description: "Recover living Urdu scenes for speech and TTS"
+  default_prompt: "Use $urdu-voice-director to recover the source-bounded Urdu scene, then refine this dialogue for natural speech. Preserve a clean version; add directed or provider-specific output only when the request needs it."
