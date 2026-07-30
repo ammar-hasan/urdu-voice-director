@@ -5,9 +5,9 @@
 ### Original
 
 ```text
-عمر: Did you submit the assignment?
+علی: Did you submit the assignment?
 حسن: نہیں، website کام نہیں کر رہی تھی۔
-عمر: You should email the teacher.
+علی: You should email the teacher.
 ```
 
 ### Problems found
@@ -19,17 +19,17 @@
 ### Refined clean dialogue
 
 ```text
-عمر: Did you submit the assignment?
+علی: Did you submit the assignment?
 حسن: نہیں، website چل نہیں رہی تھی۔
-عمر: You should email the teacher.
+علی: You should email the teacher.
 ```
 
 ### Directed dialogue
 
 ```text
-عمر: [casual check] Did you submit the assignment?
+علی: [casual check] Did you submit the assignment?
 حسن: [mildly frustrated] نہیں، website چل نہیں رہی تھی۔
-عمر: [practical] You should email the teacher.
+علی: [practical] You should email the teacher.
 ```
 
 ### Provider-ready notes
@@ -47,9 +47,9 @@ Routine check → mild frustration → practical suggestion. No dramatic directi
 Do not reduce full-turn code-switching merely to make synthesis easier. If the user explicitly asks for an Urdu-dominant localization, offer it separately and keep the source-preserving version:
 
 ```text
-عمر: اسائنمنٹ جمع کرا دی؟
+علی: اسائنمنٹ جمع کرا دی؟
 حسن: نہیں، ویب سائٹ چل نہیں رہی تھی۔
-عمر: ٹیچر کو ای میل کر دو۔
+علی: ٹیچر کو ای میل کر دو۔
 ```
 
 `ٹیچر` remains gender-neutral. Use `سر`, `میڈم`, `استاد`, or `استانی` only when the scene establishes that title.
