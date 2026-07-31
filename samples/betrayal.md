@@ -16,22 +16,22 @@ Original scene written for this showcase.
 
 ## Scene card
 
-- **Speakers and relationship:** کاشف speaks to دانش; business partners and close friends of twenty years, established peers on `تم`. دانش has forced کاشف out of the company; this is the confrontation after the fact.
-- **Setting/purpose:** Not specified beyond the confrontation itself; the language is a private reckoning, not a public scene. Output target is an ElevenLabs `eleven_v3` sample.
-- **Protected:** all five speaker turns in order; the facts (twenty years' friendship, one sitting, the company, دانش's old hand-on-shoulder promise); the `تم`/`تُو` register event — `تُو` appears only inside کاشف's quotation of the old promise (`تیرے بغیر`), which is a deliberate intimacy marker, not an error; کاشف's established condition that his anger stays held in, never shouted.
-- **Established register:** educated adult male speech; `نشست` and `ماضی` are slightly literary but belong to کاشف's measured, wounded precision — not stiffness to be flattened.
-- **Code-switching:** none. `کمپنی` is a settled loanword in business Urdu, not a switch; preserved as-is.
-- **Unresolved:** exact locale (no ur-PK/ur-IN evidence — not inferred); voices for `eleven_v3` (`unresolved`); the precise tone of دانش's `اور وہ سچ تھا۔` (quiet admission vs. stubborn insistence — chosen: quiet admission, since turn 5 only lands if it was true; the stubborn reading remains a stated alternative).
+- Speakers: کاشف addressing دانش — business partners and close friends of twenty years; دانش has forced کاشف out of the company.
+- Purpose of the moment: not an argument but a reckoning — کاشف wants دانش to say, to his face, that he did right; دانش defends the decision as necessity while refusing to deny the friendship.
+- Protected: all five turns, both speaker identities, the intimate-peer `تم`/`تیرے` register, the quoted memory inside turn 3, and the past-tense pivot `تھا` in turn 4 (the hinge کاشف seizes in turn 5).
+- Not marked canonical or news copy, so wording was refinable — but the turn audit found every line already natural spoken Urdu, so no words change.
+- Register check: `تم` throughout is correct for a twenty-year friendship and carries the wound; moving to `آپ` would invent distance the source does not establish. No code-switching present; none added.
+- Unresolved: physical setting, locale (`ur-PK`/`ur-IN`), and voices — left unresolved rather than assumed.
+- Output target: ElevenLabs `eleven_v3` sample.
+- Governing performance constraint: کاشف's anger is held in, never shouted; the peak is carried by pacing, lowered voice, and precise stress — not volume.
 
 ## Turn audit
 
-1. **کاشف, turn 1** — *Direction only.* The words are natural, weighted speech; nothing written or stiff. Delivery risk: the `...` after `دانش` could be read as hesitation when it is a controlled conversational beat before the accusation; the final question is an accusation, not a shout.
-2. **دانش, turn 2** — *Direction only.* Clipped, rehearsed defense; the words already carry it. Delivery risk: over-apologizing. `بیچا نہیں` is a flat correction, and `مجبوری تھی۔` closes the topic by decree.
-3. **کاشف, turn 3** — *Direction only.* The echo question `مجبوری؟` and the shift into memory are audible beats that wording alone can misplace. The quoted promise switches to `تُو`; preserved exactly — changing it to `تم` would destroy the scene's central register event.
-4. **دانش, turn 4** — *Direction only.* Four words; the only question is whether the defense finally drops. Words unchanged.
-5. **کاشف, turn 5** — *Direction only.* The emotional peak. `تھا` echoes turn 4 and is immediately sealed into `ماضی میں`; the `—` is a pivot into the demand, not a cutoff. Peak is carried by pacing and precision, not volume. Words unchanged.
-
-**Result:** no turn required refinement. The scene is treated as canonical in effect — artifact A is word-identical to the source.
+1. کاشف turn 1 — **Direction only.** The words are already speakable thought units with a functional ellipsis after the name. The risk is misreading it as open rage; direction keeps the grief measured and the accusation quiet.
+2. دانش turn 1 — **Direction only.** Already natural short clauses: verb-correction first (`بیچا نہیں`), then justification, then `مجبوری تھی` as a closing door. Risk is over-apologetic or glib delivery; direction sets a weighted, defensive-but-level tone.
+3. کاشف turn 2 — **Direction only.** Two distinct beats: the cold echo `مجبوری؟` and the memory invoked as evidence, not nostalgia. The source's em dash marks the shift into the quoted words; a single generic emotion tag across this turn would erase the transition.
+4. دانش turn 2 — **Direction only.** Four words that carry the scene's pivot. The pause before answering and the quiet admission of past tense do the work; nothing to refine, everything to place.
+5. کاشف turn 3 — **Direction only.** Two beats: private confirmation (`تھا... ماضی میں۔`, almost to himself) then the final direct demand. This is the emotional peak; it is carried by a lower, slower voice and stress on `درست`, never by shouting.
 
 ## A. Clean spoken Urdu
 
@@ -46,56 +46,44 @@ Original scene written for this showcase.
 ## B. Directed rehearsal script
 
 ```text
-[Scene note (non-spoken): دانش نے کاشف کو کمپنی سے نکلوا دیا ہے؛ یہ پہلا آمنا سامنا ہے۔ کاشف کا غصہ دبا ہوا ہے — کہیں بلند آواز نہیں۔]
-
-کاشف: [دبے ہوئے غصے میں، شکایت نہیں — حتمی بیان] بیس برس کی دوستی تھی ہماری، دانش... [مختصر قدرتی وقفہ؛ نام کے بعد بات تول کر] اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟
-
-دانش: [پہلا لفظ سیدھی تردید؛ باقی جملہ طے شدہ جواب کی طرح، بغیر معذرت] بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ [بات ختم کرنے کے انداز میں] مجبوری تھی۔
-
-کاشف: [دانش کا لفظ واپس پھینکتا ہے؛ حیرانی نہیں، جانچ] مجبوری؟ [ایک لمحہ رک کر؛ اب آواز میں یاد آ جاتی ہے] ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— [وہ پرانا جملہ اسی پرانی قربت میں دہراتا ہے] کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔
-
-دانش: [دفاع پہلی بار نہیں اٹھاتا؛ آہستہ، سیدھا] اور وہ سچ تھا۔
-
-کاشف: [لفظ اٹھا کر ماضی میں بند کرتا ہے] تھا... ماضی میں۔ [اب آہستہ اور بالکل واضح؛ غصہ دبا ہی رہتا ہے] اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔
+کاشف: [held-in anger; measured, never loud] بیس برس کی دوستی تھی ہماری، دانش... [the beat on the name lets twenty years land] اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟
+دانش: [weighted breath before answering; defensive but level, short clauses closing the subject] بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔
+کاشف: [cold echo of his word; disbelief without volume] مجبوری؟ [then quietly invoking the memory — evidence, not nostalgia] ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔
+دانش: [a beat; he cannot deny it, and holds his ground quietly rather than defiantly] اور وہ سچ تھا۔
+کاشف: [almost to himself; the past tense confirms what he feared] تھا... ماضی میں۔ [then direct; voice lower and slower, precise stress on درست] اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔
 ```
 
 ## C. Portable synthesis plan
 
-| Turn | Speaker | Clean spoken text | Non-spoken delivery note | Pause/beat | Emphasis | Pronunciation |
-|---|---|---|---|---|---|---|
-| 1 | کاشف | بیس برس کی دوستی تھی ہماری، دانش... اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟ | suppressed anger as a final statement, not a complaint | conversational beat after `دانش`, then the accusation weighed | `ایک ہی نشست` | — |
-| 2 | دانش | بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔ | flat correction, then a rehearsed justification; no apology | micro-beat after `بیچا نہیں` | `بچانی` | — |
-| 3 | کاشف | مجبوری؟ ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔ | echoes دانش's word as a test; then the voice moves into memory; quoted promise spoken in its old intimacy | reflective pause after `مجبوری؟`; `—` introduces direct quotation, not a cutoff | `آج بھی`; the quoted line softens | — |
-| 4 | دانش | اور وہ سچ تھا۔ | the defense drops; quiet and straight | none added | `سچ` lightly | — |
-| 5 | کاشف | تھا... ماضی میں۔ اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔ | seals `تھا` into the past, then the demand — slow, exact, anger still contained; the peak is pacing, not volume | short beat after `تھا`; `—` is a pivot into the demand | `آنکھوں میں آنکھیں` | — |
+| Turn | Speaker | Clean spoken text | Non-spoken delivery note | Pause/beat | Emphasis |
+|---|---|---|---|---|---|
+| 1 | کاشف | بیس برس کی دوستی تھی ہماری، دانش... اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟ | held-in anger; measured, never loud | conversational beat after `دانش` (the source ellipsis) | light weight on `بیس برس`; the question stays quiet |
+| 2 | دانش | بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔ | defensive but level; correcting the verb first, then closing the subject | micro-beat after `بیچا نہیں`; no pause before `مجبوری تھی۔` — it lands flat and final | `مجبوری` stated as fact, not plea |
+| 3 | کاشف | مجبوری؟ ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔ | cold echo of دانش's word, then the memory recounted steadily as evidence | processing beat after `مجبوری؟`; the em dash is a hard shift into the quoted words, not a trail-off | quoted line spoken evenly, as it was said that night |
+| 4 | دانش | اور وہ سچ تھا۔ | quiet admission he cannot withhold; grounded, not defiant | reluctance beat before speaking | past tense `تھا` unhurried — this is the pivot |
+| 5 | کاشف | تھا... ماضی میں۔ اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔ | realization almost to himself, then the final demand; voice lower and slower, peak without volume | reflective beat after `تھا`; the em dash tightens into the demand, no pause after it | precise stress on `درست` |
 
 ## D. Eleven v3 adapter
 
-Target: ElevenLabs / Eleven v3 (`eleven_v3`) / locale: unresolved / voices: unresolved. Urdu is documented among v3's languages; inline tags below are documented v3 audio tags, used sparsely. `Voice:` lines are routing labels, not spoken input. Spoken words are identical to artifact A.
-
 ```text
 Voice: کاشف
-[quietly] بیس برس کی دوستی تھی ہماری، دانش... اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟
-
+[angry] بیس برس کی دوستی تھی ہماری، دانش... اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟
 Voice: دانش
-بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔
-
+[sighs] بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔
 Voice: کاشف
-مجبوری؟ [hesitates] ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔
-
+[sarcastic] مجبوری؟ ...[thoughtful] مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔
 Voice: دانش
-اور وہ سچ تھا۔
-
+[short pause] اور وہ سچ تھا۔
 Voice: کاشف
-[quietly] تھا... ماضی میں۔ اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔
+[muttering] تھا... ماضی میں۔ [whispers] اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔
 ```
 
 ## Restraint notes
 
-- Every source turn, speaker, and word is preserved verbatim; no turn needed refinement, so none was rewritten merely to show activity.
-- The emotional peak (turn 5) is carried entirely by direction and pacing — a short beat, the pivot dash, and slow precision on `آنکھوں میں آنکھیں ڈال کر کہو`. No added exclamation, no invented gesture, no new fact.
-- The `تُو` in the quoted promise (`تیرے بغیر`) was deliberately not normalized to `تم`; that register shift is the scene's core evidence of the lost intimacy.
-- Deliberately not added: a setting or stage business, a motive beyond `مجبوری`, an apology or reconciliation, crying/trembling/shouting tags, any narrator line, and any English for "business flavor" (`کمپنی` already lives in Urdu).
-- Alternative reading stated, not duplicated: turn 4 (`اور وہ سچ تھا۔`) can be played as stubborn insistence instead of a quiet admission; the admission was chosen because turn 5's demand only has weight if the past was real.
-- Only three `eleven_v3` tags are used across five turns; turns 2 and 4 trust wording and sequence, per the tag-restraint rule.
-- Needs listening test with the actual selected voice: whether the model honors `[quietly]`/`[hesitates]` in Urdu without flattening them, whether the `—` before the quoted promise is read as quotation rather than a glitch, and whether turn 3's shift into the old `تُو`-intimacy is audible. Voice and locale are `unresolved`; no Pakistani/Indian accent was assumed.
+- No words changed, added, or reordered anywhere; A is identical to the source because the audit found every line already natural spoken Urdu. No facts, motives, backstory, or scenery were added beyond the authorized context (twenty years of friendship, the forced exit).
+- No shouting anywhere. کاشف's intensity comes from lowered voice, distinct pause functions, and stress placement; دانش's defense stays level rather than apologetic or cold.
+- Every pause in the source has a distinct job: the beat on the name (turn 1), the verb-correction micro-beat (turn 2), the processing beat after the echo and the hard em dash into quotation (turn 3), the reluctance beat (turn 4), the reflective beat and tightening dash (turn 5). None were rendered as interchangeable ellipses in direction.
+- One cue per beat; multi-beat turns 3 and 5 carry exactly two cues each, placed at the shift. No tag is used that would not change delivery, and no tag repeats across consecutive turns.
+- All v3 tags (`[angry]`, `[sighs]`, `[sarcastic]`, `[thoughtful]`, `[short pause]`, `[muttering]`, `[whispers]`) are from ElevenLabs' documented eleven_v3 audio-tag guidance, re-verified against first-party docs on 2026-07-31; ellipses and dashes are the source's own punctuation, which v3 documentation explicitly treats as pause/shift carriers. No SSML, no invented tags, no visible-only actions as tags (`آنکھوں میں آنکھیں` remains spoken words, not direction).
+- Listening tests required: (a) `[angry]` on turn 1 must not raise volume with the selected voice — if it does, replace with `[sad]` or drop it, since the words already carry restraint; (b) `[whispers]` on the final demand must remain intelligible in Urdu and match a serious voice's character; (c) Urdu tag compliance and the quoted-memory shift at the em dash need native-speaker listening. Voice and locale remain unresolved; choose a steady, serious voice, since v3 tag response depends heavily on voice training data.
+- Alternative reading noted: `اور وہ سچ تھا۔` could be played defiant rather than quietly level; the level reading is chosen as likelier between friends of twenty years. Switching readings changes only the cue and delivery, never the words.

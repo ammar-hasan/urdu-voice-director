@@ -1,7 +1,7 @@
 export type Mode = "original" | "clean" | "directed" | "provider";
 
 /** Bump when public/audio/*.mp3 are regenerated — busts stale cached clips. */
-export const AUDIO_VERSION = "3";
+export const AUDIO_VERSION = "4";
 
 export type Example = {
   id: string;
@@ -85,21 +85,19 @@ export const examples: Example[] = [
       "کاشف: تھا... ماضی میں۔ اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔",
     ],
     directed: [
-      "[Scene note (non-spoken): دانش نے کاشف کو کمپنی سے نکلوا دیا ہے؛ یہ پہلا آمنا سامنا ہے۔ کاشف کا غصہ دبا ہوا ہے — کہیں بلند آواز نہیں۔]",
-      "کاشف: [دبے ہوئے غصے میں، شکایت نہیں — حتمی بیان] بیس برس کی دوستی تھی ہماری، دانش... [مختصر قدرتی وقفہ؛ نام کے بعد بات تول کر] اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟",
-      "دانش: [پہلا لفظ سیدھی تردید؛ باقی جملہ طے شدہ جواب کی طرح، بغیر معذرت] بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ [بات ختم کرنے کے انداز میں] مجبوری تھی۔",
-      "کاشف: [دانش کا لفظ واپس پھینکتا ہے؛ حیرانی نہیں، جانچ] مجبوری؟",
-      "[ایک لمحہ رک کر؛ اب آواز میں یاد آ جاتی ہے] ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا—",
-      "[وہ پرانا جملہ اسی پرانی قربت میں دہراتا ہے] کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔",
-      "دانش: [دفاع پہلی بار نہیں اٹھاتا؛ آہستہ، سیدھا] اور وہ سچ تھا۔",
-      "کاشف: [لفظ اٹھا کر ماضی میں بند کرتا ہے] تھا... ماضی میں۔ [اب آہستہ اور بالکل واضح؛ غصہ دبا ہی رہتا ہے] اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔",
+      "کاشف: [held-in anger; measured, never loud] بیس برس کی دوستی تھی ہماری، دانش... [the beat on the name lets twenty years land] اور تم نے ایک ہی نشست میں اسے بیچ ڈالا؟",
+      "دانش: [weighted breath before answering; defensive but level, short clauses closing the subject] بیچا نہیں... کمپنی بچانی تھی، اور تمہاری جگہ کاٹنی پڑی۔ مجبوری تھی۔",
+      "کاشف: [cold echo of his word; disbelief without volume] مجبوری؟",
+      "[then quietly invoking the memory — evidence, not nostalgia] ...مجھے آج بھی وہ رات یاد ہے جب تم نے میرے کندھے پر ہاتھ رکھ کر کہا تھا— کاشف، تیرے بغیر یہ سب کچھ بھی نہیں۔",
+      "دانش: [a beat; he cannot deny it, and holds his ground quietly rather than defiantly] اور وہ سچ تھا۔",
+      "کاشف: [almost to himself; the past tense confirms what he feared] تھا... ماضی میں۔ [then direct; voice lower and slower, precise stress on درست] اب بس ایک بات کہو— آنکھوں میں آنکھیں ڈال کر کہو، کہ تم نے درست کیا۔",
     ],
     provider: [
       "Eleven v3 adapter · 5 turns · 2 voices",
-      "کاشف: [quietly] — the accusation, held in (turns 1, 5)",
-      "کاشف: [hesitates] — before the memory returns (turn 3)",
+      "کاشف: [angry] · [sarcastic]+[thoughtful] · [muttering]+[whispers]",
+      "دانش: [sighs] · [short pause] — then four quiet words",
       "",
-      "Three documented tags across five turns; دانش's turns trust wording alone. The «—» before the quoted promise must read as quotation, not a glitch.",
+      "Every turn directed, one cue per beat; the «—» before the quoted promise must read as quotation, not a glitch. [angry] carries a documented fallback to [sad] if it raises volume.",
     ],
     note:
       "The «تُو» in the quoted promise (تیرے بغیر) was deliberately not normalized to «تم»; that register shift is the scene's core evidence of the lost intimacy.",

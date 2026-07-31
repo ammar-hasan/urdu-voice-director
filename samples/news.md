@@ -14,19 +14,19 @@ Original news copy written for this showcase; direction only.
 
 ## Scene card
 
-- Speaker/audience: this anchor (اینکر), a professional news anchor addressing a mass broadcast audience from a studio bulletin setting; no direct-address pronouns in the copy, so no `آپ`/`تم` decision is required.
-- Protected: every word of the news copy (canonical — no rewriting), all three turns, the single speaker, the formal broadcast register, and every fact and figure (four districts, seventeen thousand plus evacuated, three dead, forty-eight hours, relief commitment).
-- Established: grave flood bulletin on دریائے سندھ; pure formal Urdu with no code-switching; no religious forms; locale context is Pakistani (دریائے سندھ) but no regional accent is mandated.
-- Unresolved: anchor gender and age (no gendered direction given); voice selection for synthesis; exact per-voice tag compliance.
-- Output target: ElevenLabs `eleven_v3` sample — TTS with documented inline audio tags; clean caption copy kept separate.
-- Arc across the three turns: gravity (emergency + casualty toll) → measured forward caution (forecast + public advisory) → controlled institutional reassurance (PM's commitment). The emotional peak is the casualty clause in turn 1, carried by pacing and deceleration, not by added emotion.
-- Living-scene pass: routine, explicit bulletin — light pass only; the governing relationship is broadcaster-to-public, and no sensory detail or subtext is invented.
+- Speaker: اینکر, a professional Urdu news anchor, addressing a general broadcast audience; register is formal broadcast Urdu (`آپ`-level distance implicit in bulletin style, no direct address).
+- Setting/purpose: a grave flood bulletin — emergency declared in four districts along the Indus, casualty and evacuation figures, a 48-hour weather advisory, and a prime-ministerial assurance.
+- Protected: all three turns, the single speaker, and every word — the source is news copy and canonical, so treatment is **direction only**; no refinement of wording is permitted.
+- Established: formal register, grave tone, spelled-out numbers (`سترہ ہزار`, `اڑتالیس`), official attributions (`حکام کے مطابق`, `ادارۂ موسمیات کے مطابق`).
+- Unresolved: anchor gender (not specified — no gendered voice or delivery assumed), provider voice, locale variant (`ur-PK` vs `ur-IN`), and v3 stability setting; all marked unresolved rather than silently chosen.
+- Target: ElevenLabs `eleven_v3`, Urdu (documented among supported languages; tag compliance in Urdu remains a hypothesis pending a listening test).
+- Emotional arc: gravity of the disaster (T1, peaking at the death toll) → steady public-safety duty (T2) → composed, firm reassurance (T3). The peak is carried by a lowered voice and a beat of silence, not by added emotion.
 
 ## Turn audit
 
-1. Turn 1 — **Direction only.** Wording is canonical broadcast Urdu and must not change. Delivery risk: a flat newscaster monotone that buries the casualty clause, or melodrama on it. Decision: steady grave register throughout; the figures delivered evenly; one short beat before `جبکہ` and a slight deceleration so `تین افراد جاں بحق ہوئے ہیں` lands by weight, not by dramatizing.
-2. Turn 2 — **Direction only.** Wording unchanged. Delivery risk: alarmism on the forecast, or rushing the number. Decision: measured, practical, forward-looking tone; `اڑتالیس گھنٹے` paced deliberately; the advisory read as clear public instruction, not a warning spike.
-3. Turn 3 — **Direction only.** Wording unchanged. Delivery risk: triumphalism or speechifying on the PM's promise. Decision: even, assured institutional reassurance; light emphasis on `تنہا نہیں`; no swelling delivery on the final clause.
+1. **Turn 1 — Direction only.** Words are canonical news copy and must not change. Delivery carries the whole burden: the headline fact needs measured gravity, the attribution+evacuation figure needs a neutral professional relay with the number `سترہ ہزار` given room, and the closing clause `جبکہ تین افراد جاں بحق ہوئے ہیں` is the scene's emotional peak — it needs a short preparatory beat and a lowered, weighted voice, explicitly without trembling or dramatized sorrow.
+2. **Turn 2 — Direction only.** The register shifts from reporting loss to public guidance: steadier, slightly more forward, instructive. `اڑتالیس گھنٹے` must be paced so the forecast window lands; the advisory clause (`ہدایت کی گئی ہے…`) is firmer than the forecast clause. No grief carries over from turn 1 — this is a clean register reset.
+3. **Turn 3 — Direction only.** A second reset: official assurance. The aerial-survey framing is delivered with authority; the final clause `کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا` is the resolution of the bulletin's arc — a short beat before it, then firm, slowed reassurance with stress on `تنہا نہیں`, ending composed rather than triumphant.
 
 ## A. Clean spoken Urdu
 
@@ -39,44 +39,53 @@ Original news copy written for this showcase; direction only.
 ## B. Directed rehearsal script
 
 ```text
-اینکر: [steady, grave bulletin register; unhurried] دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔ حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے، [short beat; the voice lowers slightly with the loss — weight, not drama] جبکہ تین افراد جاں بحق ہوئے ہیں۔
+[براکٹ میں دی گئی تمام ہدایات غیر بولی جانے والی ہیں — صرف پرفارمنس کے لیے]
 
-اینکر: [measured and practical; the number paced clearly, the advisory spoken as instruction, not alarm] ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے، اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔
+اینکر: [سنجیدہ، میزان میں، بلا جلدی] دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔
+[حوالہ پیش کرتے ہوئے، غیر جانبدار، عدد کو کھلا رکھتے ہوئے] حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے،
+[مختصر وقفہ؛ آواز پست اور بھرپور، سوگ ظاہر کیے بغیر] جبکہ تین افراد جاں بحق ہوئے ہیں۔
 
-اینکر: [measured institutional reassurance] وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا [even resolve, no triumph] اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔
+اینکر: [رجسٹر بدلتے ہوئے: اب ہدایت کا لہجہ، مستحکم اور براہ راست] ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے،
+[ہدایت والے جملے میں معمولی مضبوطی] اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔
+
+اینکر: [دوبارہ رجسٹر بدلیں: باضابطہ اعلان، اختیار کے ساتھ] وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا
+[مختصر وقفہ؛ پھر دھیما، مضبوط تسلی، "تنہا نہیں" پر زور] اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔
 ```
 
 ## C. Portable synthesis plan
 
-| Turn | Speaker | Clean spoken text | Delivery note (not spoken) | Pause/beat | Emphasis | Pronunciation |
+| Turn | Speaker | Clean spoken text | Non-spoken delivery note | Pause/beat | Emphasis | Pronunciation |
 |---|---|---|---|---|---|---|
-| 1 | اینکر | دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔ حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے، جبکہ تین افراد جاں بحق ہوئے ہیں۔ | steady grave register; figures even; casualty clause carried by slight deceleration | short beat before `جبکہ` | `تین افراد` by slowing, not by stress | `جاں بحق` as a respectful set phrase; numbers already spelled as words |
-| 2 | اینکر | ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے، اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔ | measured, practical, forward-looking; advisory as clear public instruction | no added pause | `اڑتالیس گھنٹے` paced clearly | ensure crisp articulation of `اڑتالیس`; `ادارۂ` with its conventional hamza reading |
-| 3 | اینکر | وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔ | even, assured institutional reassurance; no triumphalism | no added pause | `تنہا نہیں` light | — |
+| 1a | اینکر | دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔ | grave lead, measured pace, no hurry | sentence-final reset after `ہے۔` | `اونچے درجے کے سیلاب` lightly | — |
+| 1b | اینکر | حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے، | neutral attribution; give the figure room | light phrasing boundary at `،` | `سترہ ہزار سے زائد` clearly articulated | — |
+| 1c | اینکر | جبکہ تین افراد جاں بحق ہوئے ہیں۔ | lowered, weighted voice; grief implied, not performed | short preparatory beat before `جبکہ` | `تین افراد` | — |
+| 2a | اینکر | ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے، | register reset to advisory; steady, direct | clause boundary at `،` | `اڑتالیس گھنٹے` paced | `ادارۂ موسمیات` as one institutional unit |
+| 2b | اینکر | اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔ | instruction clause slightly firmer than forecast | sentence-final reset | `مکمل کر لیں` lightly | — |
+| 3a | اینکر | وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا | official announcement, authority without heaviness | — | `رات دن` lightly | — |
+| 3b | اینکر | اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔ | slowed, firm reassurance; composed close | short beat before `اور` | `تنہا نہیں` | — |
 
 ## D. Eleven v3 adapter
 
-Target: ElevenLabs / `eleven_v3` / text-to-speech surface / Urdu (listed among v3's 74 languages; no separate locale field) / voice **unresolved** — choose a voice whose training data is serious and professional, since voice match governs tag effectiveness. Support status: documented; verified against current ElevenLabs v3 best-practices documentation on 2026-07-30 (capability matrix dated 2026-07-29).
+Target: ElevenLabs / `eleven_v3` / Text-to-Speech surface / locale unresolved / voice unresolved (anchor gender is not specified in the source; do not infer it) / stability unresolved (Natural or Creative recommended for tag responsiveness). Docs verified 2026-07-31. Tags below are limited to Eleven's documented audio-tag mechanism: `[short pause]`, `[sad]`, and `[thoughtful]` appear in the published tag lists; the delivery directions `[serious]`, `[solemn]`, `[steady]`, and `[firm]` are used under Eleven's documented "non-exhaustive — infer similar contextually appropriate delivery directions" allowance. Urdu tag compliance is a hypothesis until heard with the selected voice.
 
 ```text
 Voice: اینکر
-[grave, steady] دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔ حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے، جبکہ تین افراد جاں بحق ہوئے ہیں۔
+[serious] دریائے سندھ میں اونچے درجے کے سیلاب کے باعث چار اضلاع میں ہنگامی حالت نافذ کر دی گئی ہے۔ حکام کے مطابق اب تک سترہ ہزار سے زائد افراد کو محفوظ مقامات پر منتقل کیا جا چکا ہے، [short pause] [sad] جبکہ تین افراد جاں بحق ہوئے ہیں۔
 
 Voice: اینکر
-ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے، اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔
+[steady] ادارۂ موسمیات کے مطابق بارشوں کا سلسلہ مزید اڑتالیس گھنٹے جاری رہنے کا امکان ہے، اور نشیبی علاقوں کے باشندیوں کو ہدایت کی گئی ہے کہ وہ احتیاطی انتظامات مکمل کر لیں۔
 
 Voice: اینکر
-[resolute] وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔
+[thoughtful] وزیراعظم نے متاثرہ علاقوں کے فضائی جائزے کے بعد اعلان کیا ہے کہ ریلیف کا کام رات دن جاری رہے گا [short pause] [firm] اور کسی بھی خاندان کو تنہا نہیں چھوڑا جائے گا۔
 ```
-
-Notes: `Voice:` labels are routing metadata for the dialogue workflow and must not enter the spoken text field unless the product treats them as metadata. The two bracketed tags are descriptive audible-delivery tags per documented v3 audio-tag practice; spoken words are identical to artifact A. v3 does not support SSML break tags, and no ellipses or dashes were inserted, so pacing relies on the canonical text structure plus the tags; if delivery rushes, adjust the request-level speed setting (a non-text control) rather than the text. Stability near Natural is suggested so the tags register without hallucination risk. Needs listening test with the selected voice: Urdu compliance of the two tags, casualty-clause pacing, and number/name prosody.
 
 ## Restraint notes
 
-- No word changed anywhere: the copy is canonical, so artifacts A, B, C, and D carry identical spoken words; only non-spoken direction was added.
-- No invented facts, figures, places, or evaluative adjectives (no `افسوسناک`, no commentary); the gravity comes entirely from register and pacing.
-- Emotional peak (three dead) is carried by one beat and a slight deceleration — no `[sighs]`, `[crying]`, or similar effect tags, which would violate professional anchor register.
-- Turn 2 carries no inline tag at all; wording and sequence already make it playable. Only two tags across three turns.
-- Source numbers were already spelled as words (`سترہ ہزار`, `اڑتالیس`), so no normalization divergence was needed; caption copy equals artifact A word-for-word.
-- Anchor gender, age, and voice are left unresolved rather than assumed; no gendered direction was written.
-- v3's ellipses/dash pause tricks were declined to keep canonical punctuation intact; any residual timing issues go to the request-level speed setting and a native-Urdu listening pass, not into the text.
+- Every word in A, B (spoken lines), C, and D is identical to the source; the bulletin is canonical news copy, so the entire treatment lives in direction, pacing, and register — zero rewrites.
+- The emotional peak (the death toll in turn 1) is carried by `[short pause]` + a lowered delivery cue, not by any dramatic tag; `[sad]` is documented and deliberately mild — if it produces audible sorrow rather than restrained gravity on the chosen voice, downgrade it to `[solemn]` or remove it and keep the pause.
+- One cue per beat; no stacked adjectives, no tag on a phrase whose delivery is already carried by wording and sequence (e.g., the attribution clauses rely on punctuation alone).
+- `[short pause]` is used exactly twice, each with a distinct function: reluctance-weight before the casualty figure (T1) and anticipation before the assurance (T3) — no comma was converted into a pause tag.
+- No visible-only direction (no camera, gesture, or studio notes) appears as a provider tag; such context stays in the rehearsal script only.
+- Voice, locale, and stability are marked unresolved rather than guessed; anchor gender is unspecified in the source, so no gendered voice was chosen.
+- Urdu compliance of v3 audio tags is untested here: synthesize the clean baseline first, then add tags one at a time with a native Urdu listener, per the skill's iteration protocol; if tags over-emote, the clean baseline is the better adapter.
+- No numbers, abbreviations, or code-switching needed normalization — the source already spells out `سترہ ہزار` and `اڑتالیس`, and the copy is pure formal Urdu.
