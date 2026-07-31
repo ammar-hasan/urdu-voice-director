@@ -124,15 +124,16 @@ function App() {
             </h2>
             <div className="utterance-card">
               <span className="speaker" lang="ur">
-                زین
+                رخسانہ
               </span>
               <p lang="ur" dir="rtl">
-                شش، آہستہ۔ وہ ابھی تک وہیں ہے تو سن لے گا۔
+                جواب سوچ کر دینا... کیونکہ اگر اس بار بھی جھوٹ نکلا، تو میں خود
+                کو سمیٹ نہیں پاؤں گی۔
               </p>
               <div className="beat-line" lang="ur" dir="rtl">
-                <span>خطرہ</span>
+                <span>انتظار</span>
                 <i aria-hidden="true"></i>
-                <span>آہستگی</span>
+                <span>ضبط</span>
                 <i aria-hidden="true"></i>
                 <span>تحفظ</span>
               </div>
