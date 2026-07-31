@@ -105,7 +105,7 @@ Commands and final results:
 2. `node scripts/generate-samples.mjs --validate`
    - passed: seven sample bundles; clean/adapter speaker order, turn counts, and tag-stripped canonical words match.
 3. `npm test`
-   - passed: 439 structural/fidelity checks across seven samples and nine references; 16 benchmark cases across eight modes; TypeScript and Vite production build with 20 modules transformed.
+   - passed: 633 structural/fidelity checks across seven samples and nine references; 16 benchmark cases across eight modes; TypeScript and Vite production build.
 4. `node scripts/benchmark.mjs prepare …` followed by `score …` on disposable smoke fixtures
    - passed: nested output directories created, 16 cases blinded, two reviews resolved through the private key, per-mode output produced, and exact reviewer agreement calculated.
 5. `git diff --check`
@@ -145,9 +145,35 @@ Native-listener result: not run
 
 Every adapter uses the revised skill’s source-grounded detailed directions; several include mid-utterance cues at beat changes. This run proves that the current API accepted the payloads and returned playable MP3 containers. It does not prove naturalness, correct pronunciation, poetic metre, local tag scope, or improvement over the baseline.
 
+### Independent corrective sample regeneration
+
+```text
+Run ID: uvd-0.3.0-independent-samples-2026-07-31
+Skill version: 0.3.0
+Date: 2026-07-31
+Evaluator: three isolated fresh-context Codex subagents covering seven sample bundles
+Evaluator type: model-output generation plus automated repository checks
+Urdu background: not asserted
+Test type: model-output / structural / provider-audio generation
+Source input: canonical Source blocks in samples/*.md
+Prompt or skill version: current skills/urdu-voice-director/SKILL.md
+Provider: ElevenLabs
+Model ID: eleven_v3
+Product/API surface: Text to Speech API
+Result: text-fidelity and audio-container checks pass; native listening pending
+Hard-gate failures in accepted output: none found by automated checks
+Reviewer disagreement: not applicable
+```
+
+The fresh runs ignored the existing A–D decisions, loaded only the references relevant to each performance type, and regenerated all seven bundles from their source blocks. An additional isolated acceptance audit then found defects that internal A/D equality could not see: an unsupported sibling relationship, incomplete provider-run metadata, and a Kafan block that spliced non-contiguous dialogue while claiming canonical fidelity. The corrective pass removed those failures, replaced Kafan with a four-turn excerpt verified against the scanned Anjuman Taraqqi Urdu edition, and retained exact source wording and narrative delivery context. It also corrected unsupported age assumptions, inferred emotion/motive language, broad tags that flattened distinct speech events, a stale “forced exit” scene label, and poetry guidance that did not fully expose metre, syllable length, qafiya/radif, izafat, lawful pause sites, and quiet-reading versus mushaira choices.
+
+After acceptance, `src/data/content.ts` was mechanically synchronized from the four website sample bundles, and the generator rendered all seven after clips from the exact D payloads. Kafan’s after clip and clean baseline were re-rendered once more after its canonical-source repair. `ffprobe` accepted every resulting MP3; after-clip durations range from 18.08 to 39.60 seconds. Every bundle records the resolved voice IDs, actual JSON fields, omitted `language_code`, and `output_format=mp3_44100_128`. These checks prove provenance, text fidelity, API acceptance, and playable containers—not Urdu naturalness, pronunciation, poetic metre, cue scope, or improvement. Those claims still require the recorded native-listener protocol.
+
+The validator now compares Source→A→tag-stripped D for every turn, requires loaded-reference provenance and exact provider-run metadata, and includes sample and website regressions for the unsupported emergency relationship, the earlier Kafan splice, and the stale betrayal relationship label. The final corrective run passes 633 checks.
+
 ### Model-output evaluation
 
-Not yet run.
+The independent sample regeneration above is an executed model-output run. The 16-case blinded benchmark remains unexecuted.
 
 ### Native-reader review
 

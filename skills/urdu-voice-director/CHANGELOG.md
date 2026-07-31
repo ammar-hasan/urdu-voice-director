@@ -10,6 +10,15 @@ Provider documentation and listening observations must include an “as of” da
 
 ## [Unreleased]
 
+### Corrected
+
+- Independently regenerated all seven documented sample bundles—including the hero—with fresh-context skill runs that read the current `SKILL.md`, the canonical source, and only the relevant references.
+- Removed unsupported age, relationship, and motive assumptions, stale scene descriptions, broad turn-level emotion tags, and forced pause language found by the independent pass.
+- Replaced a spliced Kafan sample with a contiguous four-turn excerpt verified against the scanned Anjuman Taraqqi Urdu edition, and restored the narrator’s explicit delivery context.
+- Replaced those adapters with source-supported detailed Eleven v3 cues placed at the precise mid-utterance beats they are intended to affect; preserved at least one untagged comparison turn where appropriate.
+- Recorded the exact resolved voice IDs and actual request/output format for every Eleven v3 sample, re-synchronized the website lab from the accepted artifacts, regenerated all seven `*-after.mp3` clips, and re-rendered Kafan’s clean baseline after correcting its canonical source. Native-Urdu listening remains pending.
+- Hardened sample validation to compare Source→A→D, require loaded-reference provenance and reproducible Eleven v3 metadata, and retain targeted regressions for the unsupported emergency relationship and Kafan splice.
+
 ### Research queue
 
 - Execute the machine-readable 16-case mode-stratified benchmark and the legacy 20-scene contrastive set with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.

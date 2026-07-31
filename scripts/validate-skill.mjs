@@ -108,17 +108,27 @@ for (const file of markdownFiles) {
   }
 }
 
-const blockAfter = (md, marker) => {
-  const index = md.indexOf(marker);
-  if (index === -1) return null;
-  const match = md.slice(index).match(/```text\n([\s\S]*?)```/);
+const sectionAfter = (md, heading) => {
+  const sectionLines = md.split(/\r?\n/);
+  const start = sectionLines.findIndex((line) => line.trim() === heading);
+  if (start === -1) return null;
+  const next = sectionLines.findIndex(
+    (line, index) => index > start && /^##\s+/.test(line),
+  );
+  return sectionLines.slice(start + 1, next === -1 ? undefined : next).join("\n");
+};
+
+const textBlockInSection = (md, heading) => {
+  const section = sectionAfter(md, heading);
+  if (section === null) return null;
+  const match = section.match(/```text[ \t]*\n([\s\S]*?)```/);
   return match?.[1]?.trim() ?? null;
 };
 
-const parseClean = (block, file) =>
+const parseLabeledTurns = (block, file, layer) =>
   block.split("\n").filter(Boolean).map((line) => {
     const match = line.trim().match(/^(\S{1,24}):\s+(.+)$/);
-    check(Boolean(match), `${file}: malformed clean turn: ${line}`);
+    check(Boolean(match), `${file}: malformed ${layer} turn: ${line}`);
     return match ? { speaker: match[1], text: match[2] } : { speaker: "", text: "" };
   });
 
@@ -145,6 +155,20 @@ const parseAdapter = (block, file) => {
 const stripProviderTags = (text) =>
   text.replace(/\[[^\]\n]+\]\s*/g, "").replace(/\s+/g, " ").trim();
 
+const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const parseSampleVoices = (preamble, file) => {
+  const match = preamble.match(/^Sample voices:\s*(.+)$/m);
+  check(Boolean(match), `${file}: missing Sample voices mapping`);
+  if (!match) return [];
+  return match[1].split(",").flatMap((entry) => {
+    const parts = entry.split("=").map((part) => part.trim());
+    const valid = parts.length === 2 && parts.every(Boolean);
+    check(valid, `${file}: malformed Sample voices entry: ${entry.trim()}`);
+    return valid ? [{ speaker: parts[0], voice: parts[1] }] : [];
+  });
+};
+
 const sampleFiles = readdirSync(samplesDir)
   .filter((name) => name.endsWith(".md") && name !== "README.md")
   .sort();
@@ -154,15 +178,91 @@ check(sampleFiles.includes("hero-line.md"), "samples/ must include hero-line.md"
 check(sampleFiles.length >= 7, "samples/ must retain all seven documented scenes");
 for (const file of sampleFiles) {
   const md = read(join(samplesDir, file));
-  const cleanBlock = blockAfter(md, "## A. Clean spoken Urdu");
-  const adapterBlock = blockAfter(md, "## D. Eleven v3 adapter");
+  const firstSection = md.search(/^##\s+/m);
+  const preamble = md.slice(0, firstSection === -1 ? undefined : firstSection);
+  const sourceBlock = textBlockInSection(md, "## Source");
+  const cleanBlock = textBlockInSection(md, "## A. Clean spoken Urdu");
+  const adapterSection = sectionAfter(md, "## D. Eleven v3 adapter");
+  const adapterBlock = textBlockInSection(md, "## D. Eleven v3 adapter");
+  check(Boolean(sourceBlock), `${file}: missing Source text block`);
   check(Boolean(cleanBlock), `${file}: missing clean artifact A`);
   check(Boolean(adapterBlock), `${file}: missing Eleven v3 adapter D`);
   check(/^Generated with skill version:\s*\S+/m.test(md), `${file}: missing skill-version provenance`);
-  if (!cleanBlock || !adapterBlock) continue;
+  check(
+    /^References loaded:\s*\S.+$/m.test(preamble),
+    `${file}: missing top-level References loaded provenance`,
+  );
+  const sampleVoices = parseSampleVoices(preamble, file);
+  const adapterMetadata = (adapterSection ?? "").split("```", 1)[0];
+  const normalizedMetadata = adapterMetadata.replace(/`/g, "");
+  check(
+    /^Provider:\s*ElevenLabs\s*$/mi.test(normalizedMetadata),
+    `${file}: Eleven v3 metadata must record Provider: ElevenLabs`,
+  );
+  check(
+    /^Model ID:\s*eleven_v3\s*$/mi.test(normalizedMetadata),
+    `${file}: Eleven v3 metadata must record model ID eleven_v3`,
+  );
+  check(
+    normalizedMetadata.includes("POST /v1/text-to-speech/:voice_id"),
+    `${file}: Eleven v3 metadata must record POST /v1/text-to-speech/:voice_id`,
+  );
+  check(
+    normalizedMetadata.includes("output_format=mp3_44100_128"),
+    `${file}: Eleven v3 metadata must record output_format=mp3_44100_128`,
+  );
+  const requestFields = normalizedMetadata.match(
+    /^Request fields\s*\/\s*inline controls:\s*(.+)$/mi,
+  )?.[1];
+  check(
+    Boolean(requestFields && /\btext\b/.test(requestFields) && /\bmodel_id\b/.test(requestFields)),
+    `${file}: Eleven v3 metadata must record text and model_id request body fields`,
+  );
+  check(
+    /\bno\s+language_code(?:\s+field)?\s+was\s+sent\b/i.test(normalizedMetadata)
+      || /\bdid\s+not\s+send\s+language_code\b/i.test(normalizedMetadata),
+    `${file}: Eleven v3 metadata must state that no language_code was sent`,
+  );
+  for (const voice of sampleVoices) {
+    const recordedId = new RegExp(
+      `${escapeRegex(voice.voice)}\\s*\\(\\s*[A-Za-z0-9]{20}\\s*\\)`,
+    );
+    check(
+      recordedId.test(normalizedMetadata),
+      `${file}: Eleven v3 metadata needs a 20-character ID for sample voice ${voice.voice}`,
+    );
+  }
+  if (file === "emergency.md") {
+    check(
+      !/\bsiblings?\b/i.test(md),
+      "emergency.md: must not assert a sibling relationship or register",
+    );
+  }
+  if (!sourceBlock || !cleanBlock || !adapterBlock) continue;
   check(!/[\[\]<>]/.test(cleanBlock), `${file}: clean artifact contains direction/markup delimiters`);
-  const clean = parseClean(cleanBlock, file);
+  const source = parseLabeledTurns(sourceBlock, file, "Source");
+  const clean = parseLabeledTurns(cleanBlock, file, "clean");
   const adapter = parseAdapter(adapterBlock, file);
+  check(source.length === clean.length, `${file}: Source/A turn counts differ`);
+  for (let i = 0; i < Math.min(source.length, clean.length); i += 1) {
+    check(source[i].speaker === clean[i].speaker, `${file}: Source/A speaker differs at turn ${i + 1}`);
+    check(source[i].text === clean[i].text, `${file}: A changes Source words at turn ${i + 1}`);
+  }
+  if (file === "kafan.md") {
+    check(source.length === 4, "kafan.md: Source must contain exactly four turns");
+    for (const phrase of [
+      "دیکھ کر کیا کروں",
+      "بے درد",
+      "تو مجھ سے تو",
+      "اسی کے ساتھ ہی",
+    ]) {
+      check(sourceBlock.includes(phrase), `kafan.md: Source must retain ${phrase}`);
+    }
+    check(
+      !sourceBlock.includes("جا کر دیکھ تو، کیا حالت ہے اس کی"),
+      "kafan.md: Source must exclude the later spliced جا کر دیکھ تو، کیا حالت ہے اس کی turn",
+    );
+  }
   check(clean.length === adapter.length, `${file}: A/D turn counts differ`);
   for (let i = 0; i < Math.min(clean.length, adapter.length); i += 1) {
     check(clean[i].speaker === adapter[i].speaker, `${file}: A/D speaker differs at turn ${i + 1}`);
@@ -184,6 +284,25 @@ check(
 );
 for (const file of ["hero-line.md", "poetry.md"]) {
   check(midUtteranceTagFiles.has(file), `${file}: needs at least one mid-utterance provider tag`);
+}
+
+const websiteData = read(join(root, "src", "data", "content.ts"));
+check(
+  !/\bsiblings?\b|\bbrother\s+and\s+sister\b/i.test(websiteData),
+  "src/data/content.ts: emergency must not assert a sibling relationship",
+);
+check(
+  !/\bforced\s+exit\b|\btwo\s+partners\b/i.test(websiteData),
+  "src/data/content.ts: betrayal must not assert partners or a forced exit",
+);
+for (const phrase of [
+  "مجھے وہاں ڈر لگتا ہے",
+  "جا کر دیکھ تو، کیا حالت ہے اس کی",
+]) {
+  check(
+    !websiteData.includes(phrase),
+    `src/data/content.ts: Kafan must exclude the removed splice phrase ${phrase}`,
+  );
 }
 
 const packageJson = JSON.parse(read(join(root, "package.json")));
