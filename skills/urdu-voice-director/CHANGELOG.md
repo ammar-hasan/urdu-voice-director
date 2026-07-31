@@ -12,10 +12,42 @@ Provider documentation and listening observations must include an “as of” da
 
 ### Research queue
 
-- Execute the 20-scene contrastive benchmark with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.
+- Execute the machine-readable 16-case mode-stratified benchmark and the legacy 20-scene contrastive set with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.
 - Run the eight-scene audio/ablation subset with current Eleven v3, OpenAI instruction-steered TTS, Google Gemini-TTS Urdu Preview, Azure `ur-PK`, Google Chirp 3 `ur-IN`, and the available Piper Urdu voices.
 - Recheck whether Qwen3-TTS, XTTS-v2, or Chatterbox adds official Urdu support.
 - Measure whether selective diacritics improve or harm pronunciation across provider and local voices.
+
+## [0.3.0] - 2026-07-31
+
+### Changed
+
+- Reduced `SKILL.md` from 239 lines to a 72-line operating contract while retaining fidelity, relationship/register, anti-invention, no-op, clean-layer, and exact-model requirements.
+- Consolidated fifteen broad references into the requested nine-file flat architecture with load-on-demand routing and citations beside the claims they support.
+- Distinguished everyday conversation, fictional dialogue, audiobook narration, news reading, public speech, religious/devotional speech, poetry recitation, and mushaira performance.
+- Re-ran all seven documented sample bundles—including the hero—through the revised skill. Clean words remain source-identical; Eleven v3 adapters now translate detailed, source-supported rehearsal actions through the model’s documented open-ended tag mechanism.
+- Made Eleven v3 mid-utterance placement explicit: cues can sit around the exact beat they affect, multiple cues may direct distinct actions within one turn, and word/izafat/qafiya–radif connections must not be split.
+- Updated the website’s method, modes, evidence claims, detailed provider examples, and release metadata.
+
+### Added
+
+- Added a research-based conversational-prosody reference covering statement/question tendencies, contrastive focus, duration, post-focus compression, speaker variation, and the limits of punctuation.
+- Added a dedicated Urdu poetry/performance reference covering `بحر`, `وزن`, syllable length, scansion, izafat, qafiya, radif, ambiguous pronunciation, pause sites, `تحت اللفظ`, `ترنم`, quiet reading, and mushaira performance.
+- Added executable validation for exact reference topology, local links, citations, core contract/line budget, release metadata, sample A/D fidelity, and benchmark coverage.
+- Added 16 machine-readable cases across all eight modes plus deterministic blind-packet preparation and scoring commands.
+- Added a safe `--validate` and `--force-after` path to the audio sample generator.
+
+### Research and provider review
+
+- Added and distributed citations from Urdu intonation, spontaneous conversational prosody, focus, individual-variation, filled-pause, fictional-orality, literary-history, Urdu poetic metre, tarannum, poetry/preaching performance, Urdu speech-corpus, code-switching, pronunciation, and TTS-corpus research.
+- Refreshed first-party provider claims as of 2026-07-31 for ElevenLabs, OpenAI, Google Cloud, Azure, Amazon Polly, Piper, XTTS-v2, Qwen3-TTS, and Chatterbox.
+- Corrected the Eleven v3 policy: detailed descriptive tags are permitted by the documented non-exhaustive/open-ended mechanism. The exact free-form cue remains an exact-voice experiment, not a predefined guarantee.
+- Added a regression guard requiring real mid-utterance tag coverage in the sample suite, including the hero and poetry adapters.
+
+### Evaluation
+
+- Added hard gates and mode-specific review criteria for all eight performance types.
+- Added a reproducible baseline/candidate run format, blinded A/B packet, scoring output, reviewer-disagreement review, and a failure-to-regression workflow.
+- Retained the legacy prose specifications and results manifest; structural checks still make no claim of native naturalness or audio quality.
 
 ## [0.2.0] - 2026-07-29
 

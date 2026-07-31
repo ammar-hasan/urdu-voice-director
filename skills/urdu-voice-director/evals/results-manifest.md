@@ -8,6 +8,7 @@ This file records executed evaluations. Test specifications are not test results
 |---|---|---|---|---|---|---|
 | 0.1.1 | passed | not run | not run | not run | not run | statically validated beta |
 | 0.2.0 | passed | not run | not run | not run | not run | statically validated beta |
+| 0.3.0 | passed | not run | not run | not run | seven revised clips generated; native listening not run | structurally validated beta |
 
 Allowed evidence labels are:
 
@@ -58,6 +59,103 @@ Follow-up action:
 ```
 
 Use `not applicable` rather than inventing provider or model fields for static/editorial work.
+
+## Release 0.3.0
+
+### Specification and mechanism inventory
+
+```text
+Skill version: 0.3.0
+Core SKILL.md: 72 lines
+Selective references: 9
+Performance modes: 8
+Machine-readable benchmark cases: 16 (2 per mode)
+Legacy text cases: UVD-T01–UVD-T49 (49)
+Provider cases: UVD-P01–UVD-P34 (34)
+Legacy regression invariants: UVD-R01–UVD-R65 (65)
+Legacy contrastive scenes: UVD-B01–UVD-B20 (20)
+Model-output execution status: not run
+```
+
+The new benchmark runner validates the case schema, prepares deterministic blinded A/B packets with a private key, and scores native-review files back to baseline/candidate labels. No benchmark outputs or reviewer preferences are implied by the mechanism’s presence.
+
+### Structural and sample-fidelity validation
+
+```text
+Run ID: uvd-0.3.0-structural-2026-07-31
+Skill version: 0.3.0
+Date: 2026-07-31
+Evaluator: Codex
+Evaluator type: automated repository checks
+Urdu background: not asserted
+Test type: structural / static
+Test suite: core contract, topology, links, citations, metadata, sample fidelity, benchmark schema, site build
+Case IDs: 16 machine-readable cases schema-validated; not model-executed
+Model used for skill execution: not applicable
+Provider/model ID/product surface/locale/voice: not applicable
+Result: pass
+Hard-gate failures: none in final structural run
+Reviewer disagreement: not applicable
+```
+
+Commands and final results:
+
+1. `uv run --with pyyaml python …/skill-creator/scripts/quick_validate.py skills/urdu-voice-director`
+   - passed: skill frontmatter and package naming are valid.
+2. `node scripts/generate-samples.mjs --validate`
+   - passed: seven sample bundles; clean/adapter speaker order, turn counts, and tag-stripped canonical words match.
+3. `npm test`
+   - passed: 439 structural/fidelity checks across seven samples and nine references; 16 benchmark cases across eight modes; TypeScript and Vite production build with 20 modules transformed.
+4. `node scripts/benchmark.mjs prepare …` followed by `score …` on disposable smoke fixtures
+   - passed: nested output directories created, 16 cases blinded, two reviews resolved through the private key, per-mode output produced, and exact reviewer agreement calculated.
+5. `git diff --check`
+   - passed: no whitespace errors.
+6. `ffprobe` over all seven regenerated `*-after.mp3` files
+   - passed container/duration integrity; durations ranged from 21.84 to 39.60 seconds.
+
+The validator explicitly guards:
+
+- a 110-line ceiling and the core fidelity contract;
+- the exact flat nine-reference topology;
+- all local Markdown links and reference source sections;
+- all eight performance modes;
+- release metadata;
+- source-clean/provider word equivalence;
+- detailed mid-utterance Eleven v3 coverage, including the hero and poetry samples;
+- benchmark schema and two cases per mode.
+
+### Sample regeneration
+
+```text
+Run ID: uvd-0.3.0-eleven-v3-samples-2026-07-31
+Skill version: 0.3.0
+Date: 2026-07-31
+Test type: provider-audio generation; quality review pending
+Provider: ElevenLabs
+Model ID: eleven_v3
+Product/API surface: Text to Speech API
+Locale: inferred from input; no separate locale field
+Voices: Haseeb; Reva; Sara; Deep South Asian Baritone
+Scenes: betrayal, confession, emergency, hero-line, kafan, news, poetry
+Clean baselines: preserved
+After clips: regenerated from revised skill adapters
+Text-fidelity result: pass
+Native-listener result: not run
+```
+
+Every adapter uses the revised skill’s source-grounded detailed directions; several include mid-utterance cues at beat changes. This run proves that the current API accepted the payloads and returned playable MP3 containers. It does not prove naturalness, correct pronunciation, poetic metre, local tag scope, or improvement over the baseline.
+
+### Model-output evaluation
+
+Not yet run.
+
+### Native-reader review
+
+Not yet run.
+
+### Native-listener review
+
+Not yet run. The regenerated clips must be judged by native Urdu listeners before any quality claim.
 
 ## Release 0.2.0
 

@@ -16,8 +16,11 @@
  * Voices resolve by library-name prefix (case-insensitive); pin ids with
  * ELEVEN_VOICE_OVERRIDES='Haseeb=id,Reva=id'.
  *
- * Regenerate: rm public/audio/*.mp3 && node scripts/generate-samples.mjs
- * (existing files are skipped). See samples/README.md.
+ * Validate source bundles without a provider call:
+ *   node scripts/generate-samples.mjs --validate
+ * Regenerate only the revised adapters, preserving baselines:
+ *   node scripts/generate-samples.mjs --force-after
+ * Existing files are otherwise skipped. See samples/README.md.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -29,16 +32,15 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const samplesDir = join(root, "samples");
 const outDir = join(root, "public", "audio");
 const MODEL = "eleven_v3";
+const VALIDATE_ONLY = process.argv.includes("--validate");
+const FORCE_AFTER = process.argv.includes("--force-after");
 
 const keyFromFile = () => {
   const p = join(root, ".elevenlabs-key");
   return existsSync(p) ? readFileSync(p, "utf8").trim() : "";
 };
-const API_KEY = process.env.ELEVENLABS_API_KEY || keyFromFile();
-if (!API_KEY) {
-  console.error("No API key found. Put it in .elevenlabs-key or set ELEVENLABS_API_KEY.");
-  process.exit(1);
-}
+const stripProviderTags = (text) =>
+  text.replace(/\[[^\]\n]+\]\s*/g, "").replace(/\s+/g, " ").trim();
 
 /** Extract the first ```text block after a `## …` heading containing `marker`. */
 const blockAfter = (md, marker) => {
@@ -104,6 +106,14 @@ const scenes = readdirSync(samplesDir)
     if (clean.map((t) => t.speaker).join() !== adapted.map((t) => t.speaker).join()) {
       throw new Error(`${file}: speaker sequence differs between A and D`);
     }
+    if (clean.length !== adapted.length) {
+      throw new Error(`${file}: turn count differs between A and D`);
+    }
+    for (let i = 0; i < clean.length; i += 1) {
+      if (clean[i].text !== stripProviderTags(adapted[i].text)) {
+        throw new Error(`${file}: adapter changes canonical words at turn ${i + 1}`);
+      }
+    }
     for (const t of clean) {
       if (!voiceMap[t.speaker]) {
         throw new Error(`${file}: no voice mapped for speaker ${t.speaker}`);
@@ -117,6 +127,16 @@ if (!scenes.length) {
   process.exit(1);
 }
 console.log(`Scenes: ${scenes.map((s) => s.name).join(", ")}`);
+if (VALIDATE_ONLY) {
+  console.log(`Validated ${scenes.length} sample bundles: A/D speakers, turns, and canonical words match.`);
+  process.exit(0);
+}
+
+const API_KEY = process.env.ELEVENLABS_API_KEY || keyFromFile();
+if (!API_KEY) {
+  console.error("No API key found. Put it in .elevenlabs-key or set ELEVENLABS_API_KEY.");
+  process.exit(1);
+}
 
 const api = (path, init = {}) =>
   fetch(`https://api.elevenlabs.io${path}`, {
@@ -217,7 +237,7 @@ for (const scene of scenes) {
   }
   for (const kind of ["before", "after"]) {
     const file = join(outDir, `${scene.name}-${kind}.mp3`);
-    if (existsSync(file)) {
+    if (existsSync(file) && !(FORCE_AFTER && kind === "after")) {
       console.log(`  skip ${file} (exists)`);
       continue;
     }

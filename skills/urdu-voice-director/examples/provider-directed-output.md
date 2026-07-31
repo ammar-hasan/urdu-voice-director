@@ -46,17 +46,17 @@ Normalize the mixed name spelling as `زویا` unless it is an official styliza
 
 Target: ElevenLabs / Eleven v3 / locale not exposed as a separate field in this example / voice unresolved.
 
-Status: Urdu documented for Eleven v3; current first-party controls and the selected voice still require verification before use.
+Status: Urdu documented for Eleven v3; its current first-party guidance documents open-ended detailed tags and placement around the affected dialogue segment. The exact phrases and selected voice still require verification and listening before use (checked 2026-07-31).
 
 ```text
 Voice: Zoya
-[uncertain] پتا نہیں، وہ آئے گا بھی یا نہیں۔
+[trying to sound casual while the uncertainty remains] پتا نہیں، وہ آئے گا بھی یا نہیں۔
 
 Voice: Bilal
 تم نے اسے فون کیا؟
 
 Voice: Zoya
-[hesitates] نہیں... میں نے سوچا، شاید وہ خود ہی فون کر لے۔
+[brief hesitation before explaining] نہیں... [explaining the expectation without adding certainty] میں نے سوچا، شاید وہ خود ہی فون کر لے۔
 ```
 
 `Voice:` labels describe routing and must not be included in the text field unless the dialogue product treats them as metadata.
@@ -122,7 +122,7 @@ External notes:
 
 ## D6. Unsupported adapters
 
-Do not generate native Urdu payloads for XTTS-v2, Qwen3-TTS, Chatterbox Multilingual, or Amazon Polly under their documented 2026-07-29 language sets. Return the clean/portable artifacts and state that official Urdu support was not found.
+Do not generate native Urdu payloads for XTTS-v2, Qwen3-TTS, Chatterbox V3, or Amazon Polly under their documented 2026-07-31 language sets. Return the clean/portable artifacts and state that official Urdu support was not found.
 
 ## Clean caption copy
 

@@ -74,11 +74,11 @@ function App() {
               <em>Performance-ready Urdu out.</em>
             </h1>
             <p className="hero-lede">
-              Urdu Voice Director reads dialogue from inside its literary and
-              social world, refines it for the ear, and writes the direction
-              for how each line should be spoken. It never touches a TTS API —
-              it hands you clean captions, rehearsal direction, and
-              provider-ready adapters, and every word stays sacred.
+              Urdu Voice Director reads speech from inside its literary and
+              social world, makes only the change it needs, and directs the
+              audible performance. Clean words stay separate from rehearsal
+              notes and exact-model controls; poetry, news, devotion,
+              conversation, and mushaira are never treated as one voice.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#listen">
@@ -98,16 +98,16 @@ function App() {
             </div>
             <dl className="hero-stats">
               <div>
-                <dt>4</dt>
-                <dd>outputs, one source</dd>
+                <dt>72</dt>
+                <dd>lines in the core skill</dd>
               </div>
               <div>
-                <dt>166</dt>
-                <dd>eval specifications</dd>
+                <dt>9</dt>
+                <dd>references, loaded on demand</dd>
               </div>
               <div>
-                <dt>0</dt>
-                <dd>runtime dependencies</dd>
+                <dt>8</dt>
+                <dd>performance modes</dd>
               </div>
             </dl>
           </div>
@@ -131,11 +131,11 @@ function App() {
                 کو سمیٹ نہیں پاؤں گی۔
               </p>
               <div className="beat-line" lang="ur" dir="rtl">
-                <span>انتظار</span>
+                <span>تنبیہ</span>
                 <i aria-hidden="true"></i>
-                <span>ضبط</span>
+                <span>شرط</span>
                 <i aria-hidden="true"></i>
-                <span>تحفظ</span>
+                <span>نتیجہ</span>
               </div>
               <AudioPlayer
                 id="hero-line"
@@ -242,7 +242,7 @@ function App() {
                 </>
               }
               urdu="فرق خود سنیں"
-              intro="Each scene was synthesized twice with Eleven v3 — once as flat text, once from the skill's directed cues. Same words. Different life."
+              intro="Each scene is synthesized twice with Eleven v3: once from canonical text, once from the revised skill's detailed, source-grounded adapter. Same spoken words; controls remain outside the caption."
             />
           </Reveal>
           <div className="scene-grid">
@@ -268,9 +268,9 @@ function App() {
           </div>
           <p className="listen-note">
             <strong>Honest footing</strong>
-            Illustrative samples, not a benchmark. Text review finds the line;
-            native listening proves the voice — 166 eval specifications and a
-            human listening protocol close the loop.
+            Illustrative samples, not benchmark evidence. Every adapter strips
+            exactly to the clean source; native listening still decides whether
+            a detailed v3 cue improves the selected Urdu voice.
           </p>
         </section>
 
@@ -317,7 +317,7 @@ function App() {
                   </p>
                 </div>
                 <div className="arc">
-                  <span>EMOTIONAL ARC</span>
+                  <span>PERFORMANCE ARC</span>
                   <p>{example.arc}</p>
                 </div>
               </div>
@@ -384,7 +384,7 @@ function App() {
                 </>
               }
               urdu="صفحے سے آواز تک کا سفر"
-              intro="A native reader silently recovers viewpoint, relationship, hesitation, intent, and emotional change. The skill makes that reasoning explicit — seven moves from page to voice."
+              intro="The core contract stays short. The model classifies the performance, opens only the reference it needs, preserves the clean source, then validates the exact adapter before anyone claims success."
             />
           </Reveal>
           <div className="method-path">
@@ -419,7 +419,7 @@ function App() {
                 </>
               }
               urdu="آواز جہاں جہاں بولتی ہے"
-              intro="Four artifacts flow from one linguistic source of truth: clean spoken Urdu, a directed rehearsal script, a synthesis plan, and a disposable provider adapter. Provider formats are lossy adapters — generated from, never confused with, the source."
+              intro="Eight performance families share one fidelity contract but not one delivery style. Clean Urdu, rehearsal direction, synthesis planning, and provider controls remain separate whenever those layers are useful."
             />
           </Reveal>
           <div className="use-grid">
@@ -471,25 +471,25 @@ function App() {
           </Reveal>
           <div className="proof-row">
             <div className="proof-total">
-              <strong>166</strong>
-              <span>specifications</span>
+              <strong>2</strong>
+              <span>executable validators</span>
             </div>
             <dl>
               <div>
-                <dt>49</dt>
-                <dd>dialogue cases</dd>
+                <dt>72</dt>
+                <dd>core-skill lines</dd>
               </div>
               <div>
-                <dt>32</dt>
-                <dd>provider contracts</dd>
+                <dt>9</dt>
+                <dd>cited references</dd>
               </div>
               <div>
-                <dt>65</dt>
-                <dd>regression guards</dd>
+                <dt>8</dt>
+                <dd>performance modes</dd>
               </div>
               <div>
-                <dt>20</dt>
-                <dd>blind benchmark scenes</dd>
+                <dt>16</dt>
+                <dd>executable benchmark cases</dd>
               </div>
             </dl>
             <a
@@ -553,11 +553,12 @@ function App() {
               </li>
               <li>
                 “Prepare clean captions, a directed script, and an Eleven v3
-                adapter. Keep all tags out of the captions.”
+                adapter with detailed source-grounded tags. Keep all tags out
+                of the captions.”
               </li>
               <li>
-                “Do not rewrite the words. Mark hesitation, interruption, and
-                the change from defensiveness to sincere curiosity.”
+                “Prepare this ghazal for a quiet reading and a mushaira. Check
+                metre, izafat, qafiya, radif, and lawful pause sites first.”
               </li>
             </ul>
           </div>
@@ -592,7 +593,7 @@ function App() {
           </a>
         </div>
         <p className="copyright">
-          v0.2.0 · Statically validated beta · Built from the Urdu scene
+          v0.3.0 · Structurally validated beta · Built from the Urdu scene
         </p>
       </footer>
     </div>

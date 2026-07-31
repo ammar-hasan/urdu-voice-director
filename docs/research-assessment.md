@@ -1,119 +1,160 @@
-# Urdu Voice Director 0.2 research assessment
+# Urdu Voice Director 0.3 research assessment
 
-Research and provider review date: **2026-07-29**
+Research and provider review date: **2026-07-31**
 
-## Executive diagnosis
+## Executive decision
 
-Version 0.1.1 already had the right safety architecture: understand a scene before editing, preserve meaning and relationships, separate refinement from direction, keep clean dialogue canonical, adapt only to exact provider capabilities, and label evidence honestly. Its literary principle—subtext, restraint, rhythm, silence—was sound but compressed into a general craft note.
+Version 0.2.0 had valuable knowledge but asked every run to carry too much of it. Its 239-line `SKILL.md` mixed the core contract, editorial workflow, output schema, provider policy, literary craft, evidence labels, examples, and maintenance rules. That encouraged uniform treatment and made task-relevant depth harder to find.
 
-What was missing was a source-bounded Urdu imaginative layer between fidelity and line editing. The skill could make dialogue natural and directable, but it did not yet teach a model how viewpoint, concrete detail, social syntax, memory, implication, and narrative sequence make an Urdu scene present—or how to transfer those qualities to speech without inventing them.
+Version 0.3.0 keeps the core at 72 lines and moves the depth into nine flat, cited references. The model opens only the smallest relevant set. No nested sub-skills or routing framework was added.
 
-Version 0.2.0 therefore adds one compact workflow step, one practical literary reference, one contrastive example set, two evaluation dimensions, and targeted evaluation specifications. It does not add a framework, schema, corpus, TTS client, or author-style system.
+The non-negotiable contract remains:
 
-## Original thesis and existing strengths
+- preserve meaning and dramatic function;
+- preserve relationship, age, register, titles, religious wording, and code-switching;
+- invent no fact, motive, memory, or emotion;
+- leave a good line unchanged;
+- keep clean words separate from direction and provider syntax;
+- verify the exact provider/model/surface/locale/voice before using controls.
 
-The released skill’s north star was: treat Urdu dialogue as a scene performed by people, not text decorated with emotion labels.
+## Why performance modes must differ
 
-Its strongest mechanisms were:
+The previous skill was strongest on fictional dialogue. That is not enough for the range of Urdu speech.
 
-- a fidelity contract protecting facts, dramatic function, speaker turns, age, identity, gender ambiguity, locale, titles, code-switching, and religious forms;
-- explicit `آپ`/`تم`/`تُو`, agreement, kinship, and honorific safeguards;
-- a per-turn decision between neither, refinement, direction, or both;
-- beat-aware direction for changing intention;
-- mandatory clean dialogue and separate rehearsal, portable, provider, and caption layers;
-- exact-model provider checks with unsupported adapters withheld;
-- established/editorial/provider-documented/hypothesis evidence labels;
-- static specifications that reject invented motives, moral expansion, provider leakage, and unsupported Urdu claims.
+| Mode | Governing question |
+|---|---|
+| Everyday conversation | Does response structure, relationship, thought grouping, repair, and switching sound credible? |
+| Fictional dialogue | Does source-supported subtext become playable without turning narration or invented psychology into speech? |
+| Audiobook narration | Are narrator, character speech, viewpoint, and embedded text distinct and consistent? |
+| News reading | Are attribution, uncertainty, names, figures, and informational grouping intact? |
+| Public speech | Do audience address, argument, contrast, and rhetoric work without manufactured intensity or applause? |
+| Religious/devotional speech | Are wording, honorifics, theology, pronunciation, reverence, and genre boundaries exact? |
+| Poetry recitation | Do metre, syllable length, izafat, rhyme, refrain, syntax, and pause sites survive? |
+| Mushaira performance | Does public anticipation remain separate from the canonical poem and respect the same poetic constraints? |
 
-These remain the foundation. Literary scene recovery is not permitted to override them.
+This stratification is also an evaluation decision: a revision that improves dramatic dialogue can still damage news, devotional prose, or poetry.
 
-## Research findings that matter
+## Conversational prosody: useful tendencies, not laws
 
-### Urdu prose offers techniques, not style presets
+Research on Urdu intonation supports cautious working hypotheses:
 
-Research on qissa/dastan describes an oral and performative narrative tradition; histories of Urdu prose discuss plot, characterization, local colour, and evocative power; work on domestic/reformist fiction, memory, and Partition writing shows how social relation, private space, time, and absence can carry narrative pressure. The transferable lesson is not to imitate periods or authors. It is to reason about sequence, viewpoint, concrete anchors, social relationships, implication, repetition, memory, and silence. [Khan](https://www.openbookpublishers.com/books/10.11647/obp.0062/chapters/10.11647/obp.0062.06), [Columbia World Epics](https://edblogs.columbia.edu/worldepics/project/hamzanama/), [Faruqi](https://www.columbia.edu/itc/mealac/pritchett/00fwp/srf/srf_urdu_lit_history_1989.pdf), [Intimate Relations](https://escholarship.org/uc/item/9bh8k4nw), [Memon](https://doi.org/10.1017/S0020743800055082), [Mehdi](https://doi.org/10.1017/9781108763691.008).
+- statements often fall;
+- many wh-questions also fall;
+- yes/no questions commonly rise;
+- contrastive/corrective focus can use wider pitch movement and longer duration;
+- post-focus material may become less prominent;
+- syntax, focus position, word order, speaker, and data type affect the realization.
 
-This repository treats those transfers as editorial craft judgments, not universal laws. Persianised, classical, or ornate language is not inherently more alive.
+The controlled description in [Urooj, Mumtaz, and Hussain](https://ojs.ub.uni-konstanz.de/jsal/index.php/jsal/article/view/129) and spontaneous telephone-speech analysis in [Rognoni et al.](https://aclanthology.org/2020.lrec-1.788/) support the broad sentence-type tendencies. Focus studies by [Jabeen and Braun](https://www.isca-archive.org/speechprosody_2018/jabeen18_speechprosody.pdf) and [Jabeen, Braun, and Butt](https://www.isca-archive.org/speechprosody_2016/jabeen16_speechprosody.html) show duration/pitch effects while also reporting configuration-dependent results. [Jabeen’s individual-differences study](https://doi.org/10.3390/languages7020103) is a direct warning against turning a group tendency into a universal contour.
 
-### Literary speech is designed
+The skill therefore uses research to choose listening hypotheses, not to encode punctuation as pitch. A question mark does not prescribe one melody. A comma, dash, ellipsis, or line break does not reliably specify silence length or performance function.
 
-Fictional-orality research distinguishes scripted dialogue from a literal transcript. Fiction selects fragments, particles, repetition, hesitations, and response forms to create the impression of online speech while omitting much ordinary conversational noise. That supports functional disfluency and character-specific rhythm, not particle confetti or generic colloquialism. [Jucker](https://doi.org/10.1177/09639470211047751).
+## Pauses, cutoffs, searches, and fillers
 
-### General multilingual competence can hide Urdu-specific weakness
+A boundary pause, deliberate rhetorical beat, hesitation, word search, self-repair, cutoff, interruption, trailing away, and filled pause are not interchangeable.
 
-[UrBLiMP](https://aclanthology.org/2026.findings-acl.29/) evaluates 5,696 Urdu minimal pairs across ten syntactic phenomena and reports uneven performance, including continued difficulty with flexible word order and long-distance agreement. [UrduMMLU](https://arxiv.org/abs/2606.07167) uses 26,431 questions from native Urdu educational sources and reports large losses for many models on Urdu-centered humanities content. An Urdu–English QA study also reports language-boundary and context failures in its tested setting. [Crossing Language Boundaries](https://aclanthology.org/2025.indonlp-1.17/).
+[Zahid, Lee, and Mahmood](https://doi.org/10.3390/languages11030034) report that vocalic filled pauses dominate in their spontaneous Urdu sample and occur frequently turn-medially. Their corpus contains 18 female speakers, so the result informs a category distinction rather than a universal spelling, rate, or demographic rule.
 
-These studies do not prove that proprietary systems translate internally through English or Hindi. They support the narrower conclusion that aggregate multilingual performance does not establish direct Urdu grammatical, cultural, or literary competence.
+The practical consequence is conservative: diagnose what happens, preserve source disfluency, and add none merely as emotion decoration.
 
-Tokenizer choice can also matter. The Urdu-specific [UrduLM](https://arxiv.org/abs/2601.17664) study reports a 20–30% tokenization-overhead reduction against the multilingual tokenizers it tested. This is model-specific evidence, not a universal tokenizer verdict.
+## Urdu poetry needs Urdu prosody
 
-Roman Urdu remains variable and frequently code-switched; recent cross-script idiom work reports different outcomes for Urdu script and Roman Urdu in its task. The skill should reconstruct relationship and context before converting script, not transliterate word by word. [Urdu idiom benchmark](https://arxiv.org/abs/2510.17460), [Roman Urdu retrieval study](https://aclanthology.org/2025.lowresnlp-1.9/).
+General voice direction cannot determine a valid reading of a ghazal or nazm. Quantitative metre requires the pronounced syllable sequence, not English stress or typography.
 
-### TTS controls remain exact-model claims
+[Frances Pritchett’s practical handbook](https://franpritchett.com/00ghalib/meterbk/00_index.html) explains short/long syllables, metrical patterns, pronunciation-led scansion, special rules, and the movement “from eye to ear.” It also shows how metre can expose an izafat or reading that bare orthography leaves ambiguous. The 0.3 poetry reference operationalizes that evidence without pretending one page can replace training in `عروض`.
 
-Current first-party documentation establishes:
+Poetry direction now checks:
 
-- Eleven v3 lists Urdu and supports audible audio tags; the same claim does not transfer to Multilingual v2 or Flash v2.5. [ElevenLabs language support](https://help.elevenlabs.io/hc/en-us/articles/13313366263441-What-languages-do-you-support), [v3 prompting](https://elevenlabs.io/docs/overview/capabilities/text-to-speech/best-practices).
-- OpenAI’s TTS guide lists Urdu, supports separate instructions for `gpt-4o-mini-tts`, and notes that built-in voices are optimized for English; `tts-1` and `tts-1-hd` do not accept that instruction control. [TTS guide](https://developers.openai.com/api/docs/guides/text-to-speech), [speech reference](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create).
-- Google Gemini-TTS lists `ur-PK` as Preview with natural-language style prompting, while Chirp 3 HD lists `ur-IN` and model-specific pause, pace, and Preview SSML controls; custom pronunciation currently excludes `ur-IN`. [Gemini-TTS](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts), [Chirp 3 HD](https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd).
-- Azure lists `ur-PK` and `ur-IN` voices but no expressive styles/roles for those standard Urdu voices in the current table. [Azure language support](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support).
-- Amazon Polly’s supported-language table does not list Urdu. [Amazon Polly](https://docs.aws.amazon.com/polly/latest/dg/supported-languages.html).
-- The current Piper voices catalog contains Urdu artifacts; XTTS-v2, Qwen3-TTS, and Chatterbox do not list Urdu in their official supported-language sets. Artifact availability is not evidence of naturalness. [Piper catalog](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json), [XTTS-v2](https://github.com/coqui-ai/TTS/blob/dev/docs/source/models/xtts.md), [Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS), [Chatterbox](https://github.com/resemble-ai/chatterbox).
+- `بحر` and `وزن`;
+- short and long syllables;
+- authoritative text and metrical variants;
+- izafat;
+- qafiya and radif as performed sound;
+- ambiguous pronunciation;
+- syntax and word connection;
+- lawful pause sites;
+- chosen performance mode.
 
-No first-party capability page proves Urdu pronunciation, cultural prosody, code-switching, or expressive compliance for a selected voice. Those remain audio questions.
+The difference between quiet reading and public recitation is not “less versus more dramatic.” [Regula Burckhardt Qureshi’s study of tarannum](https://franpritchett.com/00urduhindilinks/txt_qureshi_tarannum_1969.pdf) documents a continuum from speech-oriented recitation to melodic chanting. [Petievich and Stille](https://doi.org/10.1177/0019464616683481) examine the public protocols and emotional event of poetry and preaching. A mushaira can involve anticipation, repetition, and audience response, but those event layers never become silent additions to the canonical poem.
 
-## Capability assessment
+The updated Ghalib sample therefore names the metre, qafiya/radif, izafat and pronunciation questions, lawful line-boundary pauses, `تحت اللفظ` mode, and a quiet-reading alternative before it creates a provider adapter.
 
-| Role | Version 0.1.1 | Version 0.2.0 design | Evidence boundary |
-|---|---|---|---|
-| Urdu dialogue editor | Strong fidelity and spoken-naturalness instructions | Preserved; direct-Urdu discipline strengthened | Static/editorial only |
-| Literary scene interpreter | General subtext, rhythm, restraint, silence | Source-bounded viewpoint, anchors, social scene, memory, implication, and anti-ornament method | New specification; not yet contrastively validated |
-| Voice director | Strong beat and restraint method | Adds oral-transfer and optional performance context | Static/editorial only |
-| TTS preparation layer | Strong clean/directed/portable separation | Context is explicitly non-spoken; Urdu interpretation precedes English provider instruction | Static contract only |
-| Provider adapter | Conservative, exact-target, dated matrix | Current source refresh; unsupported targets still withheld | Provider-documented capability, not audio quality |
-| Evaluated production system | 111 static specifications; no native/audio runs | 146 core cases plus 20 contrastive scenes; stronger run metadata | Test design and static validation do not establish output quality |
+## Literature and designed speech
 
-The appropriate release label remains **statically validated** until executed model comparisons and native review are recorded.
+Urdu prose and oral traditions support scene, viewpoint, social syntax, memory, implication, repetition, and silence, but do not license a universal ornate style. Historical and literary context comes from work including [Shamsur Rahman Faruqi’s survey](https://www.columbia.edu/itc/mealac/pritchett/00fwp/srf/srf_urdu_lit_history_1989.pdf), [Pritchett’s study of Urdu poetry and criticism](https://publishing.cdlib.org/ucpressebooks/view?docId=ft10000326), and [Pasha M. Khan on romance/dastan](https://www.openbookpublishers.com/books/10.11647/obp.0062/chapters/10.11647/obp.0062.06).
 
-## Minimal change plan
+[Jucker’s fictional-orality study](https://doi.org/10.1177/09639470211047751) supports the distinction between designed dialogue and a literal transcript. This validates selective particles, fragments, repetition, and repair—but not generic particle insertion or invented stammers.
 
-### Required now
+Every transfer from literary research remains subordinate to source fidelity. Named-author imitation, automatic Persianisation, scenic invention, and hidden backstory are explicitly rejected.
 
-1. Make direct Urdu scene recovery explicit and subordinate to fidelity.
-2. Add one focused literary-imagination reference.
-3. Add 10–12 contrastive examples, including an ordinary no-change line.
-4. Add optional non-spoken performance context without changing the default response burden.
-5. Add only `imaginative fidelity` and `oral transfer` to the rubric.
-6. Add targeted regressions and the 20-scene blinded benchmark.
-7. Refresh provider claims, version records, README, and website.
+## Urdu speech and TTS research
 
-### Useful after validation
+Urdu pronunciation, code-switching, and corpus design require context rather than naïve transliteration.
 
-1. Execute the contrastive benchmark with multiple native Urdu reviewers.
-2. Run the eight-scene audio subset and one-control-at-a-time ablations.
-3. Revise instructions only where reviewer disagreement or audio artifacts reveal a repeatable failure.
-4. Publish anonymized output/audio artifacts when permissions allow.
+- [Habib et al.](https://cle.org.pk/Publication/papers/2014/Design%20of%20Speech%20Corpus%20for%20Open%20Domain%20Urdu%20Text%20to%20Speech%20System%20Using%20Greedy%20Algorithm.pdf) address phonetic/prosodic coverage in Urdu TTS corpus design.
+- The [Center for Language Engineering code-switched corpus work](https://cle.org.pk/Publication/papers/2020/42.pdf) documents natural Urdu–English switching across speech settings.
+- [UrduSpeech](https://arxiv.org/abs/2605.17846) proposes a 156-hour, multi-genre Urdu corpus and a benchmark split spanning news, drama, and bait-bazi. It is a useful 2026 preprint for genre coverage, not peer-reviewed proof that this skill’s modes or benchmark are valid.
 
-### Defer unless evidence demands it
+The skill preserves canonical text, a pronunciation note, and any provider workaround as separate records. A workaround for one voice cannot redefine correct Urdu.
 
-- additional literary-period files;
-- a formal scene schema;
-- provider API clients or synthesis automation;
-- an emotion taxonomy;
-- author-style controls;
-- mandatory context blocks;
-- a training corpus or fine-tuning pipeline.
+## Provider review
 
-Each deferred component must answer: does it materially improve fidelity, scene recovery, spoken naturalness, or testability enough to justify its maintenance?
+Provider facts are centralized in the dated [capability reference](../skills/urdu-voice-director/references/provider-capabilities.md) and linked to first-party pages.
 
-## Validation truth
+As of the review date:
 
-Repository checks can establish valid frontmatter, links, counts, metadata, and a buildable site. They cannot prove:
+- Eleven v3 lists Urdu and documents an open-ended audio-tag mechanism. Its examples are explicitly non-exhaustive and include both compact tags and freer descriptive cues. Its current best practices also permit placement before or after the affected segment or at a natural pause, so a multi-beat turn may use mid-utterance cues rather than one blanket turn-initial emotion. Detailed, source-grounded rehearsal actions can therefore become concise beat-local v3 tags. The exact free-form phrase and its scope are still exact-voice experiments, not predefined guaranteed controls. [Eleven v3 prompting](https://elevenlabs.io/docs/best-practices/prompting), [language support](https://elevenlabs.io/docs/help-center/other/what-languages-do-you-support).
+- OpenAI’s speech guide lists Urdu and gives `gpt-4o-mini-tts` a separate instruction channel; the API reference says that channel does not work with `tts-1` or `tts-1-hd`. The guide also says built-in voices are optimized for English. [Guide](https://developers.openai.com/api/docs/guides/text-to-speech), [API reference](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create).
+- Gemini-TTS lists `ur-PK` as Preview; Chirp 3 HD lists `ur-IN` with model-specific controls and no current custom-pronunciation support for that locale. [Gemini-TTS](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts), [Chirp 3 HD](https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd).
+- Azure lists four `ur-PK`/`ur-IN` neural voices but no style/role support for those rows. [Azure language support](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts).
+- Amazon Polly’s current table omits Urdu. [Polly languages](https://docs.aws.amazon.com/polly/latest/dg/supported-languages.html).
+- Piper’s current catalog contains Urdu voice artifacts; official XTTS-v2, Qwen3-TTS, and Chatterbox lists omit Urdu. Artifact existence is not evidence of naturalness. [Piper](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json), [XTTS-v2](https://github.com/coqui-ai/TTS/blob/dev/docs/source/models/xtts.md), [Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS), [Chatterbox](https://github.com/resemble-ai/chatterbox).
 
-- that a model follows the revised instruction;
-- that a native reader prefers its output;
-- that a listener hears correct pronunciation or relationship;
-- that a provider obeys tags or instructions in Urdu;
-- that any one register is universal.
+No provider page proves correct Urdu prosody, code-switching, poetic metre, cultural delivery, or pronunciation for a selected voice. Those remain audio evaluations.
 
-The results manifest is the authority for executed evidence. Test specifications and this assessment are not results.
+## Evaluation mechanism
+
+Version 0.3.0 adds executable checks rather than adding more prose alone.
+
+`scripts/validate-skill.mjs` checks:
+
+- the exact nine-reference topology;
+- the 110-line ceiling and required core contract;
+- all local Markdown links;
+- a source section and URL in every reference;
+- all eight modes in the core;
+- release metadata;
+- sample provenance;
+- clean-text contamination;
+- turn/speaker equivalence;
+- exact canonical-word equivalence between clean A and tag-stripped provider D;
+- machine-readable benchmark coverage.
+
+`scripts/benchmark.mjs` validates the 16-case/eight-mode suite, prepares deterministic blinded A/B packets, protects the private mapping key, and scores reviewer files back to baseline/candidate labels.
+
+The evaluation reference adds:
+
+- hard gates that fluent output cannot average away;
+- ten scored dimensions;
+- mode-specific review;
+- exact run metadata;
+- at least two native reviewers for consequential releases;
+- audio baselines and one-control-at-a-time comparison;
+- mode-level results rather than one aggregate number;
+- a failure → regression case → narrow reference change → full rerun loop.
+
+The existing prose text/provider/regression suites remain useful coverage, but specifications are not executed evidence. The [results manifest](../skills/urdu-voice-director/evals/results-manifest.md) distinguishes structural checks, model comparison, native text review, generated audio, and native listening.
+
+## Release truth
+
+Version 0.3.0 can claim a shorter selectively loaded architecture, cited research, executable structural/fidelity validation, a machine-readable blind benchmark workflow, refreshed provider facts, and regenerated sample adapters.
+
+It cannot yet claim:
+
+- that a target model follows the revised skill better;
+- that native reviewers prefer its Urdu;
+- that the Ghalib audio preserves metre and pronunciation;
+- that a detailed Eleven v3 cue improves every selected voice;
+- that one register represents all Urdu communities.
+
+Those claims require the recorded benchmark and native listening runs that the new mechanism was built to support.

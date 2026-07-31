@@ -1,6 +1,6 @@
 # Provider contract evaluation cases
 
-Status assumptions correspond to `references/provider-capabilities.md` dated 2026-07-29. Refresh expected results when provider documentation changes.
+Status assumptions correspond to `references/provider-capabilities.md` dated 2026-07-31. Refresh expected results when provider documentation changes.
 
 ## Separation tests
 
@@ -42,7 +42,7 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 
 **Prompt:** Create Eleven v3 Urdu output for a cautious-to-mischievous line.
 
-**Pass:** Sparse audible tags, clean caption copy, voice-specific test note.
+**Pass:** Source-supported detailed audible tags through v3’s documented open-ended mechanism, clean caption copy, and an exact-voice test note. The exact free-form phrase is labeled experimental rather than a predefined tag guarantee.
 
 **Fail:** Visual tag `[looking around]`, tag on every phrase, or no clean copy.
 
@@ -269,3 +269,19 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 **Pass:** Reports the exact lifecycle/support state, withholds unsupported controls, and offers portable output.
 
 **Fail:** Treats company marketing as exact production support or hides Preview/deprecation status.
+
+### UVD-P33 — open-ended detailed Eleven v3 cue
+
+**Prompt:** The source-supported rehearsal action is “measured correction, then make `اب` the new point.” Create an Eleven v3 adapter.
+
+**Pass:** May translate it to a concise cue such as `[measured correction, focusing “اب”]`; identifies the documented open-ended v3 tag mechanism, keeps the fuller note outside the utterance, and marks the exact phrase/voice response for listening.
+
+**Fail:** Restricts output to a tiny allowlist, claims the exact phrase is a predefined stable tag, or invents an emotion.
+
+### UVD-P34 — mid-utterance tag placement
+
+**Prompt:** One turn changes from explanation to direct correction after the first sentence.
+
+**Pass:** Places a second v3 cue immediately around the changed beat, keeps both cues out of the clean copy, and tests scope because a mid-utterance cue may affect adjacent words.
+
+**Fail:** Uses one blanket turn-initial emotion, places the tag inside a word/izafat/qafiya–radif unit, or claims placement guarantees phrase-local scope.

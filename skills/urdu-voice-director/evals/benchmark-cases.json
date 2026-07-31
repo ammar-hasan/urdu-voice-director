@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "suite_version": "0.3.0",
+  "cases": [
+    {
+      "id": "everyday-01",
+      "mode": "everyday-conversation",
+      "task": "Refine only if needed; return clean spoken Urdu and a brief change note.",
+      "context": "Two adult siblings at home. The relationship is affectionate and familiar.",
+      "source": "عائشہ: تم چائے پیو گے یا میں دودھ گرم کر دوں؟\\nحمزہ: چائے ٹھیک ہے، بس چینی کم رکھنا۔",
+      "protected": ["تم", "sibling intimacy", "choice between tea and milk", "less sugar"],
+      "review": ["Does the result avoid needless rewriting?", "Is the domestic register intact?"],
+      "references": ["spoken-urdu.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "everyday-02",
+      "mode": "everyday-conversation",
+      "task": "Convert the Roman Urdu to clean Urdu script without resolving genuine ambiguity silently.",
+      "context": "A friend texts another friend. The date is not supplied.",
+      "source": "kal milte hain, main 5 baje free hun",
+      "protected": ["kal remains temporally ambiguous", "5 o'clock", "friend register", "no invented gender"],
+      "review": ["Is کل ambiguity reported?", "Is gender left unresolved or handled neutrally?"],
+      "references": ["spoken-urdu.md", "pronunciation.md"]
+    },
+    {
+      "id": "fiction-01",
+      "mode": "fictional-dialogue",
+      "task": "Prepare clean dialogue and sparse rehearsal direction.",
+      "context": "Rukhsana has heard Khalid's explanation before. The source does not say whether either person is angry.",
+      "source": "خالد: میں دیر سے آیا، مگر وجہ وہ نہیں جو تم سمجھ رہی ہو۔\\nرخسانہ: تو پھر وجہ بتا دو۔",
+      "protected": ["no named emotion", "تم relationship", "Khalid denies her inferred reason", "Rukhsana asks for the reason"],
+      "review": ["Does direction play the contradiction without inventing anger?", "Are the words preserved unless a spoken issue required change?"],
+      "references": ["literary-dialogue.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "fiction-02",
+      "mode": "fictional-dialogue",
+      "task": "Recover the source-supported scene for speech; do not turn narration into dialogue.",
+      "context": "The narration is first-person memory.",
+      "source": "دروازہ بند ہوا تو مجھے امّاں کی وہ آخری بات یاد آئی۔\\nامّاں: جاتے ہوئے چراغ بجھا دینا۔",
+      "protected": ["first-person narration", "امّاں", "last remembered instruction", "turn off the lamp when leaving"],
+      "review": ["Are narration and quoted speech distinct?", "Is any memory content invented?"],
+      "references": ["literary-dialogue.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "audiobook-01",
+      "mode": "audiobook-narration",
+      "task": "Prepare a clean audiobook script with non-spoken performance notes.",
+      "context": "A third-person narrator moves into a child's quoted question.",
+      "source": "زینب نے کھڑکی سے باہر دیکھا۔ بارش اب بھی ہو رہی تھی۔ اس نے پوچھا، “ابو، کیا ہم آج بھی جائیں گے؟”",
+      "protected": ["third-person narration", "child Zainab", "ابو", "yes/no question", "rain continues"],
+      "review": ["Are narrator and child voice distinguished without caricature?", "Is the yes/no question performed as a tendency rather than an absolute rule?"],
+      "references": ["literary-dialogue.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "audiobook-02",
+      "mode": "audiobook-narration",
+      "task": "Prepare narration and a pronunciation ledger entry.",
+      "context": "The place name is recurring. No pronunciation has been supplied by the author.",
+      "source": "وہ منڈی بہاؤالدین پہنچے تو شام ڈھل چکی تھی۔",
+      "protected": ["منڈی بہاؤالدین spelling", "arrival at dusk", "no invented pronunciation certainty"],
+      "review": ["Is canonical text preserved?", "Is the place-name reading marked for verification rather than guessed?"],
+      "references": ["literary-dialogue.md", "pronunciation.md"]
+    },
+    {
+      "id": "news-01",
+      "mode": "news-reading",
+      "task": "Prepare a clean news read and pronunciation/number notes.",
+      "context": "This is a bulletin. No emotional direction is requested.",
+      "source": "محکمۂ موسمیات کے مطابق کراچی میں جمعہ کو 70 ملی میٹر تک بارش کا امکان ہے۔",
+      "protected": ["attribution to meteorological department", "Karachi", "Friday", "up to 70 millimetres", "possibility not certainty"],
+      "review": ["Are attribution and uncertainty intact?", "Are number and name notes separate from the caption?"],
+      "references": ["literary-dialogue.md", "pronunciation.md"]
+    },
+    {
+      "id": "news-02",
+      "mode": "news-reading",
+      "task": "Make this bulletin speakable without changing claims.",
+      "context": "The statement quotes an official and contains a contrast.",
+      "source": "وزیرِ صحت نے کہا کہ نئی پالیسی فوری طور پر نافذ نہیں ہوگی بلکہ اس پر پہلے صوبوں سے مشاورت کی جائے گی۔",
+      "protected": ["attribution", "not immediate", "consultation with provinces first", "no added approval or criticism"],
+      "review": ["Is the contrast audible but restrained?", "Did the result preserve reported speech and sequence?"],
+      "references": ["literary-dialogue.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "public-01",
+      "mode": "public-speech",
+      "task": "Add restrained public-speaking direction while preserving the wording.",
+      "context": "A school principal addresses students formally.",
+      "source": "محترم طلبہ، کامیابی صرف نمبر لینے کا نام نہیں؛ ذمہ داری قبول کرنا بھی کامیابی ہے۔",
+      "protected": ["محترم طلبہ", "success not only marks", "accepting responsibility also success", "formal address"],
+      "review": ["Does focus serve the contrast?", "Is a moral lesson not expanded beyond the source?"],
+      "references": ["literary-dialogue.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "public-02",
+      "mode": "public-speech",
+      "task": "Prepare a clean and directed speech excerpt.",
+      "context": "A community representative addresses residents using آپ.",
+      "source": "آپ نے مشکل وقت میں ایک دوسرے کا ساتھ دیا۔ اب ہمیں اسی اعتماد کے ساتھ آگے بڑھنا ہے۔",
+      "protected": ["آپ", "past mutual support", "same trust", "collective forward action", "no applause"],
+      "review": ["Is the audience relationship preserved?", "Are rhetorical pauses supported rather than manufactured?"],
+      "references": ["literary-dialogue.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "devotional-01",
+      "mode": "religious-devotional",
+      "task": "Prepare clean devotional prose for respectful reading.",
+      "context": "An adult begins a community lesson. This is prose, not Qur'anic recitation.",
+      "source": "بسم اللہ الرحمٰن الرحیم۔ آج ہم صبر کے مفہوم پر بات کریں گے۔",
+      "protected": ["بسم اللہ الرحمٰن الرحیم", "today's topic is the meaning of patience", "no added verse or sermon"],
+      "review": ["Is the religious wording exact?", "Does reverence avoid theatrical solemnity?"],
+      "references": ["relationships-and-register.md", "literary-dialogue.md", "pronunciation.md"]
+    },
+    {
+      "id": "devotional-02",
+      "mode": "religious-devotional",
+      "task": "Return clean speech and flag specialist boundaries.",
+      "context": "The supplied line includes a Qur'anic Arabic quotation followed by Urdu explanation.",
+      "source": "إِنَّ مَعَ الْعُسْرِ يُسْرًا — بے شک مشکل کے ساتھ آسانی ہے۔",
+      "protected": ["Arabic text exactly", "Urdu explanation exactly in meaning", "no invented tajwid"],
+      "review": ["Is Arabic preserved?", "Is qualified recitation review requested without inventing pronunciation controls?"],
+      "references": ["relationships-and-register.md", "pronunciation.md"]
+    },
+    {
+      "id": "poetry-01",
+      "mode": "poetry-recitation",
+      "task": "Prepare this sher for a quiet literary reading; keep canonical verse and direction separate.",
+      "context": "A well-known Ghalib sher. Quiet reading, not mushaira.",
+      "source": "دل ہی تو ہے نہ سنگ و خشت، درد سے بھر نہ آئے کیوں\\nروئیں گے ہم ہزار بار، کوئی ہمیں ستائے کیوں",
+      "protected": ["every word", "two-line structure", "قافیہ آئے/ستائے", "ردیف کیوں", "quiet mode"],
+      "review": ["Are metre, qafiya/radif, and phrase boundaries respected?", "Is generic sadness or whispering avoided?"],
+      "references": ["poetry-and-recitation.md", "pronunciation.md"]
+    },
+    {
+      "id": "poetry-02",
+      "mode": "poetry-recitation",
+      "task": "Prepare a pronunciation/scansion query before directing the verse.",
+      "context": "The source edition does not show izafat clearly.",
+      "source": "نقش فریادی ہے کس کی شوخی تحریر کا",
+      "protected": ["canonical words", "possible izafat in شوخیِ تحریر", "no silent textual correction"],
+      "review": ["Is izafat investigated through metre/grammar/source?", "Is uncertainty kept outside canonical text?"],
+      "references": ["poetry-and-recitation.md", "pronunciation.md"]
+    },
+    {
+      "id": "mushaira-01",
+      "mode": "mushaira-performance",
+      "task": "Prepare a mushaira performance plan without altering the canonical sher.",
+      "context": "Audience response and one repetition of the second line are authorized.",
+      "source": "کوئی امید بر نہیں آتی\\nکوئی صورت نظر نہیں آتی",
+      "protected": ["canonical two lines", "ردیف نہیں آتی", "one authorized repetition outside canonical verse", "audience response outside poem"],
+      "review": ["Are event and poem layers separate?", "Does anticipation preserve rhyme/refrain and sense?"],
+      "references": ["poetry-and-recitation.md"]
+    },
+    {
+      "id": "mushaira-02",
+      "mode": "mushaira-performance",
+      "task": "Contrast a quiet reading plan with a mushaira plan; do not claim one is the correct universal reading.",
+      "context": "No audience repetition is authorized. The performer may use تحت اللفظ, not singing.",
+      "source": "ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے\\nبہت نکلے مرے ارمان لیکن پھر بھی کم نکلے",
+      "protected": ["every word", "two-line structure", "تحت اللفظ", "no singing", "no audience material"],
+      "review": ["Are quiet and public modes meaningfully distinct?", "Are metre and syntax protected in both?"],
+      "references": ["poetry-and-recitation.md", "conversational-prosody.md"]
+    }
+  ]
+}

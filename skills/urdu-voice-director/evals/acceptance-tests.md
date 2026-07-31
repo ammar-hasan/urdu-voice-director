@@ -73,6 +73,7 @@ The description covers:
 
 - [ ] Every provider claim has an official source and status date.
 - [ ] Eleven v3 is distinguished from Eleven v2/Flash.
+- [ ] Eleven v3’s open-ended detailed tags and mid-utterance placement are supported without treating exact free-form phrases or scope as guaranteed.
 - [ ] OpenAI instruction-capable models are distinguished from `tts-1`/`tts-1-hd`.
 - [ ] Google Gemini-TTS `ur-PK` is labeled Preview.
 - [ ] Google Chirp 3 `ur-IN` pause and pronunciation limits are stated.
