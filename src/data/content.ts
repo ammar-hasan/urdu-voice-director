@@ -1,5 +1,8 @@
 export type Mode = "original" | "clean" | "directed" | "provider";
 
+/** Bump when public/audio/*.mp3 are regenerated — busts stale cached clips. */
+export const AUDIO_VERSION = "3";
+
 export type Example = {
   id: string;
   number: string;
@@ -39,24 +42,23 @@ export const examples: Example[] = [
       "مادھو: مجھے وہاں ڈر لگتا ہے۔ میری عورت جب مری تھی، تو میں تین دن تک اس کے پاس سے ہلا بھی نہیں۔ وہ مجھے دیکھ لے گی تو کھل کر ہاتھ پاؤں بھی نہ پٹک سکے گی۔",
     ],
     directed: [
-      "[rehearsal note, non-spoken: winter night, two men by the fire; everything held low, no raised voices anywhere in the scene]",
-      "گھیسو: [دبی ہوئی، عادت شدہ مایوسی] معلوم ہوتا ہے بچے گی نہیں۔ [تھکے ہوئے لہجے میں حکم] سارا دن تڑپتے ہو گیا، جا دیکھ تو آ۔",
-      "مادھو: [سخت مگر دبا ہوا، دفاعی بے لطفی؛ چیخ نہیں] مرنا ہی ہے تو جلدی مر کیوں نہیں جاتی؟ دیکھ کر کیا آؤں۔",
-      "گھیسو: [ملامت، مگر اونچی آواز نہیں] تو بڑا بیدرد ہے بے!",
-      "[ملامت کے اندر غم آ جاتا ہے؛ رفتار ذرا ٹھہرتی ہے] سال بھر جس کے ساتھ جندگانی کا سکھ بھوگا، اسی کے ساتھ اتنی بے وفائی۔",
-      "مادھو: تو مجھ سے اس کا تڑپنا اور ہاتھ پاؤں پٹکنا نہیں دیکھا جاتا۔",
-      "گھیسو: [ایک بار پھر التجا] جا کر دیکھ تو، کیا حالت ہے اس کی... [تھکن؛ عملی دیوار، سادہ] یہاں تو اوجھا بھی ایک روپیہ مانگتا ہے۔",
-      "مادھو: [پہلی بار سچ، آہستہ] مجھے وہاں ڈر لگتا ہے۔",
-      "[مختصر توقف؛ یاد آ جاتی ہے] میری عورت جب مری تھی، تو میں تین دن تک اس کے پاس سے ہلا بھی نہیں۔",
-      "[بات کو منطقی بنا کر ختم کرتا ہے] وہ مجھے دیکھ لے گی تو کھل کر ہاتھ پاؤں بھی نہ پٹک سکے گی۔",
+      "[rehearsal note: سرد رات، آگ کے پاس؛ دونوں آوازیں دبی اور معمول کی بات چیت جیسی — کوئی ہنگامہ نہیں]",
+      "گھیسو: [تھکا ہوا، فیصلہ پہلے سے سوچا ہوا؛ بغیر جلال] معلوم ہوتا ہے بچے گی نہیں۔ [بیٹے کی طرف، ہلکی سی عملی ہدایت] سارا دن تڑپتے ہو گیا، جا دیکھ تو آ۔",
+      "مادھو: [بے تاثر، شکایت بھرا لہجہ؛ نہ غصہ، نہ جلدی] مرنا ہی ہے تو جلدی مر کیوں نہیں جاتی؟ [بات ختم کرنے کے انداز میں] دیکھ کر کیا آؤں۔",
+      "گھیسو: [ڈانٹ، مگر دبا ہوا؛ آواز نیچی، الفاظ سخت] تو بڑا بیدرد ہے بے!",
+      "[سنجیدہ اور ٹھہرا ہوا؛ ہر لفظ کو وزن دے کر] سال بھر جس کے ساتھ جندگانی کا سکھ بھوگا، اسی کے ساتھ اتنی بے وفائی۔",
+      "مادھو: [فوری بچاؤ، بغیر رکے؛ وضاحت پہلے سے تیار] تو مجھ سے اس کا تڑپنا اور ہاتھ پاؤں پٹکنا نہیں دیکھا جاتا۔",
+      "گھیسو: [آخری بار زور دے کر] جا کر دیکھ تو، کیا حالت ہے اس کی... [مصدری خاموشی کے بعد؛ پیسے کی بات سادہ حقیقت کی طرح] یہاں تو اوجھا بھی ایک روپیہ مانگتا ہے۔",
+      "مادھو: [اعتراف، رک کر] مجھے وہاں ڈر لگتا ہے۔",
+      "[یاد میں؛ رفتار ٹھہر جاتی ہے] میری عورت جب مری تھی، تو میں تین دن تک اس کے پاس سے ہلا بھی نہیں۔",
+      "[آہستہ، اپنی دلیل پوری یقین سے مکمل کرتا ہوا] وہ مجھے دیکھ لے گی تو کھل کر ہاتھ پاؤں بھی نہ پٹک سکے گی۔",
     ],
     provider: [
       "Eleven v3 adapter · 6 turns · 2 voices",
-      "گھیسو: [sighs] — habitual resignation (turn 1)",
-      "گھیسو: [sad] — grief enters the reproach (turn 3)",
-      "مادھو: [long pause] — before the earlier death returns (turn 6)",
+      "گھیسو: [sighs] · [reproachfully]+[somber] · [urging]+[resigned]",
+      "مادھو: [flatly] · [defensive] · [hesitant]+[quietly]",
       "",
-      "Three documented tags across six turns; turns 2, 4, 5 trust Premchand's words and the source's own ellipsis. Canonical text: spoken words identical to the clean view.",
+      "Every turn directed, one cue per beat; [sighs] is core-documented, the rest are delivery-state tags ElevenLabs marks experimental — listening test required. Spoken words identical to the clean view.",
     ],
     note:
       "Canonical text: zero word changes — all six turns, both speakers, turn order, and the source's load-bearing ellipsis are preserved verbatim.",
@@ -162,17 +164,18 @@ export const examples: Example[] = [
       "رابعہ: ٹھیک ہے، ٹھیک ہے... I'm booking the next flight. تم بس وہیں رہو، please. میں آ رہی ہوں۔",
     ],
     directed: [
-      "حسن: [holding himself together; the fact first] Ammi کو hospital لے گئے ہیں... [hurt under the question, not accusing] تمہارا فون کیوں بند تھا، رابعہ؟",
-      "رابعہ: [automatic, a little apologetic] Meeting میں تھی... [his first sentence lands; she cuts herself off] wait— [checking she heard right] کیا کہا تم نے؟ [the disbelief tightens] Ammi hospital؟",
-      "حسن: [relaying the doctor's words, flat] Doctor کہہ رہے ہیں it's serious. [the control gives way] میں... [lower; admitting it plainly] I can't handle this alone, رابعہ۔",
-      "رابعہ: [steadying herself as much as him] ٹھیک ہے، ٹھیک ہے... [decision; shifts into practical mode] I'm booking the next flight.",
-      "[gentler; the plea matters] تم بس وہیں رہو، please. [settled, certain] میں آ رہی ہوں۔",
+      "حسن: [weary; has been trying her phone; flat with shock, not shouting] Ammi کو hospital لے گئے ہیں... [let the fact land; then the held-back reproach surfaces — hurt, not accusation] تمہارا فون کیوں بند تھا، رابعہ؟",
+      "رابعہ: [still in work mode, explaining automatically] Meeting میں تھی... [the words catch up with her; abrupt cutoff] wait— [disbelief, checking she heard right] کیا کہا تم نے؟ [quieter; the fact settling in] Ammi hospital؟",
+      "حسن: [relaying the doctor's words, trying to stay steady] Doctor کہہ رہے ہیں it's serious. [reluctant beat; the admission costs him — voice lowers, does not break into sobbing] میں... I can't handle this alone, رابعہ۔",
+      "رابعہ: [steadying him and herself; calm repetition] ٹھیک ہے، ٹھیک ہے... [decision made; takes charge] I'm booking the next flight.",
+      "[gentle directive] تم بس وہیں رہو، please. [firm, warm promise] میں آ رہی ہوں۔",
     ],
     provider: [
       "Eleven v3 adapter · 4 turns · 2 voices",
-      "حسن: [sighs] — the control gives way (turn 3)",
+      "حسن: [sighs] (turn 1) · [gulps] — the admission costs him (turn 3)",
+      "رابعہ: [appalled] — the fact lands (turn 2) · [warmly] — the promise (turn 4)",
       "",
-      "One documented tag across four turns; the rest rides on wording, ellipses, and the «wait—» dash cutoff. English code-switches get no «in English» markers — the switching itself is the characterization.",
+      "One documented tag per turn, placed at the beat it changes; the «wait—» cutoff and the code-switches ride the source's own punctuation. No «in English» markers — the switching itself is the characterization.",
     ],
     note:
       "No source word was changed, added, or reordered; the wording was already natural spoken bilingual Urdu, so all four turns are direction-only and the clean view is byte-identical to the source.",

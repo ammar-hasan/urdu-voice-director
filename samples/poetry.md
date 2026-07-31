@@ -16,21 +16,22 @@ Selected ashaar from Ghalib's ghazal «ہزاروں خواہشیں ایسی...»
 
 ## Scene card
 
-- Setting: a مشاعرہ; the poet شاعر recites five selected ashaar from Ghalib's canonical ghazal «ہزاروں خواہشیں ایسی...» before a listening audience, with the واہ-bearing attention that setting implies.
-- Protected: exact canonical wording, verse order, the single speaker, and all five turns (each sher = one turn). No refinement of words is permitted; every turn is direction-only.
-- Speaker and register: a poet-performer in classical recitation register addressing an audience, not a conversation partner. Gender, age, and locale of شاعر are not established and are not inferred; no gendered forms appear in or are added to the text.
-- Governing relationship: performer → سامعین. The audience never speaks; its presence is realized only through pacing room between ashaar, never through scripted reaction.
-- Arc across the five turns: wistful opening invitation → proud allusion turned personal → restrained formal grievance → the ghazal's creed (emotional peak, carried by stillness) → wry self-addressed release.
-- No code-switching present; none added.
-- Output target: ElevenLabs `eleven_v3` sample. Voice and locale are `unresolved` (Urdu is documented for Eleven v3; specific voice behavior is untested). Verified 2026-07-30 against first-party docs: v3 supports bracketed audio tags and does **not** support SSML break tags; pauses come from tags, ellipses, and punctuation.
+- Setting: a مشاعرہ; single speaker شاعر reciting selected ashaar from Ghalib's ghazal «ہزاروں خواہشیں ایسی...» before a listening audience whose murmurs, anticipation, and واہ واہ are part of the authorized atmosphere.
+- Protected: every word of all five ashaar (canonical text), the verse order, the five turn boundaries (one sher per turn), the single speaker label شاعر, and the classical poetic register including the radif «نکلے».
+- Established: adult performer, public formal-poetic register, shared literary memory between poet and audience (the audience already knows this ghazal — recognition, not information, drives delivery).
+- Unresolved: poet's gender (not specified — not inferred), locale (`ur-PK` vs `ur-IN` not established — not defaulted), and the specific ElevenLabs voice (marked `unresolved` in the adapter).
+- Output target: ElevenLabs `eleven_v3` sample, with clean caption-safe artifact, rehearsal script, portable plan, and v3 adapter.
+- Performance problem: each sher pivots mid-turn between its two misraa (statement → sting). The arc across the five ashaar is: measured opening → shared story turned personal → wounded reproach → the devotional peak → the witty self-releasing مقطع. The peak must be carried by conviction, pacing, and withheld-and-released pauses, never by shouting.
 
 ## Turn audit
 
-1. **Turn 1 (ہزاروں خواہشیں...) — Direction only.** Words are canonical and speakable. The shift is internal: the famous first misra is a public invitation; the second misra narrows to private reckoning. Delivery risk is over-sighing the whole sher; direct the pivot, not a blanket mood.
-2. **Turn 2 (نکلنا خلد سے آدم...) — Direction only.** First clause is storytelling allusion (`سنتے آئے ہیں لیکن`); `لیکن` pivots to personal claim. Risk: reading بے آبرو as shame. The sher holds its head up — disgrace carried with defiance toward the beloved's lane.
-3. **Turn 3 (ہوئی جن سے توقع...) — Direction only.** A judicial complaint (توقع، داد) that reverses: the would-be arbiters proved more wounded by cruelty's sword than us. Risk: grievance becoming loud. Direction keeps the bitterness formal and contained; the reversal carries the weight.
-4. **Turn 4 (محبت میں نہیں ہے فرق...) — Direction only; the peak.** A creed, not a confession. The paradox (living by looking at the one on whom life is spent) must not be resolved by volume or tears. Stillness, full weight, steady pace — the peak is carried by pacing and the held silence after it.
-5. **Turn 5 (کہاں مے خانہ کا دروازہ غالب...) — Direction only.** Self-address (`غالب`) with rhetorical کہاں... اور کہاں; the final clause is knowing, wry, almost triumphant. Risk: playing it as comedy. The wit is dry; the release comes from irony, not laughter.
+1. **Turn 1 (مطلع)** — Direction only. Words are canonical and unchangeable. Beat: vast philosophical claim (ہزاروں خواہشیں...) → pivot at the khatma → personal, rueful confession (بہت نکلے مرے ارمان...). Delivery must open the recitation with measured weight, then drop into intimacy on the second misra; one generic emotion over the whole sher would flatten it.
+2. **Turn 2** — Direction only. Beat: familiar narrative stance (سنتے آئے ہیں لیکن — drawing the audience into a story they know) → the known story turns into personal بے آبروی on ترے کوچے سے ہم نکلے. The indignity lands quieter, not louder; a short beat after لیکن separates the tale from the sting.
+3. **Turn 3** — Direction only. Beat: stated expectation of justice (توقع... داد پانے کی) → grieving reveal that the expected healers were themselves خستۂ تیغ ستم. Controlled reproach; weariness audible in the breath, not in volume. The hardest sher to keep from melodrama — direction carries the restraint.
+4. **Turn 4** — Direction only. The emotional peak of the set: the declaration محبت میں نہیں ہے فرق جینے اور مرنے کا delivered with full conviction, then a held beat (this is where a مشاعرہ audience answers), then the second misra falls intimate and devoted on اسی کو دیکھ کر جیتے ہیں... کافر پہ دم نکلے. Conviction and pacing, not force.
+5. **Turn 5 (مقطع)** — Direction only. The poet releases the accumulated intensity through dry self-deprecating wit on his own تخلص: the knowing contrast کہاں... اور کہاں, the mock-innocent concession پر اتنا جانتے ہیں. Light, playful, conspiratorial with the audience; comic timing on the final clause, not a joke voice.
+
+No turn requires refinement; the source is canonical poetry and every word stays identical to the source. No added words, particles, or reactions anywhere.
 
 ## A. Clean spoken Urdu
 
@@ -44,58 +45,62 @@ Selected ashaar from Ghalib's ghazal «ہزاروں خواہشیں ایسی...»
 
 ## B. Directed rehearsal script
 
-Bracketed notes are non-spoken rehearsal cues.
-
 ```text
-شاعر: [آغاز کھلا اور باوقار؛ پہلا مصرع سامعین کو دعوتِ سماعت ہے] ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔ [مختصر وقفہ؛ مصرع کو سامعین تک پہنچنے دو] [دوسرا مصرع ذاتی ہو جاتا ہے؛ افسوس دبا ہوا، حجم نہیں بڑھتا] بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔
+[rehearsal note — non-spoken: the poet is mid-recitation at a مشاعرہ; the audience knows this ghazal. Recognition and shared memory, not new information, drive every beat.]
 
-شاعر: [روایت سنانے کے لہجے میں؛ ہلکی علمی نزاکت] نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن، [لیکن کے بعد رخ بدلتا ہے؛ بے آبروی پر سر جھکتا نہیں] بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔
+شاعر: [مطلع کا افتتاح — ناپ تول کر، وسعت کے ساتھ] ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔
+[مصرع ثانی میں آواز اندر کی طرف؛ ذاتی اور پشیمان اعتراف] بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔
 
-شاعر: [شکایت رسمی، تقریباً عدالتی؛ غصہ قابو میں، آواز نہیں اٹھتی] ہوئی جن سے توقع خستگی کی داد پانے کی، [الٹ پھیر کو خود بولنے دو؛ زور صرف تفاوت پر] وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔
+شاعر: [قصہ گوئی کا لہجہ؛ سامعین پہلے سے جانتے ہیں] نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن،
+[مختصر توقف؛ اب بات اپنی ہے — دبی ہوئی آواز میں بے آبروی] بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔
 
-شاعر: [غزل کا قلب؛ ٹھہرا ہوا، پورا وزن، کوئی اضافہ نہیں] محبت میں نہیں ہے فرق جینے اور مرنے کا، [سکون سے؛ تضاد کو جیسا ہے سننے دو، حل کرنے کی کوشش نہیں] اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے۔ [شعر کے بعد سب سے طویل وقفہ؛ سامعین کے جواب کی گنجائش چھوڑو، کچھ مت کہو]
+شاعر: [توقع سادۃ دلانہ بیان ہوتی ہے] ہوئی جن سے توقع خستگی کی داد پانے کی،
+[ایک تھکی ہوئی سانس؛ شکایت قابو میں، بلند نہیں] وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔
 
-شاعر: [اب خود سے مخاطب؛ طنز واپس آتا ہے مگر مسکراہٹ خشک ہے] کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ، [آخری سطر جان بوجھ کر ہلکی؛ جیت کا تاثر الفاظ میں، تالی میں نہیں] پر اتنا جانتے ہیں کل وہ جاتا تھا کہ ہم نکلے۔
+شاعر: [پورے یقین اور جوش کے ساتھ — یہ عروج کا مصرع ہے؛ زور سے نہیں، پختگی سے] محبت میں نہیں ہے فرق جینے اور مرنے کا،
+[واہ واہ کے لیے جگہ؛ جملے کو اترنے دیں] اسی کو دیکھ کر جیتے ہیں [اور بھی قریبی، عقیدت میں ڈوبا ہوا] جس کافر پہ دم نکلے۔
+
+شاعر: [مقطع — کشیدگی ٹوٹتی ہے؛ خشک، شوخ طنز اپنے تخلص پر] کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ،
+[ظاہری معصومیت؛ آخری حصے سے پہلے مختصر کامیڈی توقف] پر اتنا جانتے ہیں [توقف] کل وہ جاتا تھا کہ ہم نکلے۔
 ```
 
 ## C. Portable synthesis plan
 
 | Turn | Speaker | Clean spoken text | Delivery note (not spoken) | Pause/beat | Emphasis | Pronunciation |
 |---|---|---|---|---|---|---|
-| 1 | شاعر | ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔ بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔ | open, invitational first misra; second misra turns private, rue contained | reflective beat between misras | `کم نکلے` lands softly | hazāroñ khwāhisheñ; armān |
-| 2 | شاعر | نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن، بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔ | allusive storytelling until `لیکن`; then personal, unbowed | pivot beat at `لیکن` | `بہت بے آبرو ہو کر` — stated, not winced | khuld; be-aabro; kūche |
-| 3 | شاعر | ہوئی جن سے توقع خستگی کی داد پانے کی، وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔ | formal grievance, control audible; reversal carries the force | light clause beat at `،` | `ہم سے بھی زیادہ` | khasta-e (izafat); taigh-e-sitam |
-| 4 | شاعر | محبت میں نہیں ہے فرق جینے اور مرنے کا، اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے۔ | the creed; stillness and full weight, no crescendo | longest silence after the sher (audience room) | `دم نکلے` — level, final | kāfir |
-| 5 | شاعر | کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ، پر اتنا جانتے ہیں کل وہ جاتا تھا کہ ہم نکلے۔ | self-addressed, dry irony; last clause knowingly light | conversational beat after rhetorical کہاں... اور کہاں | `جانتے ہیں` | mai-khāna; va'iz |
+| 1 | شاعر | ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔ بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔ | measured opening with breadth; second misra inward, personal, rueful | reflective reset between misraa | `ہر خواہش پہ`، then `پھر بھی کم` | `ارمان` long alif |
+| 2 | شاعر | نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن، بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔ | storytelling tone the audience already shares; sting lands quiet on the indignity | short beat after `لیکن` | `بے آبرو`، `ترے کوچے` | `خلد` = خُلد (khuld) |
+| 3 | شاعر | ہوئی جن سے توقع خستگی کی داد پانے کی، وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔ | expectation stated plainly; reveal carries controlled, weary reproach — no rise in volume | weary breath at the pivot | `ہم سے بھی زیادہ` | `خستۂ تیغ ستم` = izafat chain (khasta-e tegh-e sitam) |
+| 4 | شاعر | محبت میں نہیں ہے فرق جینے اور مرنے کا، اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے۔ | peak: full conviction on the declaration, then intimate devotion | held beat between misraa — room for audience response | `نہیں ہے فرق`، then `اسی کو` | `کافر` stressed ع ain't... (kāfir) |
+| 5 | شاعر | کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ، پر اتنا جانتے ہیں کل وہ جاتا تھا کہ ہم نکلے۔ | dry, self-deprecating wit; mock innocence on the concession | short comic beat before `کل وہ جاتا تھا` | `کہاں... اور کہاں` contrast، `اتنا` | `واعظ` = wā'iz، `غالب` final consonant crisp |
 
 ## D. Eleven v3 adapter
 
-Target: ElevenLabs / `eleven_v3` / Urdu (documented among v3 languages) / voice: `unresolved` / surface: Text to Speech. Verified 2026-07-30 against first-party documentation: bracketed audio tags are documented for v3; SSML `<break>` is **not** supported in v3 (pauses come from punctuation, ellipses, and tags). Tags used: `[sighs]`, `[exhales]` — both documented — sparsely, two across five turns. Spoken words are identical to artifact A; `Voice:` labels are routing metadata, not input text. Urdu tag compliance with the selected voice needs a native listening test.
+Target: ElevenLabs / `eleven_v3` / Text-to-Speech surface / locale unresolved / voice unresolved. Support status: Urdu listed among v3's documented languages (verified against current first-party docs); inline audio tags below are limited to tags documented for eleven_v3. `Voice:` lines are routing metadata, not text-field input. Spoken words are identical to artifact A. Tag compliance with Urdu delivery is a hypothesis until heard with the selected voice — needs listening test.
 
 ```text
 Voice: شاعر
-ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔ [sighs] بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔
+[thoughtful] ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے۔ [sad] بہت نکلے مرے ارمان لیکن پھر بھی کم نکلے۔
 
 Voice: شاعر
-نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن، بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔
+نکلنا خلد سے آدم کا سنتے آئے ہیں لیکن، [short pause] [whispers] بہت بے آبرو ہو کر ترے کوچے سے ہم نکلے۔
 
 Voice: شاعر
-ہوئی جن سے توقع خستگی کی داد پانے کی، وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔
+ہوئی جن سے توقع خستگی کی داد پانے کی، [sighs] وہ ہم سے بھی زیادہ خستۂ تیغ ستم نکلے۔
 
 Voice: شاعر
-محبت میں نہیں ہے فرق جینے اور مرنے کا، [exhales] اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے۔
+[excited] محبت میں نہیں ہے فرق جینے اور مرنے کا، [long pause] [whispers] اسی کو دیکھ کر جیتے ہیں جس کافر پہ دم نکلے۔
 
 Voice: شاعر
-کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ، پر اتنا جانتے ہیں کل وہ جاتا تھا کہ ہم نکلے۔
+[mischievously] کہاں مے خانہ کا دروازہ غالب اور کہاں واعظ، پر اتنا جانتے ہیں [short pause] کل وہ جاتا تھا کہ ہم نکلے۔
 ```
 
 ## Restraint notes
 
-- Canonical scene: not one word, and no punctuation, was changed; artifact A is byte-identical to the source turns. Every turn audited as direction-only — refinement would have been a hard-gate failure.
-- No misra repetition, although مشاعرہ convention invites it: repeating «ہزاروں خواہشیں...» would alter the canonical text, so the invitation is carried by direction and pauses instead.
-- No audience sound-effect tags. `[applause]`/`[clapping]` are documented v3 tags and the brief authorizes "audience atmosphere," but the timing and intensity of any response are unspecified; inventing a specific audible reaction would be an invented fact. The atmosphere lives only as held silence after turn 4 in the rehearsal script.
-- Two audio tags across five turns (`[sighs]`, `[exhales]`), both from the documented v3 list, both marking the rueful pivot (turn 1) and grounding the peak (turn 4). The peak itself is carried by stillness and pacing, not by `[crying]`, volume, or stacked tags.
-- No diacritics added to the canonical text; the one real reading ambiguity (izafat in `خستۂ تیغ`, i.e. khasta-e taigh) is handled as a pronunciation note in the plan only.
-- No emotion labels that flatten the arc: turn 2 is not "sad" (it is unbowed), turn 3 is not "angry" (control stays audible), turn 5 is not "funny" (the wit is dry).
-- Voice, locale, and gender of شاعر remain `unresolved` and were not inferred; no gendered wording exists or was added.
-- Eleven v3's Urdu rendering of classical diction (خواہشیں، ارمان، خستۂ، واعظ) and its tag compliance are hypotheses until heard; recommend a native Urdu listening pass with the chosen voice before treating the adapter as final. If the tags cause overacting, the clean baseline without them is the better adapter.
+- Zero words changed, added, or reordered — the source is canonical; A, the caption copy, and the spoken portions of D are byte-identical to the source turns. Pronunciation guidance lives only in the plan's non-spoken column, never in the text.
+- Every cue maps to a beat in the audit; no turn carries a blanket single emotion over both misraa. Tags are placed at the pivot each tag governs, one cue per beat, and no tag is decorative (e.g., turn 2 opens untagged because the storytelling stance is carried by the wording itself).
+- The emotional peak (turn 4) is built from conviction plus a held pause for audience response — `[excited]` for the declaration and `[long pause]` for the مشاعرہ answer — not from shouting, crying, or any invented intensity. Anger-adjacent turn 3 gets a weary `[sighs]`, not volume.
+- Lowered voice is used exactly where the audit calls for confession (turn 2's بے آبروی) and intimacy (turn 4's devotion); `[whispers]` appears twice but never on consecutive turns and always for a distinct function.
+- No audience sound-effect tags (`[applause]`, etc.) were inserted: the audience atmosphere is source-authorized as context, but applause audio is not the poet's utterance; it is modeled only as pause space in delivery.
+- Deliberately not added: any particle (`ارے`, `اچھا`), any sigh or breath written into the words, gender marking, locale (`ur-PK`/`ur-IN`), a chosen voice, biography of the poet, or an interpretation of who the beloved is — the ghazal's ambiguity is preserved.
+- Known uncertainty for the listening test: whether `eleven_v3` renders the izafat chain `خستۂ تیغ ستم`, `خلد`, and `واعظ` correctly in the selected voice, and whether `[whispers]` stays intelligible on classical Urdu verse — verify with a native Urdu listener before publishing.

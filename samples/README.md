@@ -34,4 +34,6 @@ spoken text.
 4. Listen natively — the skill's own rule: text review finds the line, native
    listening proves the voice. If an adapter over-acts, fall back to the clean
    baseline for that scene and note it in the file's restraint notes.
-5. Commit the updated `samples/*.md` and `public/audio/*.mp3` together.
+5. Bump `AUDIO_VERSION` in `src/data/content.ts` — the site appends it as a
+   query param so browsers do not serve stale cached clips.
+6. Commit the updated `samples/*.md` and `public/audio/*.mp3` together.

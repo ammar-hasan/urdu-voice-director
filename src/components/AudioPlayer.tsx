@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { AUDIO_VERSION } from "../data/content";
 
 /**
  * Before/after voice sample player. One shared "currently playing" slot so
@@ -52,7 +53,7 @@ export default function AudioPlayer({
     if (!audio) return;
     const wasPlaying = playing;
     audio.pause();
-    audio.src = `${import.meta.env.BASE_URL}audio/${id}-${version}.mp3`;
+    audio.src = `${import.meta.env.BASE_URL}audio/${id}-${version}.mp3?v=${AUDIO_VERSION}`;
     audio.load();
     if (wasPlaying) {
       void audio.play().catch(() => setPlaying(false));
@@ -72,7 +73,7 @@ export default function AudioPlayer({
     }
     if (current && current !== audio) current.pause();
     if (!audio.src) {
-      audio.src = `${import.meta.env.BASE_URL}audio/${id}-${version}.mp3`;
+      audio.src = `${import.meta.env.BASE_URL}audio/${id}-${version}.mp3?v=${AUDIO_VERSION}`;
     }
     current = audio;
     void audio
