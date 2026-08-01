@@ -411,3 +411,69 @@ Run these as blind forward tasks. Give the evaluator the skill and only the case
 **Pass:** Uses only functional fragments, particles, repetition, or pauses and preserves distinct voices.
 
 **Fail:** Adds filler to every turn, makes both speakers generically colloquial, or reproduces distracting transcript-level disfluency.
+
+## Pronunciation, delivery range, and treatment
+
+### UVD-T50 — ambiguity sweep, not first-hit marking
+
+**Prompt:** Prepare `تم نے یہ کیا کیا؟ پھر اس سے کیا کہا؟` for TTS. Context establishes “What did you do? Then what did you say to them?”
+
+**Pass:** Keeps the clean caption canonical; does not rely on obvious human context; records every material reading and prepares a complete ambiguity-marked candidate with verbal `کِیا` while preserving interrogative `کیا`; resolves `اس` as `اُس` only if the supplied referent establishes that reading; compares the candidate with the canonical baseline before production adoption.
+
+**Fail:** Marks only the first ambiguous token, fully vocalizes everything without need, changes the caption, or guesses `اِس/اُس` without context.
+
+### UVD-T51 — consonant identity is not a vowel problem
+
+**Prompt:** The selected voice reads `بڑا` as `برا` and `ٹوٹ` as `توت`. Correct it.
+
+**Pass:** Classifies `ڑ/ر` and `ٹ/ت` as consonant substitutions; preserves canonical text; proposes exact-voice canonical, IPA/dictionary, and alternate-voice tests; uses diacritics only for any separate vowel ambiguity.
+
+**Fail:** Claims zabar, zer, or pesh can create the missing retroflex consonant, silently respells the caption, or declares an untested IPA string fixed.
+
+### UVD-T52 — grounded does not mean flat
+
+**Prompt:** Direct a family reunion line in grounded range with naturalistic treatment. The source explicitly says the speaker is delighted but trying not to overwhelm an elderly parent.
+
+**Pass:** Makes delight audible through supported warmth, energy, timing, or focus while respecting the restraint in the situation.
+
+**Fail:** Removes all affect to avoid invention, or escalates to shouting, crying, laughter, or an embrace not supplied by the source.
+
+### UVD-T53 — heightened drama without invented psychology
+
+**Prompt:** A radio-drama attribution says the speaker’s voice shakes after a door locks. Use heightened mode; no sob or scream is written.
+
+**Pass:** Uses a wider but source-bounded performance range and beat-aware direction; keeps the shaking voice as supplied delivery and excludes sob/scream/motive.
+
+**Fail:** Returns the same subdued reading as a reference baseline, or invents terror, guilt, pleading, sobbing, or screaming.
+
+### UVD-T54 — stylized character authorization
+
+**Prompt:** An animation brief authorizes oversized victory energy for `ہم نے کر دکھایا!` but no non-lexical reaction.
+
+**Pass:** Produces a clearly stylized, heightened performance while keeping the exact line and omitting laughs, whoops, and catchphrases; it does not imply that every stylized reading must be large.
+
+**Fail:** Flattens the authorized style or treats “stylized” as permission to add audible events.
+
+### UVD-T55 — implied affect as a performance hypothesis
+
+**Prompt:** Two adult siblings meet after a long absence. Source: `اتنے دن بعد آئے ہو—اندر تو آؤ۔` No emotion is named. Prepare a grounded-naturalistic baseline and, if defensible, one wider-range option.
+
+**Pass:** Plays the observable action—marking the absence and inviting the sibling in. It may offer warmth, reproach, or mixed feeling as a labeled performance hypothesis traceable to the line and relationship, while keeping the words unchanged.
+
+**Fail:** Makes the line emotionally blank because no feeling word appears, or asserts anger, grief, forgiveness, an embrace, or a backstory as source fact.
+
+### UVD-T56 — stylization is not intensity
+
+**Prompt:** A game character says `میں پھر آؤں گا۔` The brief requests restrained, stylized deadpan delivery with no threat.
+
+**Pass:** Keeps range restrained while making the authorized convention legible through timing or shape; preserves the exact words and adds no menace or reaction.
+
+**Fail:** Raises volume or emotion merely because treatment is stylized, or collapses stylized into heightened.
+
+### UVD-T57 — complete ambiguity candidate, tested production payload
+
+**Prompt:** A passage has four materially ambiguous written forms, but the canonical exact-voice baseline has not been rendered.
+
+**Pass:** Audits all four and prepares a complete minimally marked candidate; keeps canonical captions; compares baseline and candidate; promotes only critical, failed, or exact-target-supported marks to production and labels untested choices.
+
+**Fail:** Audits only observed failures, silently makes the complete marked copy the proven production payload, or omits the candidate because context seems obvious.

@@ -186,13 +186,13 @@ export const modes: { id: Mode; label: string; urdu: string }[] = [
 ];
 
 export const steps = [
-  ["۱", "Classify the performance", "صنف پہچانیں", "Conversation, fiction, narration, news, speech, devotion, poetry, or mushaira."],
+  ["۱", "Choose form, range + treatment", "صنف اور انداز", "Choose the performance form, then a restrained, grounded, or heightened range and a naturalistic or stylized treatment."],
   ["۲", "Protect the source", "اصل محفوظ رکھیں", "Meaning, relationship, age, register, titles, religion, and switching stay intact."],
   ["۳", "Load only relevant depth", "ضروری حوالہ کھولیں", "Nine focused references replace one oversized instruction file."],
   ["۴", "Make the smallest change", "کم سے کم تبدیلی", "Leave good lines alone; refine or direct only where useful."],
   ["۵", "Separate the layers", "صورتیں الگ رکھیں", "Clean speech never inherits rehearsal notes or provider syntax."],
-  ["۶", "Adapt the exact model", "درست ماڈل کی صورت", "Use detailed supported controls, including open-ended Eleven v3 cues, as tested hypotheses."],
-  ["۷", "Validate and listen", "جانچیں اور سنیں", "Automated gates protect structure; native listening proves pronunciation and prosody."],
+  ["۶", "Adapt the exact model", "درست ماڈل کی صورت", "Keep captions canonical; test detailed delivery cues, ambiguity marks, IPA, or dictionaries only where supported."],
+  ["۷", "Validate and listen", "جانچیں اور سنیں", "Score text-side direction and pronunciation-risk handling; controlled native listening assesses realized consonants, delivery, and prosody."],
 ];
 
 export const useCases = [
@@ -207,9 +207,24 @@ export const useCases = [
     text: "Make source-supported subtext playable without inventing a motive, memory, or emotion.",
   },
   {
+    marker: "ڈراما",
+    title: "Drama & dubbing",
+    text: "Use objective, stakes, timing, and authorized affect; keep literal, performable, and sync-driven choices distinct.",
+  },
+  {
     marker: "کتاب",
     title: "Audiobook narration",
     text: "Keep narrator, character speech, and embedded text distinct across a long performance.",
+  },
+  {
+    marker: "دستاویز",
+    title: "Documentary & explainer",
+    text: "Carry evidence, uncertainty, terminology, and listener orientation without a generic authority wash.",
+  },
+  {
+    marker: "کردار",
+    title: "Animation & game character",
+    text: "Use authorized vocal size and stylization while keeping dialogue, efforts, reactions, and tags separate.",
   },
   {
     marker: "خبر",
@@ -243,7 +258,7 @@ export const providers = [
     group: "Expressive inline",
     name: "Eleven v3",
     status: "Urdu documented",
-    detail: "Open-ended detailed audio tags are documented; exact phrases and Urdu voices still need testing.",
+    detail: "Open-ended tags, inline IPA, and pronunciation dictionaries are documented; exact Urdu voice behavior still needs repeated listening tests.",
   },
   {
     group: "Prompt-steered",

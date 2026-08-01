@@ -5,7 +5,8 @@ Load this reference for ambiguous readings, diacritics, names, places, numbers, 
 ## Contents
 
 - [Canonical, pronunciation, and provider layers](#keep-three-layers-distinct)
-- [Evidence and selective diacritics](#resolve-by-evidence)
+- [Evidence and ambiguity sweep](#resolve-by-evidence)
+- [Contrastive consonants](#protect-consonant-identity)
 - [Izafat, names, and places](#izafat-and-compounds)
 - [Numbers and acronyms](#numbers-dates-units-and-acronyms)
 - [Mixed script and religious material](#roman-urdu-and-mixed-script)
@@ -16,9 +17,9 @@ Load this reference for ambiguous readings, diacritics, names, places, numbers, 
 
 1. **Canonical text:** the correct, reusable wording.
 2. **Pronunciation note:** how an ambiguous item is intended to be read.
-3. **Provider adaptation:** a tested spelling, lexicon entry, phoneme control, or segmentation for an exact model.
+3. **Provider pronunciation copy:** the exact text sent for synthesis, including tested diacritics, IPA, lexicon entries, or other controls.
 
-Do not corrupt canonical Urdu to accommodate one voice. Captions should remain clean even when synthesis needs a workaround.
+Record every divergence as `canonical → intended reading → provider copy → target → result`. Do not corrupt canonical Urdu to accommodate one voice. Captions remain canonical even when synthesis needs a workaround.
 
 ## Resolve by evidence
 
@@ -35,18 +36,53 @@ Use, in order as relevant:
 
 If two readings remain possible, report them instead of guessing.
 
-## Selective diacritics
+## Ambiguity-first diacritics
 
-Urdu normally omits many short-vowel marks. Add a diacritic only when it resolves a real ambiguity or a tested synthesis error:
+Urdu normally omits many short-vowel marks, while TTS must still choose a reading. Before consequential synthesis, make an **ambiguity sweep** over every content word, name, number expression, Arabic/Persian construction, and recurring term. Mark every location where the unmarked written form permits another material lexical or grammatical reading that the target might select—even when human context makes the intended reading obvious. Do not rely on context alone when the same spelling can change the word, grammar, meaning, or pronunciation.
+
+When the intended reading is established, prepare a complete **ambiguity-marked candidate copy** with the minimum sufficient diacritics at every such location, not merely the first occurrence:
 
 ```text
 رُکو
 کِس
 اِس
 اُس
+کِیا   (performed/did, not the question کیا)
+عِلْم  (knowledge, not عَلَم)
 ```
 
-Do not fully vocalize ordinary prose. Dense diacritics can look unnatural, change caption quality, or be ignored/misread by a model. Test the provider copy separately.
+Do not use the normal absence of marks as a reason to leave a material ambiguity unaudited. Conversely, do not fully vocalize unambiguous ordinary prose merely for visual completeness. Dense marking can harm readability or be ignored by a model, so keep it out of clean captions and compare the complete candidate with the canonical baseline.
+
+The sweep is mandatory; adopting every mark in production is not. Use the complete candidate as a controlled test condition. Promote a mark to the final provider pronunciation copy when the ambiguity is critical, the canonical baseline fails, or exact-target evidence supports it. Log a proactive untested candidate as such instead of claiming it improves the model.
+
+If context does not establish the reading, do not let diacritization turn a guess into a fact. Keep the ambiguity unresolved or ask when it materially changes the result.
+
+## Protect consonant identity
+
+Urdu letters encode contrasts that vowel marks cannot create. In particular:
+
+| Letter | Intended contrast |
+|---|---|
+| `ت` | dental `/t̪/` |
+| `ٹ` | retroflex `/ʈ/` |
+| `د` | dental `/d̪/` |
+| `ڈ` | retroflex `/ɖ/` |
+| `ر` | flap/trill-like Urdu `r` |
+| `ڑ` | retroflex flap `/ɽ/` |
+
+If a voice reads `ڑ` as `ر` or `ٹ` as `ت`, adding zabar/zer/pesh does not repair the consonant. Treat it as a model/voice consonant-substitution failure.
+
+Use this escalation ladder, one variable at a time:
+
+1. canonical word in its shortest natural phrase;
+2. ambiguity-resolving diacritics if a vowel is also uncertain;
+3. an exact-model pronunciation control, such as Eleven v3 inline `/IPA/` or a pronunciation dictionary, with the canonical mapping recorded;
+4. another placement or a slightly larger IPA phrase if coarticulation is the problem;
+5. a different voice/model if the contrast remains unstable.
+
+For reviewer anchoring, contrast the intended word with the actual substitution when both are real Urdu forms, such as `بڑا` versus `برا` or `ٹوٹ` versus `توت`. The wrong form is a diagnostic reference, never a production candidate.
+
+Do not invent IPA from spelling alone. Verify the intended word, vowel length, aspiration, dental/retroflex place, and surrounding phrase from linguistic evidence or a qualified speaker. Inline IPA is provider syntax and never caption text.
 
 ## Izafat and compounds
 
@@ -65,7 +101,7 @@ Do not assume a provider will connect every orthographic form correctly. Try the
 Create a pronunciation ledger for recurring work:
 
 ```text
-item | canonical spelling | intended reading | evidence | provider workaround | tested target
+item | canonical spelling | intended reading/IPA | ambiguity or observed error | evidence | provider copy/control | tested target | result
 ```
 
 Do not:
@@ -128,19 +164,21 @@ Record:
 - tested provider copy;
 - surrounding phrase;
 - expected reading;
-- observed reading;
+- observed reading, including any consonant substitution;
 - reviewer and date;
 - accept/reject decision.
 
-Change one variable at a time.
+For a known failure, render at least the canonical baseline, the minimally diacritized candidate when relevant, and one exact-model phonetic-control candidate. Change one variable at a time. Use multiple generations for a variable model; a single lucky token is not a stable fix.
 
 ## Evidence boundary
 
-Urdu orthography and the practical need for contextual disambiguation are established. Specific diacritic or respelling choices are editorial/provider hypotheses until tested with the exact target. Poetry and religious recitation require genre expertise beyond generic TTS capability claims.
+Urdu orthography and the practical need for contextual disambiguation are established. The dental/retroflex and `ر`/`ڑ` contrasts are phonemic letter identities, not optional expressive coloring. Specific diacritics, IPA strings, dictionaries, or respellings remain editorial/provider hypotheses until tested with the exact target. Poetry and religious recitation require genre expertise beyond generic TTS capability claims.
 
 ## Sources
 
-- Sarmad Hussain, “[Letter-to-sound conversion for Urdu text-to-speech](https://www.cle.org.pk/Publication/papers/2004/letter-to-sound.pdf),” Center for Language Engineering.
+- Sarmad Hussain, “[Letter-to-sound conversion for Urdu text-to-speech](https://aclanthology.org/W04-1613.pdf),” *COLING 2004 Workshop on Computational Approaches to Arabic Script-based Languages*.
+- Abbas Raza Ali and Sarmad Hussain, “[Automatic diacritization for Urdu](https://cle.org.pk/clt10/papers/Automatic%20Diacritization%20for%20Urdu.pdf),” *Conference on Language and Technology*, 2010.
+- Gregory M. Bruce, “[Urdu Script and Pronunciation](https://urdu.la.utexas.edu/wp-content/uploads/sites/10/2023/07/Urdu-Script-and-Pronunciation-UT-Urdu-OER.pdf),” University of Texas Urdu OER.
 - Wajiha Habib et al., “[Design of speech corpus for open-domain Urdu TTS using a greedy algorithm](https://cle.org.pk/Publication/papers/2014/Design%20of%20Speech%20Corpus%20for%20Open%20Domain%20Urdu%20Text%20to%20Speech%20System%20Using%20Greedy%20Algorithm.pdf),” 2014.
 - Saba Urooj, Benazir Mumtaz, and Sarmad Hussain, “[Urdu intonation](https://ojs.ub.uni-konstanz.de/jsal/index.php/jsal/article/view/129),” *Journal of South Asian Linguistics* 10, 2020.
 - Frances W. Pritchett, *[Urdu Meter: A Practical Handbook](https://franpritchett.com/00ghalib/meterbk/00_index.html)*.

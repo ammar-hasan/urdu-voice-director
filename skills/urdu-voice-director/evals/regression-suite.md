@@ -289,3 +289,37 @@ Input contains `۔۔۔۔۔۔` and repeated dots.
 ### UVD-R65 — over-engineering rejection
 
 **Invariant:** A proposed output field, taxonomy, file, or adapter is rejected if it does not materially improve fidelity, scene recovery, spoken naturalness, provider safety, or testability.
+
+## Pronunciation, delivery-range, and treatment regressions
+
+### UVD-R66 — consonant substitution classification
+
+**Invariant:** `ڑ/ر`, `ٹ/ت`, `ڈ/د`, and lost aspiration are treated as consonant-identity failures; vowel diacritics are never claimed to create the missing consonant.
+
+### UVD-R67 — ambiguity coverage
+
+**Invariant:** A pronunciation audit identifies every materially ambiguous written form and prepares a complete marked candidate even when human context looks decisive; production adoption remains a baseline-tested, exact-target decision.
+
+### UVD-R68 — grounded is not emotionally neutral
+
+**Invariant:** Anti-invention rules do not flatten affect supported by words, dramatic function, interaction, attribution, context, or brief; grounded delivery may be warm, urgent, playful, angry, fearful, or joyful when evidence supports it.
+
+### UVD-R69 — production treatment does not create facts
+
+**Invariant:** Restrained, grounded, and heightened range plus naturalistic or stylized treatment change production choices, not facts, motives, memories, relationships, or canonical wording.
+
+### UVD-R70 — stylized event boundary
+
+**Invariant:** A stylized or dramatic brief does not authorize a laugh, sob, scream, exertion, applause, catchphrase, or other non-lexical event unless the source or production brief supplies it.
+
+### UVD-R71 — implied affect is playable, not factual
+
+**Invariant:** Affect supported by wording, dramatic function, interaction, or context may shape delivery even when no emotion is named; a plausible but non-unique reading is labeled as a performance hypothesis rather than asserted as character psychology.
+
+### UVD-R72 — stylization is orthogonal to range
+
+**Invariant:** Stylized treatment may be restrained, grounded, or heightened; it is never treated as inherently louder, broader, or more emotional than naturalistic treatment.
+
+### UVD-R73 — text scores do not claim audio realization
+
+**Invariant:** A text packet scores consonant-risk handling and written performance-direction fit; only exact-voice listening evidence scores realized consonants or audible delivery.

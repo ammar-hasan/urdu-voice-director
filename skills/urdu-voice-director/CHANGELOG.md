@@ -10,21 +10,46 @@ Provider documentation and listening observations must include an “as of” da
 
 ## [Unreleased]
 
+No unreleased changes.
+
+## [0.4.0] - 2026-08-01
+
+### Changed
+
+- Replaced the “mark only after failure” bias with a mandatory ambiguity sweep and a complete minimally marked candidate. Canonical captions remain unchanged; production adopts critical, failed, or exact-target-supported marks instead of silently treating every untested mark as an improvement.
+- Separated the eleven performance forms from two independent production axes: restrained/grounded/heightened delivery range and naturalistic/stylized treatment. Stylization may be quiet, restrained, or deadpan and is never an intensity level.
+- Clarified that anti-invention does not require emotionally flat delivery: source-supported affect can be made audible, while non-unique readings remain labeled performance options rather than character facts.
+- Distinguished vowel ambiguity from consonant substitution; `ڑ/ر`, `ٹ/ت`, `ڈ/د`, aspiration, and vowel length now receive separate tests.
+- Extended exact-target declarations to record sent or omitted `language_code`, locale/accent target, voice settings and stability, seed, normalization, pronunciation dictionaries, and output format.
+
+### Added
+
+- Added current Eleven v3 inline IPA and pronunciation-dictionary guidance, including canonical mappings, mid-sentence delivery-tag placement, repeated-generation testing, and the provider’s non-guaranteed consistency boundary.
+- Expanded the machine-readable benchmark from 16/eight to 26/eleven cases/forms across three delivery ranges and two treatments. Same-source controlled pairs now isolate range and treatment; their aggregate summaries are explicitly descriptive rather than causal.
+- Hardened blinded scoring: suite, packet, and frozen-run provenance hashes must match; A/B mappings are recomputed from the private seed; every output and dimension needs evidence; duplicate reviewer rows are rejected; `N/A` requires a reason; and release scoring requires two distinct reviewers per case. Reports retain raw scores, hard gates, rates, medians, disagreement, and worst regressions.
+- Expanded the static specifications to UVD-T57, UVD-P39, and UVD-R73, including ambiguity coverage, retroflex risk, grounded affect, quiet stylization, Eleven runtime provenance, and the text-versus-audio evidence boundary.
+- Added release validators for package-lock, website, assessment, changelog, results-ledger, benchmark-suite, production-axis, controlled-pair, routed-reference, and current case-count consistency.
+
 ### Corrected
 
-- Independently regenerated all seven documented sample bundles—including the hero—with fresh-context skill runs that read the current `SKILL.md`, the canonical source, and only the relevant references.
-- Removed unsupported age, relationship, and motive assumptions, stale scene descriptions, broad turn-level emotion tags, and forced pause language found by the independent pass.
-- Replaced a spliced Kafan sample with a contiguous four-turn excerpt verified against the scanned Anjuman Taraqqi Urdu edition, and restored the narrator’s explicit delivery context.
-- Replaced those adapters with source-supported detailed Eleven v3 cues placed at the precise mid-utterance beats they are intended to affect; preserved at least one untagged comparison turn where appropriate.
-- Recorded the exact resolved voice IDs and actual request/output format for every Eleven v3 sample, re-synchronized the website lab from the accepted artifacts, regenerated all seven `*-after.mp3` clips, and re-rendered Kafan’s clean baseline after correcting its canonical source. Native-Urdu listening remains pending.
-- Hardened sample validation to compare Source→A→D, require loaded-reference provenance and reproducible Eleven v3 metadata, and retain targeted regressions for the unsupported emergency relationship and Kafan splice.
+- Fixed six benchmark sources that encoded `\\n` literally instead of carrying real line breaks.
+- Renamed text-only consonant and direction dimensions so they score risk handling and written direction fit, reserving realized pronunciation and delivery for controlled native listening.
+- Corrected the authorship of the cited Urdu diacritization paper to Abbas Raza Ali and Sarmad Hussain.
+- Replaced the retired Eleven prompting URL with the current first-party best-practices location and clarified that historical omission of `language_code` is provenance, not preferred policy.
+- Restored children’s, family, educational, accessibility, religious/moral, and code-switching triggers to the compact skill description.
+
+### Evidence
+
+- The 0.4.0 changes were independently reviewed from fresh context by a release/evaluation reviewer and an Urdu/literary/prosody reviewer; their confirmed findings were resolved before release validation.
+- Final validation passed skill packaging, seven sample-fidelity bundles, 949 repository checks, the 26-case benchmark schema, packet/provenance binding, a 52-row synthetic scorer smoke test plus six malformed-evidence guards, TypeScript, the production website build, and whitespace checks.
+- The 26-case benchmark remains a mechanism and specification until model outputs receive the required blinded review. The seven existing MP3s were generated under 0.3.0 and were not regenerated or native-listener validated for 0.4.0.
 
 ### Research queue
 
-- Execute the machine-readable 16-case mode-stratified benchmark and the legacy 20-scene contrastive set with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.
+- Execute the machine-readable 26-case form/range/treatment benchmark and the legacy 20-scene contrastive set with blinded native Urdu reviewers across Pakistani and Indian contexts, plus more than one household, age group, and bilingual background.
 - Run the eight-scene audio/ablation subset with current Eleven v3, OpenAI instruction-steered TTS, Google Gemini-TTS Urdu Preview, Azure `ur-PK`, Google Chirp 3 `ur-IN`, and the available Piper Urdu voices.
 - Recheck whether Qwen3-TTS, XTTS-v2, or Chatterbox adds official Urdu support.
-- Measure whether selective diacritics improve or harm pronunciation across provider and local voices.
+- Measure canonical, ambiguity-marked, inline-IPA/dictionary, and alternate-voice pronunciation variants, with separate dental/retroflex and `ر/ڑ` scoring.
 
 ## [0.3.0] - 2026-07-31
 
@@ -57,6 +82,16 @@ Provider documentation and listening observations must include an “as of” da
 - Added hard gates and mode-specific review criteria for all eight performance types.
 - Added a reproducible baseline/candidate run format, blinded A/B packet, scoring output, reviewer-disagreement review, and a failure-to-regression workflow.
 - Retained the legacy prose specifications and results manifest; structural checks still make no claim of native naturalness or audio quality.
+
+### Post-release corrections (backfilled 2026-08-01)
+
+- Independently regenerated all seven documented sample bundles—including the hero—with fresh-context skill runs that read the 0.3.0 `SKILL.md`, canonical source, and relevant references.
+- Removed unsupported age, relationship, and motive assumptions, stale scene descriptions, broad turn-level emotion tags, and forced-pause language found by the independent pass.
+- Replaced a spliced Kafan sample with a contiguous four-turn excerpt verified against the scanned Anjuman Taraqqi Urdu edition and restored the narrator’s delivery context.
+- Replaced the adapters with source-supported detailed Eleven v3 cues at their intended mid-utterance beats while retaining untagged comparisons where appropriate.
+- Recorded resolved voice IDs and actual request/output metadata, synchronized the website lab, regenerated all seven `*-after.mp3` clips, and rerendered Kafan’s clean baseline after its source repair. Native-Urdu listening was not run.
+- Hardened sample validation to compare Source→A→tag-stripped D, require loaded-reference provenance and reproducible Eleven v3 metadata, and retain regressions for the unsupported emergency relationship and Kafan splice.
+- These corrections landed after the 0.3.0 release commit while their artifacts retained 0.3.0 provenance; they are historical corrections, not a newly inferred 0.3.1 release.
 
 ## [0.2.0] - 2026-07-29
 

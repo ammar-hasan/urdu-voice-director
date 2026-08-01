@@ -48,6 +48,7 @@ If a system lacks official Urdu support, do not use it as evidence of the skill�
 - Keep speaker/voice constant within a comparison.
 - Keep canonical utterances and captions identical unless a documented pronunciation divergence is the variable under test.
 - Change one direction variable at a time where possible.
+- For pronunciation failures, randomize canonical, minimally diacritized, and IPA/dictionary variants when each is applicable; include repeated generations.
 - Include a repeat to estimate listener consistency.
 - Preserve exact request payloads, model IDs, API/product surfaces, voices, locales, dates, and controls.
 
@@ -58,8 +59,11 @@ Rate `poor`, `acceptable`, `strong`, or `excellent`:
 - Does the line sound believable?
 - Does it sound like Urdu conversation rather than translated prose?
 - Is pronunciation correct and regionally plausible for the intended voice?
+- Are `ت/ٹ`, `د/ڈ`, `ر/ڑ`, aspiration, vowel length, and short vowels realized as intended?
 - Are pauses intentional and correctly placed?
 - Is emotion too weak, appropriate, or too strong?
+- Does the selected restrained/grounded/heightened range fit the brief?
+- Does naturalistic or stylized treatment fit independently of range, or has anti-invention made the line flat?
 - Does the speaker sound the intended age?
 - Does the relationship/register sound right?
 - Does the emotional change happen at the right words?
@@ -83,6 +87,9 @@ Include:
 - interruption and reflective hesitation;
 - suppressed anger and playful teasing;
 - at least five selectively ambiguous words;
+- at least two dental/retroflex contrasts and one `ر/ڑ` contrast in natural phrases;
+- restrained, grounded, and heightened range examples;
+- naturalistic and stylized treatments, including at least one restrained-stylized example;
 - Urdu-English product name and ordinary borrowing;
 - short and multi-clause turns;
 - one no-direction control.
@@ -96,6 +103,7 @@ Provider/model:
 Product/API surface:
 Voice:
 Locale:
+Performance form/delivery range/treatment:
 Source input:
 Input variant:
 Direction/markup:
@@ -103,6 +111,8 @@ Narrative context:
 Request payload:
 Caption variant:
 Pronunciation/normalization divergence:
+Expected critical segment(s):
+Observed critical segment(s):
 Listener background (self-described):
 
 Believability:
@@ -130,6 +140,7 @@ Do not claim audio confidence until:
 - no listener reports a meaning change;
 - no provider markup is spoken;
 - pronunciation is at least `strong` for critical words;
+- no known critical consonant substitution is hidden by an aggregate pronunciation score;
 - pause and emotion are not rated `poor` by any relevant native listener without investigation;
 - clean captions match the canonical spoken words;
 - disagreements are documented rather than erased.
@@ -145,6 +156,8 @@ Use the eight cases named in [contrastive benchmark](contrastive-benchmark.md) u
 3. restrained direction;
 4. non-spoken narrative context;
 5. provider-specific controls;
-6. selective pronunciation intervention.
+6. ambiguity-first diacritics;
+7. inline IPA or pronunciation dictionary;
+8. alternative voice/model.
 
 ASR output can flag swallowed, substituted, or added words, but it cannot establish naturalness, relationship, cultural fit, pause function, or emotional progression. Never treat transcription accuracy as the complete verdict.
