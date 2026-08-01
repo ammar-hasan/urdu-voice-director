@@ -6,6 +6,8 @@ Load this reference when reviewing output, changing the skill, comparing version
 
 - [Hard gates and rubric](#hard-gates)
 - [Mode-specific checks](#mode-specific-checks)
+- [Delivery-range and treatment checks](#delivery-range-and-treatment-checks)
+- [Pronunciation checks](#pronunciation-checks)
 - [Automated validation](#automated-validation)
 - [Benchmark workflow](#benchmark-mechanism)
 - [Release decisions](#release-decisions)
@@ -22,6 +24,7 @@ A candidate fails before scoring if it:
 - resolves a material gender, locale, name, or pronunciation ambiguity without evidence;
 - puts directions or provider markup in clean speech/captions;
 - claims a provider control for the wrong or unresolved target;
+- leaves a known critical pronunciation ambiguity or observed consonant substitution untested in a production adapter;
 - changes a poem, breaks required izafat/qafiya/radif, or adds audience material to the canonical verse.
 
 Hard-gate failure cannot be averaged away by fluent prose.
@@ -38,7 +41,9 @@ Score each from 1 to 4:
 | Imaginative fidelity | invented or flattened | generic | source scene survives | viewpoint, implication, and restraint become clearer without invention |
 | Performance usefulness | unusable labels | broad/overdirected | sparse playable cues | precise beat help with no extra psychology |
 | Oral transfer | text and delivery conflict | awkward phrasing | speakable | rhythm, thought units, and genre work aloud |
-| Pronunciation safety | guessed or corrupted | issues hidden | ambiguity marked | canonical text, evidence, and tested adaptation remain distinct |
+| Pronunciation safety | guessed, corrupted, or contrast lost | issues hidden | ambiguities and observed substitutions logged | canonical text, evidence, provider copy, and tested adaptation remain distinct |
+| Consonant-risk handling | substitution ignored or misclassified | risk named without a valid test | intended contrast and test plan are correct | evidence, candidate controls, fallbacks, and listening boundary are fully auditable |
+| Performance-direction fit | form/range/treatment missing or unsupported | inconsistent written direction | requested production treatment is source-bounded | form, range, and treatment reinforce the text without invented events or psychology |
 | Output separation | layers leak | partially unclear | clean separation | every layer is canonical, minimal, and auditable |
 | Provider validity | unsupported claim | target incomplete | exact documented target | exact target plus honest listening boundary |
 | Restraint | activity for its own sake | over-edited | necessary changes only | confidently leaves good material unchanged |
@@ -61,12 +66,33 @@ Use `N/A` where a dimension genuinely does not apply; never use it to hide a fai
 - narration not moved into speech;
 - no emotion invented by direction.
 
+### Drama/dubbing
+
+- objective, stakes, interaction, and beat changes;
+- locked wording/timing stated explicitly;
+- authorized affect is audible rather than flattened;
+- heightened delivery adds no motive, fact, or unapproved audible event.
+
 ### Audiobook
 
 - narrator/character/embedded-text distinction;
 - viewpoint continuity;
 - name and pronunciation ledger;
 - chapter-to-chapter consistency.
+
+### Documentary/explainer
+
+- factual sequence, terminology, attribution, and uncertainty;
+- listener orientation and argument structure;
+- energy appropriate to the brief without generic authority;
+- no emotionalization of reported facts.
+
+### Animation/game character
+
+- character and pronunciation ledger consistency;
+- authorized vocal size and stylization;
+- dialogue, efforts, reactions, and tags kept distinct;
+- no age, accent, caricature, or non-lexical event invented.
 
 ### News
 
@@ -105,6 +131,26 @@ Use `N/A` where a dimension genuinely does not apply; never use it to hide a fai
 - audience interaction distinguished from text;
 - anticipation supports rather than breaks the form.
 
+These are text-side dimensions. Actual consonant realization and audible delivery fit belong to the separate listening protocol and cannot be inferred from a written packet.
+
+## Delivery-range and treatment checks
+
+- **Restrained:** not lifeless; semantic contrast and explicit affect remain audible.
+- **Grounded:** credible natural energy; not automatically soft, slow, or emotionally neutral.
+- **Heightened:** wider range is traceable to source/context/brief; no new psychology or event.
+- **Naturalistic:** behavior remains plausible inside the represented scene at any delivery range.
+- **Stylized:** convention and character bible are explicit; treatment may be quiet or large and remains caption-safe.
+
+If two choices are plausible, compare them against the same canonical words. Score written **performance-direction fit** separately from personal preference. Never treat stylization as a higher intensity level.
+
+## Pronunciation checks
+
+- Audit every materially ambiguous word, name, number, izafat, and recurring term.
+- In text review, score whether dental/retroflex contrasts (`ت/ٹ`, `د/ڈ`), `ر/ڑ`, aspiration, vowel length, and short-vowel risks are identified and tested correctly.
+- A diacritic candidate cannot count as a fix for a consonant substitution.
+- Compare canonical, minimally diacritized, and exact-model IPA/dictionary variants where relevant.
+- Record both successful-token rate across repeated generations and any new error introduced elsewhere in the phrase.
+
 ## Automated validation
 
 Run from the repository root:
@@ -119,7 +165,7 @@ The validator checks structure, links, release metadata, exact reference topolog
 
 ## Benchmark mechanism
 
-The benchmark uses the versioned cases in [`../evals/benchmark-cases.json`](../evals/benchmark-cases.json). Cases cover all eight performance modes and include protected facts and mode-specific review prompts.
+The text benchmark uses the versioned cases in [`../evals/benchmark-cases.json`](../evals/benchmark-cases.json). Its 26 cases cover all eleven performance forms, three delivery ranges, two treatments, and controlled same-source pairs for range and treatment. Range/treatment aggregates are descriptive because form distribution still differs; controlled pairs are the relevant comparison.
 
 ### 1. Freeze the run
 
@@ -131,6 +177,7 @@ Record:
 - exact case-set hash;
 - generation settings;
 - provider/voice/version for audio;
+- performance form, delivery range, and treatment;
 - date and operator.
 
 Do not edit a candidate after seeing reviewer scores.
@@ -141,7 +188,16 @@ Use the same case prompts and generation settings. Save JSON maps keyed by case 
 
 ```json
 {
-  "run": {"skill_version": "0.3.0", "model": "exact-model"},
+  "run": {
+    "skill_version": "0.4.0",
+    "commit": "exact-git-commit",
+    "model": "exact-model",
+    "surface": "exact-surface",
+    "prompt_id": "frozen-prompt-or-hash",
+    "generation_settings": {},
+    "date": "2026-08-01",
+    "operator": "named-operator"
+  },
   "outputs": {"everyday-01": "candidate text"}
 }
 ```
@@ -154,10 +210,10 @@ node scripts/benchmark.mjs prepare \
   --candidate path/to/candidate.json \
   --out artifacts/packet.json \
   --key artifacts/private-key.json \
-  --seed release-0.3.0
+  --seed release-0.4.0
 ```
 
-The public packet randomizes A/B order deterministically. Keep the key from reviewers.
+The public packet randomizes A/B order deterministically and records the suite hash. The ordinary JSON mapping key is written separately; access control remains the operator’s responsibility.
 
 ### 4. Review
 
@@ -169,7 +225,11 @@ Use at least two native Urdu reviewers for consequential releases. Give them the
 - confidence;
 - mode-specific notes.
 
-For audio, use the exact selected voice, loudness-match clips, randomize order, and include a no-control baseline. Follow [`../evals/human-listening-protocol.md`](../evals/human-listening-protocol.md).
+The public packet, private key, and review JSON must share the generated `packet_hash`; the runner also binds that packet to a hash of both frozen run records and recomputes the A/B mapping from the key seed. The review JSON must repeat `schema_version`, `suite_version`, `suite_hash`, and `packet_hash`; provide every text dimension for A and B; and give a reason for every `N/A`. Default scoring requires two distinct reviewers for every case. Use `--allow-partial true` only for explicitly exploratory output.
+
+Do not score audible consonant realization or audible treatment fit from this text packet. For audio, use the exact selected voice, loudness-match clips, randomize order, include repeated generations and a no-control baseline, and follow [`../evals/human-listening-protocol.md`](../evals/human-listening-protocol.md).
+
+For a known pronunciation failure, include at least three randomized conditions when applicable: canonical, minimally diacritized, and IPA/dictionary. Test the word inside the shortest natural phrase, not only in isolation. Include a reviewer field for the exact segment heard (`ڑ`, `ر`, `ٹ`, `ت`, etc.).
 
 ### 5. Score and inspect disagreement
 
@@ -190,7 +250,7 @@ Report:
 - worst regressions and their case IDs;
 - audio pronunciation/prosody failures separately from text.
 
-Do not publish one aggregate score without mode breakdowns.
+The scorer retains raw per-case scores and hard-gate evidence, reports counts/means/medians/rates, groups the controlled-pair rows, and flags worst regressions. Do not publish one aggregate score without form breakdowns and controlled-pair inspection. Per-range and per-treatment aggregates are descriptive only.
 
 ## Release decisions
 
@@ -201,6 +261,7 @@ A revision is eligible only when:
 - it does not regress a performance mode to improve another;
 - provider facts are current;
 - sample changes pass source-to-clean and clean-to-adapter fidelity checks;
+- known critical pronunciation failures have contrastive exact-voice evidence or remain explicitly unresolved;
 - native review is recorded for claims about output quality;
 - actual audio is recorded for claims about pronunciation, prosody, or provider behavior.
 

@@ -285,3 +285,43 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 **Pass:** Places a second v3 cue immediately around the changed beat, keeps both cues out of the clean copy, and tests scope because a mid-utterance cue may affect adjacent words.
 
 **Fail:** Uses one blanket turn-initial emotion, places the tag inside a word/izafat/qafiya–radif unit, or claims placement guarantees phrase-local scope.
+
+### UVD-P35 — Eleven v3 inline IPA
+
+**Prompt:** Eleven v3 reads `ٹوٹ` with dental `ت`. Prepare a pronunciation candidate.
+
+**Pass:** Preserves `ٹوٹ` in canonical text/caption; records a verified canonical→IPA mapping; sends selective `/IPA/` only in the provider pronunciation copy; identifies `eleven_v3`, exact voice/surface, and repeated listening tests; notes the provider’s IPA consistency is not guaranteed.
+
+**Fail:** Puts IPA in captions, uses an emotion tag as pronunciation control, invents IPA without evidence, or claims one render proves a stable fix.
+
+### UVD-P36 — pronunciation dictionary locator
+
+**Prompt:** A recurring Urdu name is consistently mispronounced by Eleven v3 across a long project.
+
+**Pass:** May use a pronunciation dictionary with recorded dictionary/version locators and a verified IPA or alias rule; retains the canonical name and logs exact model/voice results.
+
+**Fail:** Mentions a generic dictionary without attaching exact locators, applies an English-only assumption to Urdu, or changes every caption occurrence.
+
+### UVD-P37 — complete ambiguity-marked candidate
+
+**Prompt:** The same ambiguous Urdu verb appears three times in the synthesis payload and is misread in the second and third contexts.
+
+**Pass:** Audits each occurrence independently and prepares a complete minimally marked candidate wherever the intended reading differs; clean text stays canonical; baseline and candidate are compared; every production divergence is logged.
+
+**Fail:** Marks only one occurrence, fully vocalizes unrelated prose, or assumes context will rescue known failures.
+
+### UVD-P38 — pronunciation and emotion controls stay separate
+
+**Prompt:** A heightened Eleven v3 line contains both an emotional beat change and a word whose `ڑ` is misread.
+
+**Pass:** Uses beat-local audio tags for authorized delivery and a separate diacritic/IPA/dictionary path for pronunciation; tests each variable independently before combining them.
+
+**Fail:** Uses `[emphasize ڑ]` as a guaranteed phoneme fix, combines every change in the first test, or lets either control enter captions.
+
+### UVD-P39 — Eleven v3 runtime provenance
+
+**Prompt:** Record a production Eleven v3 request used to test Urdu pronunciation.
+
+**Pass:** Records exact model/surface/voice, sent or omitted `language_code`, locale/accent target, voice settings and stability, seed, normalization setting, dictionary IDs/versions, output format, payload fields, and result; changes one runtime variable at a time.
+
+**Fail:** Treats a historical omission as preferred policy, conflates Urdu language selection with regional accent, or leaves decisive runtime controls implicit.

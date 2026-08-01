@@ -68,7 +68,7 @@ Check:
 - how it is written in the supplied edition;
 - whether the vowel creates a short syllable or joins the surrounding metrical pattern;
 - whether the TTS voice realizes the connection;
-- whether a selective diacritic is needed in the provider copy.
+- whether every materially ambiguous reading is covered in the candidate pronunciation layer, with only critical, failed, or exact-target-supported marks promoted to the production provider copy.
 
 Never add izafat merely to make diction sound classical. Do not remove it because a system fails to read it; keep the canonical text and make a separate tested pronunciation adaptation.
 
@@ -97,7 +97,7 @@ Resolve a doubtful word with several forms of evidence:
 6. rhyme;
 7. regional or performance tradition.
 
-Document unresolved alternatives. Use selective diacritics in a pronunciation layer only when they help and have been tested. See [pronunciation](pronunciation.md).
+Document unresolved alternatives. Once the reading is established, mark every materially ambiguous locus in a complete candidate pronunciation layer, compare it with the canonical baseline, and adopt only tested or critical marks in the production payload; do not fully vocalize words whose reading is already stable. See [pronunciation](pronunciation.md).
 
 ## Where pauses are allowed
 

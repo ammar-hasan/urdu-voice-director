@@ -57,6 +57,21 @@ check(skill.startsWith("---\nname: urdu-voice-director\n"), "SKILL.md frontmatte
 check(/^description:\s+\S.+$/m.test(skill), "SKILL.md needs a non-empty description");
 check((skill.match(/^---$/gm) || []).length >= 2, "SKILL.md frontmatter is not closed");
 check(lines(skill) <= 110, `SKILL.md is ${lines(skill)} lines; lean contract limit is 110`);
+const skillDescription = skill.match(/^description:\s+(.+)$/m)?.[1] ?? "";
+for (const trigger of [
+  "children",
+  "family",
+  "education",
+  "accessibility",
+  "religious",
+  "moral",
+  "code-switch",
+]) {
+  check(
+    skillDescription.toLowerCase().includes(trigger),
+    `SKILL.md description is missing the ${trigger} trigger`,
+  );
+}
 for (const phrase of [
   "Preserve the original meaning",
   "Preserve relationships, age, register, titles, religious wording, and code-switching",
@@ -70,7 +85,10 @@ for (const phrase of [
 for (const mode of [
   "Everyday conversation",
   "Fictional dialogue",
+  "Drama or dubbing",
   "Audiobook narration",
+  "Documentary or explainer",
+  "Animation or game character",
   "News reading",
   "Public speech",
   "Religious or devotional speech",
@@ -85,6 +103,47 @@ for (const file of expectedReferences) {
   check(/^# /m.test(text), `${file} needs a title`);
   check(/^## Sources|^## First-party sources/m.test(text), `${file} needs a source section`);
   check(/https:\/\/|http:\/\//.test(text), `${file} needs at least one source URL`);
+}
+
+const pronunciationReference = read(join(referencesDir, "pronunciation.md"));
+const providerReference = read(join(referencesDir, "provider-capabilities.md"));
+const performanceReference = read(join(referencesDir, "literary-dialogue.md"));
+for (const phrase of [
+  "Ambiguity-first diacritics",
+  "ambiguity-marked candidate copy",
+  "canonical baseline",
+  "adopting every mark in production",
+  "Protect consonant identity",
+  "`ڑ` as `ر`",
+  "`ٹ` as `ت`",
+]) {
+  check(pronunciationReference.includes(phrase), `pronunciation.md is missing: ${phrase}`);
+}
+for (const phrase of [
+  "inline `/IPA/`",
+  "pronunciation_dictionary_locators",
+  "80–90% consistency",
+  "`language_code`",
+  "regional accent/locale",
+  "`voice_settings`",
+  "seed",
+  "text-normalization",
+]) {
+  check(providerReference.includes(phrase), `provider-capabilities.md is missing: ${phrase}`);
+}
+for (const phrase of [
+  "Restrained",
+  "Grounded",
+  "Heightened",
+  "Naturalistic",
+  "Stylized",
+  "Stylization is not an intensity level",
+  "performance hypothesis",
+]) {
+  check(
+    performanceReference.toLowerCase().includes(phrase.toLowerCase()),
+    `literary-dialogue.md is missing performance guidance: ${phrase}`,
+  );
 }
 
 const markdownFiles = [
@@ -306,14 +365,47 @@ for (const phrase of [
 }
 
 const packageJson = JSON.parse(read(join(root, "package.json")));
+const packageLock = JSON.parse(read(join(root, "package-lock.json")));
 const version = read(join(skillDir, "VERSION")).trim();
+check(/^\d+\.\d+\.\d+$/.test(version), `VERSION is not SemVer: ${version}`);
 check(packageJson.version === version, "package.json and skill VERSION differ");
-check(read(join(root, "README.md")).includes(`Current release: **${version}`), "README release differs from VERSION");
+check(packageLock.version === version, "package-lock.json and skill VERSION differ");
+check(packageLock.packages?.[""]?.version === version, "package-lock root package and skill VERSION differ");
+const readme = read(join(root, "README.md"));
+const app = read(join(root, "src", "App.tsx"));
+const assessment = read(join(root, "docs", "research-assessment.md"));
+const resultsManifest = read(join(skillDir, "evals", "results-manifest.md"));
+check(readme.includes(`Current release: **${version}`), "README release differs from VERSION");
 const changelog = read(join(skillDir, "CHANGELOG.md"));
+check(changelog.includes("## [Unreleased]"), "CHANGELOG must retain an Unreleased heading");
 check(
-  changelog.includes(`## [${version}]`) || changelog.includes(`## ${version}`),
-  "CHANGELOG lacks current VERSION heading",
+  new RegExp(`^## \\[${version.replace(/\./g, "\\.")}\\] - \\d{4}-\\d{2}-\\d{2}$`, "m").test(changelog),
+  "CHANGELOG lacks the dated current VERSION heading",
 );
+check(app.includes(`v${version} · Structurally validated beta`), "website footer release differs from VERSION");
+check(app.includes(`<dt>${lines(skill)}</dt>`), "website core-line count differs from SKILL.md");
+check(app.includes("<dt>11</dt>"), "website must report 11 performance forms");
+check(app.includes("<dt>26</dt>"), "website must report 26 executable benchmark cases");
+const releaseSeries = version.split(".").slice(0, 2).join(".");
+check(
+  assessment.startsWith(`# Urdu Voice Director ${releaseSeries} release assessment`),
+  "research assessment title differs from the current release series",
+);
+check(resultsManifest.includes(`| ${version} |`), "results manifest lacks a current release-status row");
+check(resultsManifest.includes(`## Release ${version}`), "results manifest lacks a current release record");
+
+const staticSuites = [
+  ["text-eval-cases.md", "T", 57],
+  ["provider-contract-cases.md", "P", 39],
+  ["regression-suite.md", "R", 73],
+];
+for (const [file, prefix, expected] of staticSuites) {
+  const suite = read(join(skillDir, "evals", file));
+  const ids = [...suite.matchAll(new RegExp(`^### UVD-${prefix}(\\d+)\\b`, "gm"))]
+    .map((match) => Number(match[1]));
+  check(ids.length === expected, `${file} must contain ${expected} cases; found ${ids.length}`);
+  check(Math.max(...ids) === expected, `${file} must end at UVD-${prefix}${expected}`);
+}
 
 const benchmarkPath = join(skillDir, "evals", "benchmark-cases.json");
 check(existsSync(benchmarkPath), "evals/benchmark-cases.json is missing");
@@ -322,29 +414,86 @@ if (existsSync(benchmarkPath)) {
   const requiredModes = [
     "everyday-conversation",
     "fictional-dialogue",
+    "drama-dubbing",
     "audiobook-narration",
+    "documentary-explainer",
+    "animation-game-character",
     "news-reading",
     "public-speech",
     "religious-devotional",
     "poetry-recitation",
     "mushaira-performance",
   ];
-  check(benchmark.schema_version === 1, "benchmark schema_version must be 1");
+  const requiredRanges = ["restrained", "grounded", "heightened"];
+  const requiredTreatments = ["naturalistic", "stylized"];
+  check(benchmark.schema_version === 2, "benchmark schema_version must be 2");
+  check(benchmark.suite_version === version, "benchmark suite_version differs from VERSION");
   check(Array.isArray(benchmark.cases), "benchmark cases must be an array");
+  check(benchmark.cases?.length === 26, `benchmark must contain 26 cases; found ${benchmark.cases?.length ?? 0}`);
   const ids = new Set();
   for (const item of benchmark.cases || []) {
     check(typeof item.id === "string" && item.id.length > 0, "benchmark case needs id");
     check(!ids.has(item.id), `duplicate benchmark id: ${item.id}`);
     ids.add(item.id);
     check(requiredModes.includes(item.mode), `${item.id}: unknown benchmark mode ${item.mode}`);
+    check(requiredRanges.includes(item.delivery_range), `${item.id}: unknown delivery range ${item.delivery_range}`);
+    check(requiredTreatments.includes(item.treatment), `${item.id}: unknown treatment ${item.treatment}`);
     check(typeof item.source === "string" && item.source.length > 0, `${item.id}: source is empty`);
+    check(!item.source?.includes("\\n"), `${item.id}: source contains a literal \\n sequence`);
     check(Array.isArray(item.protected) && item.protected.length > 0, `${item.id}: protected list is empty`);
     check(Array.isArray(item.review) && item.review.length > 0, `${item.id}: review list is empty`);
+    check(Array.isArray(item.references) && item.references.length > 0, `${item.id}: references list is empty`);
+    for (const reference of item.references || []) {
+      check(actualReferences.includes(reference), `${item.id}: unknown routed reference ${reference}`);
+    }
+    check(
+      Boolean(item.pair_id) === Boolean(item.comparison_axis),
+      `${item.id}: pair_id and comparison_axis must appear together`,
+    );
   }
   for (const mode of requiredModes) {
     check(
       (benchmark.cases || []).filter((item) => item.mode === mode).length >= 2,
       `benchmark needs at least two cases for ${mode}`,
+    );
+  }
+  for (const range of requiredRanges) {
+    const cases = (benchmark.cases || []).filter((item) => item.delivery_range === range);
+    check(
+      cases.length >= 2 && new Set(cases.map((item) => item.mode)).size >= 2,
+      `benchmark needs ${range} in at least two cases and two forms`,
+    );
+  }
+  for (const treatment of requiredTreatments) {
+    const cases = (benchmark.cases || []).filter((item) => item.treatment === treatment);
+    check(
+      cases.length >= 2 && new Set(cases.map((item) => item.mode)).size >= 2,
+      `benchmark needs ${treatment} in at least two cases and two forms`,
+    );
+  }
+  const pairs = (benchmark.cases || []).filter((item) => item.pair_id).reduce((groups, item) => {
+    groups[item.pair_id] ||= [];
+    groups[item.pair_id].push(item);
+    return groups;
+  }, {});
+  for (const [pairId, pair] of Object.entries(pairs)) {
+    check(pair.length === 2, `${pairId}: controlled pair must contain exactly two cases`);
+    if (pair.length !== 2) continue;
+    check(pair[0].source === pair[1].source, `${pairId}: controlled pair source differs`);
+    check(pair[0].mode === pair[1].mode, `${pairId}: controlled pair form differs`);
+    check(pair[0].comparison_axis === pair[1].comparison_axis, `${pairId}: comparison axis differs`);
+    if (pair[0].comparison_axis === "delivery_range") {
+      check(pair[0].treatment === pair[1].treatment, `${pairId}: treatment must stay fixed`);
+      check(pair[0].delivery_range !== pair[1].delivery_range, `${pairId}: range must vary`);
+    } else if (pair[0].comparison_axis === "treatment") {
+      check(pair[0].delivery_range === pair[1].delivery_range, `${pairId}: range must stay fixed`);
+      check(pair[0].treatment !== pair[1].treatment, `${pairId}: treatment must vary`);
+    }
+  }
+  for (const axis of ["delivery_range", "treatment"]) {
+    check(
+      Object.values(pairs).some((pair) => pair[0]?.comparison_axis === axis),
+      `benchmark needs a controlled ${axis} pair`,
     );
   }
 }

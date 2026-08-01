@@ -98,7 +98,7 @@ function App() {
             </div>
             <dl className="hero-stats">
               <div>
-                <dt>72</dt>
+                <dt>81</dt>
                 <dd>lines in the core skill</dd>
               </div>
               <div>
@@ -106,8 +106,8 @@ function App() {
                 <dd>references, loaded on demand</dd>
               </div>
               <div>
-                <dt>8</dt>
-                <dd>performance modes</dd>
+                <dt>11</dt>
+                <dd>performance forms</dd>
               </div>
             </dl>
           </div>
@@ -419,7 +419,7 @@ function App() {
                 </>
               }
               urdu="آواز جہاں جہاں بولتی ہے"
-              intro="Eight performance families share one fidelity contract but not one delivery style. Clean Urdu, rehearsal direction, synthesis planning, and provider controls remain separate whenever those layers are useful."
+              intro="Eleven performance forms share one fidelity contract but not one delivery style. Each can use a restrained, grounded, or heightened range and a naturalistic or stylized treatment. Clean Urdu, rehearsal direction, synthesis planning, and provider controls remain separate whenever those layers are useful."
             />
           </Reveal>
           <div className="use-grid">
@@ -462,7 +462,7 @@ function App() {
               kicker="PROOF · THEN THE PEN"
               title={
                 <>
-                  Text review finds the line. <em>Listening proves the voice.</em>
+                  Text review finds the line. <em>Listening tests the voice.</em>
                 </>
               }
               urdu="اور پھر، آغاز"
@@ -476,7 +476,7 @@ function App() {
             </div>
             <dl>
               <div>
-                <dt>72</dt>
+                <dt>81</dt>
                 <dd>core-skill lines</dd>
               </div>
               <div>
@@ -484,11 +484,11 @@ function App() {
                 <dd>cited references</dd>
               </div>
               <div>
-                <dt>8</dt>
-                <dd>performance modes</dd>
+                <dt>11</dt>
+                <dd>performance forms</dd>
               </div>
               <div>
-                <dt>16</dt>
+                <dt>26</dt>
                 <dd>executable benchmark cases</dd>
               </div>
             </dl>
@@ -593,7 +593,7 @@ function App() {
           </a>
         </div>
         <p className="copyright">
-          v0.3.0 · Structurally validated beta · Built from the Urdu scene
+          v0.4.0 · Structurally validated beta · Built from the Urdu scene
         </p>
       </footer>
     </div>

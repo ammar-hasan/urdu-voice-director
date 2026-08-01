@@ -1,13 +1,15 @@
 {
-  "schema_version": 1,
-  "suite_version": "0.3.0",
+  "schema_version": 2,
+  "suite_version": "0.4.0",
   "cases": [
     {
       "id": "everyday-01",
       "mode": "everyday-conversation",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Refine only if needed; return clean spoken Urdu and a brief change note.",
       "context": "Two adult siblings at home. The relationship is affectionate and familiar.",
-      "source": "عائشہ: تم چائے پیو گے یا میں دودھ گرم کر دوں؟\\nحمزہ: چائے ٹھیک ہے، بس چینی کم رکھنا۔",
+      "source": "عائشہ: تم چائے پیو گے یا میں دودھ گرم کر دوں؟\nحمزہ: چائے ٹھیک ہے، بس چینی کم رکھنا۔",
       "protected": ["تم", "sibling intimacy", "choice between tea and milk", "less sugar"],
       "review": ["Does the result avoid needless rewriting?", "Is the domestic register intact?"],
       "references": ["spoken-urdu.md", "relationships-and-register.md"]
@@ -15,6 +17,8 @@
     {
       "id": "everyday-02",
       "mode": "everyday-conversation",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Convert the Roman Urdu to clean Urdu script without resolving genuine ambiguity silently.",
       "context": "A friend texts another friend. The date is not supplied.",
       "source": "kal milte hain, main 5 baje free hun",
@@ -25,9 +29,11 @@
     {
       "id": "fiction-01",
       "mode": "fictional-dialogue",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Prepare clean dialogue and sparse rehearsal direction.",
       "context": "Rukhsana has heard Khalid's explanation before. The source does not say whether either person is angry.",
-      "source": "خالد: میں دیر سے آیا، مگر وجہ وہ نہیں جو تم سمجھ رہی ہو۔\\nرخسانہ: تو پھر وجہ بتا دو۔",
+      "source": "خالد: میں دیر سے آیا، مگر وجہ وہ نہیں جو تم سمجھ رہی ہو۔\nرخسانہ: تو پھر وجہ بتا دو۔",
       "protected": ["no named emotion", "تم relationship", "Khalid denies her inferred reason", "Rukhsana asks for the reason"],
       "review": ["Does direction play the contradiction without inventing anger?", "Are the words preserved unless a spoken issue required change?"],
       "references": ["literary-dialogue.md", "relationships-and-register.md"]
@@ -35,9 +41,11 @@
     {
       "id": "fiction-02",
       "mode": "fictional-dialogue",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Recover the source-supported scene for speech; do not turn narration into dialogue.",
       "context": "The narration is first-person memory.",
-      "source": "دروازہ بند ہوا تو مجھے امّاں کی وہ آخری بات یاد آئی۔\\nامّاں: جاتے ہوئے چراغ بجھا دینا۔",
+      "source": "دروازہ بند ہوا تو مجھے امّاں کی وہ آخری بات یاد آئی۔\nامّاں: جاتے ہوئے چراغ بجھا دینا۔",
       "protected": ["first-person narration", "امّاں", "last remembered instruction", "turn off the lamp when leaving"],
       "review": ["Are narration and quoted speech distinct?", "Is any memory content invented?"],
       "references": ["literary-dialogue.md", "relationships-and-register.md"]
@@ -45,6 +53,8 @@
     {
       "id": "audiobook-01",
       "mode": "audiobook-narration",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Prepare a clean audiobook script with non-spoken performance notes.",
       "context": "A third-person narrator moves into a child's quoted question.",
       "source": "زینب نے کھڑکی سے باہر دیکھا۔ بارش اب بھی ہو رہی تھی۔ اس نے پوچھا، “ابو، کیا ہم آج بھی جائیں گے؟”",
@@ -55,6 +65,8 @@
     {
       "id": "audiobook-02",
       "mode": "audiobook-narration",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Prepare narration and a pronunciation ledger entry.",
       "context": "The place name is recurring. No pronunciation has been supplied by the author.",
       "source": "وہ منڈی بہاؤالدین پہنچے تو شام ڈھل چکی تھی۔",
@@ -65,6 +77,8 @@
     {
       "id": "news-01",
       "mode": "news-reading",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Prepare a clean news read and pronunciation/number notes.",
       "context": "This is a bulletin. No emotional direction is requested.",
       "source": "محکمۂ موسمیات کے مطابق کراچی میں جمعہ کو 70 ملی میٹر تک بارش کا امکان ہے۔",
@@ -75,6 +89,8 @@
     {
       "id": "news-02",
       "mode": "news-reading",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Make this bulletin speakable without changing claims.",
       "context": "The statement quotes an official and contains a contrast.",
       "source": "وزیرِ صحت نے کہا کہ نئی پالیسی فوری طور پر نافذ نہیں ہوگی بلکہ اس پر پہلے صوبوں سے مشاورت کی جائے گی۔",
@@ -85,6 +101,8 @@
     {
       "id": "public-01",
       "mode": "public-speech",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Add restrained public-speaking direction while preserving the wording.",
       "context": "A school principal addresses students formally.",
       "source": "محترم طلبہ، کامیابی صرف نمبر لینے کا نام نہیں؛ ذمہ داری قبول کرنا بھی کامیابی ہے۔",
@@ -95,6 +113,8 @@
     {
       "id": "public-02",
       "mode": "public-speech",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
       "task": "Prepare a clean and directed speech excerpt.",
       "context": "A community representative addresses residents using آپ.",
       "source": "آپ نے مشکل وقت میں ایک دوسرے کا ساتھ دیا۔ اب ہمیں اسی اعتماد کے ساتھ آگے بڑھنا ہے۔",
@@ -105,6 +125,8 @@
     {
       "id": "devotional-01",
       "mode": "religious-devotional",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Prepare clean devotional prose for respectful reading.",
       "context": "An adult begins a community lesson. This is prose, not Qur'anic recitation.",
       "source": "بسم اللہ الرحمٰن الرحیم۔ آج ہم صبر کے مفہوم پر بات کریں گے۔",
@@ -115,6 +137,8 @@
     {
       "id": "devotional-02",
       "mode": "religious-devotional",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Return clean speech and flag specialist boundaries.",
       "context": "The supplied line includes a Qur'anic Arabic quotation followed by Urdu explanation.",
       "source": "إِنَّ مَعَ الْعُسْرِ يُسْرًا — بے شک مشکل کے ساتھ آسانی ہے۔",
@@ -125,9 +149,11 @@
     {
       "id": "poetry-01",
       "mode": "poetry-recitation",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Prepare this sher for a quiet literary reading; keep canonical verse and direction separate.",
       "context": "A well-known Ghalib sher. Quiet reading, not mushaira.",
-      "source": "دل ہی تو ہے نہ سنگ و خشت، درد سے بھر نہ آئے کیوں\\nروئیں گے ہم ہزار بار، کوئی ہمیں ستائے کیوں",
+      "source": "دل ہی تو ہے نہ سنگ و خشت، درد سے بھر نہ آئے کیوں\nروئیں گے ہم ہزار بار، کوئی ہمیں ستائے کیوں",
       "protected": ["every word", "two-line structure", "قافیہ آئے/ستائے", "ردیف کیوں", "quiet mode"],
       "review": ["Are metre, qafiya/radif, and phrase boundaries respected?", "Is generic sadness or whispering avoided?"],
       "references": ["poetry-and-recitation.md", "pronunciation.md"]
@@ -135,6 +161,8 @@
     {
       "id": "poetry-02",
       "mode": "poetry-recitation",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
       "task": "Prepare a pronunciation/scansion query before directing the verse.",
       "context": "The source edition does not show izafat clearly.",
       "source": "نقش فریادی ہے کس کی شوخی تحریر کا",
@@ -145,9 +173,11 @@
     {
       "id": "mushaira-01",
       "mode": "mushaira-performance",
+      "delivery_range": "heightened",
+      "treatment": "stylized",
       "task": "Prepare a mushaira performance plan without altering the canonical sher.",
       "context": "Audience response and one repetition of the second line are authorized.",
-      "source": "کوئی امید بر نہیں آتی\\nکوئی صورت نظر نہیں آتی",
+      "source": "کوئی امید بر نہیں آتی\nکوئی صورت نظر نہیں آتی",
       "protected": ["canonical two lines", "ردیف نہیں آتی", "one authorized repetition outside canonical verse", "audience response outside poem"],
       "review": ["Are event and poem layers separate?", "Does anticipation preserve rhyme/refrain and sense?"],
       "references": ["poetry-and-recitation.md"]
@@ -155,12 +185,142 @@
     {
       "id": "mushaira-02",
       "mode": "mushaira-performance",
+      "delivery_range": "grounded",
+      "treatment": "stylized",
       "task": "Contrast a quiet reading plan with a mushaira plan; do not claim one is the correct universal reading.",
       "context": "No audience repetition is authorized. The performer may use تحت اللفظ, not singing.",
-      "source": "ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے\\nبہت نکلے مرے ارمان لیکن پھر بھی کم نکلے",
+      "source": "ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے\nبہت نکلے مرے ارمان لیکن پھر بھی کم نکلے",
       "protected": ["every word", "two-line structure", "تحت اللفظ", "no singing", "no audience material"],
       "review": ["Are quiet and public modes meaningfully distinct?", "Are metre and syntax protected in both?"],
       "references": ["poetry-and-recitation.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "drama-01",
+      "mode": "drama-dubbing",
+      "delivery_range": "heightened",
+      "treatment": "naturalistic",
+      "task": "Prepare a heightened radio-drama reading while preserving the exact spoken words.",
+      "context": "The script attribution says Alia's voice shakes after she hears the door lock. No sob, scream, or hidden motive is supplied.",
+      "source": "عالیہ: دروازہ کھولو۔ مجھے معلوم ہے تم اندر ہو۔",
+      "protected": ["exact words", "source-attributed shaking voice", "door is locked", "no sob or scream", "no invented motive"],
+      "review": ["Is the supplied fear/tension audible rather than flattened?", "Does heightened delivery avoid adding a new event or psychology?"],
+      "references": ["literary-dialogue.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "drama-02",
+      "mode": "drama-dubbing",
+      "delivery_range": "heightened",
+      "treatment": "naturalistic",
+      "task": "Prepare a locked dubbing line and a provider pronunciation copy; do not change the caption.",
+      "context": "The intended meaning is 'What did you do?' The second کیا is the verb کِیا. Timing is locked; urgency is authorized, anger is not.",
+      "source": "تم نے یہ کیا کیا؟",
+      "protected": ["canonical caption exactly", "first کیا is interrogative", "second کیا is verbal کِیا", "urgent not angry", "no added word"],
+      "review": ["Does the provider copy mark the second کِیا without altering the caption?", "Are timing and emotional authorization kept separate?"],
+      "references": ["literary-dialogue.md", "pronunciation.md", "provider-capabilities.md"]
+    },
+    {
+      "id": "documentary-01",
+      "mode": "documentary-explainer",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
+      "task": "Prepare restrained documentary narration with clear factual structure.",
+      "context": "The narration introduces an archaeological site. No awe, nostalgia, or national pride is stated.",
+      "source": "یہ بستی تقریباً دو ہزار سال پہلے آباد ہوئی، مگر اس کے زوال کی حتمی وجہ معلوم نہیں۔",
+      "protected": ["approximately two thousand years", "settlement", "cause of decline remains unknown", "no awe or nationalism"],
+      "review": ["Are fact, contrast, and uncertainty clear?", "Is restrained delivery still engaged rather than lifeless?"],
+      "references": ["literary-dialogue.md", "conversational-prosody.md"]
+    },
+    {
+      "id": "documentary-02",
+      "mode": "documentary-explainer",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
+      "task": "Prepare a pronunciation test plan after the selected voice read ڑ as ر.",
+      "context": "The critical phrase is اڑتالیس گھنٹے. The exact voice previously substituted ر for ڑ. The quantity must remain forty-eight hours.",
+      "source": "یہ عمل اڑتالیس گھنٹے جاری رہا۔",
+      "protected": ["اڑتالیس means forty-eight", "ڑ must remain retroflex", "canonical caption", "observed voice-specific failure"],
+      "review": ["Does the plan distinguish consonant identity from vowel diacritics?", "Does it compare canonical, marked, IPA/dictionary, and alternative-voice options without claiming success before listening?"],
+      "references": ["pronunciation.md", "provider-capabilities.md", "literary-dialogue.md"]
+    },
+    {
+      "id": "character-01",
+      "mode": "animation-game-character",
+      "delivery_range": "heightened",
+      "treatment": "stylized",
+      "task": "Direct an explicitly stylized animation victory line.",
+      "context": "The character bible authorizes exuberant, oversized victory energy. It does not authorize a laugh, whoop, or extra catchphrase.",
+      "source": "زویا: ہم نے کر دکھایا!",
+      "protected": ["exact words", "authorized exuberant victory", "no laugh or whoop", "no extra catchphrase"],
+      "review": ["Is the stylized convention legible without treating it as a required volume increase?", "Are unapproved non-lexical events absent?"],
+      "references": ["literary-dialogue.md", "provider-capabilities.md"]
+    },
+    {
+      "id": "character-02",
+      "mode": "animation-game-character",
+      "delivery_range": "heightened",
+      "treatment": "naturalistic",
+      "task": "Prepare an urgent game warning and a consonant-fidelity test for the exact voice.",
+      "context": "The bridge has broken. The voice has previously read ٹ as ت. Urgency is explicit; panic is not.",
+      "source": "یہ پُل ٹوٹ گیا ہے—پیچھے ہٹو۔",
+      "protected": ["bridge is broken", "ٹ in ٹوٹ and ہٹو", "urgent warning", "no panic", "canonical caption"],
+      "review": ["Does the plan protect retroflex ٹ rather than trying to repair it with vowel marks?", "Does heightened urgency avoid adding a scream?"],
+      "references": ["literary-dialogue.md", "pronunciation.md", "provider-capabilities.md"]
+    },
+    {
+      "id": "fiction-range-01a",
+      "mode": "fictional-dialogue",
+      "delivery_range": "grounded",
+      "treatment": "naturalistic",
+      "pair_id": "fiction-absence-range",
+      "comparison_axis": "delivery_range",
+      "task": "Prepare the grounded-naturalistic baseline while preserving the exact line.",
+      "context": "Two adult siblings meet after a long absence. The line supports more than one affective reading; no emotion or backstory is named.",
+      "source": "اتنے دن بعد آئے ہو—اندر تو آؤ۔",
+      "protected": ["adult siblings", "long absence", "marks the absence", "invites the sibling inside", "no asserted emotion or backstory"],
+      "review": ["Does grounded delivery remain alive?", "Are non-unique affective readings kept as options rather than facts?"],
+      "references": ["literary-dialogue.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "fiction-range-01b",
+      "mode": "fictional-dialogue",
+      "delivery_range": "heightened",
+      "treatment": "naturalistic",
+      "pair_id": "fiction-absence-range",
+      "comparison_axis": "delivery_range",
+      "task": "Prepare a heightened-naturalistic alternative and label its non-unique affect as a performance hypothesis.",
+      "context": "Two adult siblings meet after a long absence. The line supports more than one affective reading; no emotion or backstory is named.",
+      "source": "اتنے دن بعد آئے ہو—اندر تو آؤ۔",
+      "protected": ["adult siblings", "long absence", "marks the absence", "invites the sibling inside", "no asserted emotion or backstory"],
+      "review": ["Is the wider range traceable to the line and clearly optional?", "Does heightened delivery avoid inventing anger, grief, forgiveness, or an embrace?"],
+      "references": ["literary-dialogue.md", "relationships-and-register.md"]
+    },
+    {
+      "id": "character-treatment-01a",
+      "mode": "animation-game-character",
+      "delivery_range": "restrained",
+      "treatment": "naturalistic",
+      "pair_id": "character-quiet-treatment",
+      "comparison_axis": "treatment",
+      "task": "Prepare the restrained-naturalistic version of this quiet game farewell.",
+      "context": "A game localization test compares naturalistic and stylized treatments at the same restrained range. The character bible authorizes both variants; neither is a threat.",
+      "source": "میں پھر آؤں گا۔",
+      "protected": ["exact words", "quiet farewell", "restrained range", "no threat", "no extra reaction"],
+      "review": ["Does naturalistic treatment remain plausible inside the scene?", "Is restrained delivery still intentional rather than flat?"],
+      "references": ["literary-dialogue.md"]
+    },
+    {
+      "id": "character-treatment-01b",
+      "mode": "animation-game-character",
+      "delivery_range": "restrained",
+      "treatment": "stylized",
+      "pair_id": "character-quiet-treatment",
+      "comparison_axis": "treatment",
+      "task": "Prepare the restrained-stylized version of this quiet game farewell; stylization must not increase volume automatically.",
+      "context": "A game localization test compares naturalistic and stylized treatments at the same restrained range. The character bible authorizes both variants; neither is a threat.",
+      "source": "میں پھر آؤں گا۔",
+      "protected": ["exact words", "quiet farewell", "restrained range", "no threat", "no extra reaction"],
+      "review": ["Is stylization audible as convention while range stays restrained?", "Does the result avoid turning stylization into louder or more emotional delivery?"],
+      "references": ["literary-dialogue.md"]
     }
   ]
 }

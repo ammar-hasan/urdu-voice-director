@@ -4,7 +4,7 @@
 
 The core [`SKILL.md`](skills/urdu-voice-director/SKILL.md) is intentionally short. Detailed Urdu, literary, prosodic, poetic, pronunciation, provider, and evaluation knowledge lives in nine cited references that the model loads only when the task needs them.
 
-Current release: **0.3.0 structurally validated beta**.
+Current release: **0.4.0 structurally validated beta**.
 
 ## Install
 
@@ -43,12 +43,17 @@ The skill treats these as different performance problems:
 
 - everyday conversation;
 - fictional dialogue;
+- drama and dubbing;
 - audiobook narration;
+- documentary and explainer narration;
+- animation and game character voice;
 - news reading;
 - public speech;
 - religious or devotional speech;
 - poetry recitation;
 - mushaira performance.
+
+Each form also selects two independent production axes: a **restrained**, **grounded**, or **heightened** delivery range, and a **naturalistic** or **stylized** treatment. Stylization is not intensity: a performance may be restrained and stylized, or heightened and naturalistic. Grounded-naturalistic is the comparison baseline, not a command to suppress source-supported affect. A non-unique reading stays labeled as a performance hypothesis.
 
 Poetry is not routed through generic dramatic direction. Its reference covers `بحر`, `وزن`, short and long syllables, `قافیہ`, `ردیف`, izafat, ambiguous readings, lawful pause sites, and the difference between quiet, `تحت اللفظ`, `ترنم`, and mushaira performance.
 
@@ -77,6 +82,8 @@ The clean Urdu remains canonical. Rehearsal direction and provider controls are 
 
 For Eleven v3, the current first-party guidance documents an open-ended audio-tag mechanism rather than a tiny fixed vocabulary. The skill can translate detailed, source-grounded rehearsal actions into concise v3 tags at turn start or mid-utterance, immediately around the beat they affect. Multiple tags may map distinct actions inside one turn. The mechanism and placement pattern are documented; the exact free-form phrase, scope, and behavior with a selected Urdu voice remain listening-test hypotheses.
 
+Pronunciation uses an ambiguity-first provider copy while captions stay canonical. Vowel marks resolve established ambiguous readings; they are not treated as fixes for consonant substitutions such as `ڑ`→`ر` or `ٹ`→`ت`. Current Eleven v3 adapters may test selective inline IPA or pronunciation dictionaries, always against the exact voice and a no-control baseline.
+
 Every provider adapter declares the exact provider, model, surface, locale, and voice—or marks a field unresolved. Support on one model never transfers silently to another.
 
 ## Evaluation and validators
@@ -89,10 +96,10 @@ npm test
 
 The repository includes:
 
-- executable structure, link, citation, release, sample-fidelity, and topology validation;
-- 16 machine-readable benchmark cases covering all eight performance modes;
-- deterministic blinded A/B packet preparation and scoring;
-- hard gates and a ten-dimension rubric;
+- executable structure, link, source-presence, release, sample-fidelity, and topology validation;
+- 26 machine-readable benchmark cases covering eleven performance forms, three delivery ranges, and two treatments, including same-source controlled pairs for both production axes;
+- deterministic blinded A/B packet preparation, strict evidence validation, and per-form scoring with descriptive per-range/per-treatment summaries;
+- hard gates and a twelve-dimension text rubric that does not claim audible realization;
 - a native-Urdu listening protocol and results ledger;
 - legacy text, provider-contract, and regression specifications retained for coverage.
 
@@ -102,7 +109,7 @@ Static checks do not prove naturalness, metre, pronunciation, or provider compli
 
 ## Samples and website
 
-The [sample runs](samples/README.md) are regenerated from their own A/D artifacts rather than from text hidden in the script. The website compares clean Eleven v3 baselines with detailed adapters while preserving identical canonical words.
+The [sample runs](samples/README.md) were last regenerated under 0.3.0 from their own A/D artifacts rather than from text hidden in the script. Version 0.4.0 retains those seven MP3s as historical provider artifacts; it does not claim they were regenerated or native-listener validated for this release. The website compares their clean Eleven v3 baselines with detailed adapters while preserving identical canonical words.
 
 Run locally:
 

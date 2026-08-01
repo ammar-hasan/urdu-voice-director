@@ -2,13 +2,14 @@
 
 Load this reference only for TTS or a synthesis-ready adapter. Recheck current first-party documentation for the exact target at use time: provider capabilities change faster than this skill.
 
-Capability review date: **2026-07-31**
+Capability review date: **2026-08-01**
 
 ## Contents
 
 - [Adapter contract and target declaration](#contract-before-controls)
 - [Capability matrix](#current-capability-matrix)
 - [Eleven v3 detailed and mid-utterance tags](#elevenlabs-eleven-v3)
+- [Eleven v3 pronunciation controls](#eleven-v3-pronunciation)
 - [OpenAI speech](#openai-speech)
 - [Google Cloud](#google-cloud)
 - [Azure and local targets](#azure)
@@ -33,8 +34,14 @@ Do not assume brackets, SSML, Markdown, punctuation, blank lines, or control wor
 Provider:
 Model ID:
 API or product surface:
-Locale:
+Language code sent or omitted:
+Locale/accent target:
 Voice:
+Voice settings / stability:
+Seed:
+Text-normalization setting:
+Pronunciation dictionary IDs/versions:
+Output format:
 Documentation checked:
 Canonical utterance:
 Request fields / inline controls:
@@ -48,7 +55,7 @@ Support on one model or endpoint does not transfer to another product from the s
 
 | Target | Urdu status | Direction path | Important boundary |
 |---|---|---|---|
-| ElevenLabs Eleven v3 (`eleven_v3`) | Urdu is listed for v3 | v3 audio tags in input; dialogue/TTS surfaces | Tags are audible controls and can be unstable; support does not transfer to Multilingual v2 or Flash |
+| ElevenLabs Eleven v3 (`eleven_v3`) | Urdu is listed for v3 | open-ended audio tags; inline `/IPA/`; pronunciation dictionaries on supported TTS surfaces | Tags and IPA are different controls; IPA and exact voice response remain probabilistic |
 | OpenAI `gpt-4o-mini-tts` speech API | Urdu is listed | separate `instructions` field | built-in voices are optimized for English; actual Urdu quality needs listening |
 | OpenAI `tts-1`, `tts-1-hd` | guide lists multilingual text support | speed and voice; no `instructions` support | do not send instruction text as speech |
 | Google Gemini-TTS | `ur-PK` is Preview | natural-language style prompt | model is Preview; verify exact current model ID and voice |
@@ -104,6 +111,33 @@ Do not split a word, compound predicate, izafat connection, or poetic qafiya–r
 
 For poetry, metre and qafiya/radif are not v3 controls. Emotion tags do not validate scansion.
 
+### Eleven v3 pronunciation
+
+ElevenLabs now documents native inline IPA for `eleven_v3` across its supported languages. Put standard IPA between forward slashes directly in the provider `text`:
+
+```text
+Canonical/caption: ٹوٹ
+Provider pronunciation copy: /ʈuːʈ/
+```
+
+The canonical-to-IPA mapping must remain in the pronunciation ledger because the provider payload no longer contains the canonical spelling at that locus. Inline IPA is not an audio tag, clean Urdu, or caption text.
+
+The provider reports roughly 80–90% consistency for v3 IPA and explicitly recommends selective use, exact-voice testing, and multiple generations when consistency matters. Treat that percentage as the provider’s own current claim, not Urdu-specific validation.
+
+The Text to Speech API also accepts `pronunciation_dictionary_locators`. Current first-party guidance says non-English IPA/CMU dictionary rules require `eleven_v3`. Record dictionary ID, version ID, grapheme, phoneme/alias rule, language tag, exact voice, and result. A dictionary is preferable for a recurring verified word; inline IPA is useful for a local test or phrase-sensitive correction.
+
+Record the exact Eleven v3 runtime controls that were sent or deliberately omitted: `voice_settings` and stability, `seed`, `language_code`, text-normalization behavior, dictionary locators, and output format. A known Urdu language code and a regional accent/locale are different decisions. Historical runs that omitted `language_code` remain valid provenance; they do not establish omission as a preferred policy. Change one runtime variable at a time when diagnosing a pronunciation or delivery failure.
+
+For `ڑ`→`ر`, `ٹ`→`ت`, `ڈ`→`د`, lost aspiration, or another consonant substitution:
+
+1. confirm the correct Urdu and IPA from evidence;
+2. test the shortest natural phrase without a control;
+3. add vowel diacritics only if a vowel reading is also ambiguous;
+4. test inline IPA or a dictionary rule;
+5. change the voice/model if the segment remains unstable.
+
+Do not use an emotion tag, capitalization trick, or extra punctuation as if it were a verified consonant control. Do not claim that zabar/zer/pesh can turn a dental consonant into a retroflex one.
+
 ## OpenAI speech
 
 The current speech guide lists Urdu among supported input languages and exposes a separate `instructions` field for `gpt-4o-mini-tts`. The guide describes instruction dimensions such as accent, emotional range, intonation, speed, tone, and whispering. The speech API reference says `instructions` do not work with `tts-1` or `tts-1-hd`.
@@ -139,7 +173,7 @@ Amazon Polly’s official supported-language table currently omits Urdu. Withhol
 
 1. Render canonical text with the selected voice and no optional control.
 2. Identify one concrete failure.
-3. Apply one documented control, one concise open-ended v3 cue, or one minimal pronunciation workaround.
+3. Apply one documented control, one concise open-ended v3 cue, one ambiguity-resolving provider diacritic, or one verified IPA/dictionary rule.
 4. Compare blind with the clean-text baseline.
 5. Record exact target metadata and reviewer result.
 6. Keep the change only if it improves the intended feature without harming meaning, relationship, pronunciation, or captions.
@@ -156,12 +190,14 @@ Reject the adapter if:
 - a control comes from another model;
 - an exact free-form phrase is presented as prevalidated rather than an experiment through v3’s documented open-ended tag mechanism;
 - a listening-dependent outcome is stated as guaranteed;
+- a known consonant substitution is treated as a vowel-diacritic problem;
+- inline IPA or a dictionary override lacks a canonical mapping and exact target record;
 - unsupported Urdu is presented as official support;
 - a poetry tag is treated as metre control.
 
 ## First-party sources
 
-- ElevenLabs, “[What languages do you support?](https://elevenlabs.io/docs/help-center/other/what-languages-do-you-support),” “[Prompting Eleven v3](https://elevenlabs.io/docs/best-practices/prompting),” and “[How do audio tags work with Eleven v3?](https://help.elevenlabs.io/hc/en-us/articles/35869142561297-How-do-audio-tags-work-with-Eleven-v3).”
+- ElevenLabs, “[What languages do you support?](https://elevenlabs.io/docs/help-center/other/what-languages-do-you-support),” “[Text to Speech best practices and Eleven v3 prompting](https://elevenlabs.io/docs/overview/capabilities/text-to-speech/best-practices#prompting-eleven-v3),” “[Using pronunciation dictionaries](https://elevenlabs.io/docs/eleven-api/guides/how-to/text-to-speech/pronunciation-dictionaries),” and “[How do audio tags work with Eleven v3?](https://help.elevenlabs.io/hc/en-us/articles/35869142561297-How-do-audio-tags-work-with-Eleven-v3).”
 - OpenAI, “[Text to speech](https://developers.openai.com/api/docs/guides/text-to-speech)” and “[Create speech](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create).”
 - Google Cloud, “[Gemini-TTS](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts),” “[Chirp 3 HD](https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd),” and “[voices and language support](https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types).”
 - Microsoft Azure, “[Language and voice support for Speech](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts).”

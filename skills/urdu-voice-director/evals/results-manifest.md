@@ -8,7 +8,8 @@ This file records executed evaluations. Test specifications are not test results
 |---|---|---|---|---|---|---|
 | 0.1.1 | passed | not run | not run | not run | not run | statically validated beta |
 | 0.2.0 | passed | not run | not run | not run | not run | statically validated beta |
-| 0.3.0 | passed | not run | not run | not run | seven revised clips generated; native listening not run | structurally validated beta |
+| 0.3.0 | passed | sample generation executed; 16-case benchmark not run | not run | not run | seven revised clips generated; native listening not run | structurally validated beta |
+| 0.4.0 | passed | 26-case benchmark not run | not run | not run | 0.3.0 clips retained; no 0.4.0 generation | structurally validated beta |
 
 Allowed evidence labels are:
 
@@ -22,6 +23,79 @@ Allowed evidence labels are:
 
 Do not promote the skill on the strength of specifications or static validation alone.
 
+## Release 0.4.0
+
+### Specification and mechanism inventory
+
+```text
+Status: specification and mechanism implemented; native listening not run
+Skill version: 0.4.0
+Core SKILL.md: 81 lines
+Selective references: 9
+Performance forms: 11
+Delivery ranges: restrained / grounded / heightened
+Treatments: naturalistic / stylized
+Text cases: UVD-T01–UVD-T57 (57)
+Provider cases: UVD-P01–UVD-P39 (39)
+Regression invariants: UVD-R01–UVD-R73 (73)
+Machine-readable benchmark: 26 cases / 11 performance forms / 3 delivery ranges / 2 treatments
+Controlled benchmark pairs: delivery range and treatment
+Legacy contrastive scenes: UVD-B01–UVD-B20 (20)
+Pronunciation evidence: Urdu LTS/diacritization research and current Eleven v3 IPA/dictionary documentation
+Existing sample audio: seven 0.3.0 clips retained; not regenerated for 0.4.0
+```
+
+The release distinguishes materially ambiguous vowel readings from consonant-identity failures such as `ڑ`→`ر` and `ٹ`→`ت`. It requires an ambiguity sweep and complete minimally marked candidate, then keeps production adoption limited to critical, failed, or exact-target-supported marks. It adds exact-model IPA/dictionary fallbacks, repeated-generation/alternate-voice tests, and separate text-side risk handling versus listening-side consonant realization.
+
+Performance form is separate from restrained/grounded/heightened delivery range and naturalistic/stylized treatment. Stylization is orthogonal to intensity, including quiet or restrained stylization. These are production choices and test mechanisms, not new source facts or evidence that an existing clip improved.
+
+### Independent pre-release review
+
+```text
+Run ID: uvd-0.4.0-independent-review-2026-08-01
+Skill version: 0.4.0 release candidate
+Date: 2026-08-01
+Evaluator: two isolated fresh-context Codex subagents
+Evaluator type: non-native release/evaluation review and non-native Urdu/literary/prosody review
+Urdu background: not asserted
+Test type: editorial / structural / research-provenance review
+Result: confirmed findings corrected; native review not implied
+```
+
+The reviewers independently identified the range/treatment conflation, text-only audio claims, literal `\\n` benchmark defects, incomplete scorer evidence requirements, stale public counts, release drift, a diacritization citation misattribution, overbroad diacritic production language, and incomplete Eleven runtime provenance. A final follow-up audit also found that suite hashes alone did not bind a packet to its private key and run provenance; packet/provenance hashes and seed-to-mapping verification now reject that stale-key failure. The accepted findings were corrected before the final structural run. This is forward editorial review, not native-reader or native-listener evidence.
+
+### Structural validation
+
+```text
+Run ID: uvd-0.4.0-structural-2026-08-01
+Skill version: 0.4.0
+Date: 2026-08-01
+Evaluator: Codex
+Evaluator type: automated repository checks
+Urdu background: not asserted
+Test type: structural / static / build / benchmark-runner smoke tests
+Test suite: skill packaging, topology, links, source presence, release consistency, sample fidelity, benchmark schema/runner, malformed evidence guards, TypeScript, production build, whitespace
+Case IDs: 26 machine-readable cases schema-validated and runner-smoked with synthetic fixtures; not model-executed
+Result: pass
+Hard-gate failures: none in final structural run
+Reviewer disagreement: not applicable to synthetic runner fixtures
+```
+
+Commands and final results:
+
+1. `uv run --with pyyaml python …/skill-creator/scripts/quick_validate.py skills/urdu-voice-director`
+   - passed: skill frontmatter, naming, and package structure are valid.
+2. `node scripts/generate-samples.mjs --validate`
+   - passed: all seven retained sample bundles preserve A/D speakers, turn counts, and tag-stripped canonical words.
+3. `npm test`
+   - passed: 949 structural/fidelity/release checks across seven samples and nine references; 26 benchmark cases across eleven forms, three ranges, and two treatments; TypeScript and Vite production build with 20 modules transformed.
+4. Disposable `benchmark.mjs prepare`/`score` smoke fixtures
+   - passed: packet and frozen-run provenance binding; 26 cases blinded; 52 synthetic review rows (two distinct fixture reviewers per case) scored; release coverage, raw evidence, hard gates, medians, summaries, and grouped controlled-pair rows retained. Incomplete dimensions, duplicate reviewer/case rows, mismatched suite hashes, altered packets, stale key mappings, and stale run provenance were each rejected. Synthetic scores are runner tests, not model or reviewer evidence.
+5. `git diff --check`
+   - passed: no whitespace errors.
+
+No 26-case model-output benchmark, native-reader review, native listening, or 0.4.0 provider-audio generation is implied.
+
 ## Required run record
 
 Copy this block for every executed batch:
@@ -29,6 +103,7 @@ Copy this block for every executed batch:
 ```text
 Run ID:
 Skill version:
+Commit:
 Date:
 Evaluator:
 Evaluator type: automated / editor / native listener / voice professional
@@ -41,8 +116,14 @@ Prompt or skill version:
 Provider:
 Model ID:
 Product/API surface:
-Locale:
+Language code sent or omitted:
+Locale/accent target:
 Voice:
+Voice settings/stability:
+Seed:
+Text normalization:
+Pronunciation dictionary IDs/versions:
+Output format:
 Source input:
 Clean output:
 Context or direction:
@@ -74,7 +155,7 @@ Legacy text cases: UVD-T01–UVD-T49 (49)
 Provider cases: UVD-P01–UVD-P34 (34)
 Legacy regression invariants: UVD-R01–UVD-R65 (65)
 Legacy contrastive scenes: UVD-B01–UVD-B20 (20)
-Model-output execution status: not run
+Model-output execution status: seven-sample generation executed after release; 16-case benchmark not run
 ```
 
 The new benchmark runner validates the case schema, prepares deterministic blinded A/B packets with a private key, and scores native-review files back to baseline/candidate labels. No benchmark outputs or reviewer preferences are implied by the mechanism’s presence.
@@ -169,7 +250,7 @@ The fresh runs ignored the existing A–D decisions, loaded only the references 
 
 After acceptance, `src/data/content.ts` was mechanically synchronized from the four website sample bundles, and the generator rendered all seven after clips from the exact D payloads. Kafan’s after clip and clean baseline were re-rendered once more after its canonical-source repair. `ffprobe` accepted every resulting MP3; after-clip durations range from 18.08 to 39.60 seconds. Every bundle records the resolved voice IDs, actual JSON fields, omitted `language_code`, and `output_format=mp3_44100_128`. These checks prove provenance, text fidelity, API acceptance, and playable containers—not Urdu naturalness, pronunciation, poetic metre, cue scope, or improvement. Those claims still require the recorded native-listener protocol.
 
-The validator now compares Source→A→tag-stripped D for every turn, requires loaded-reference provenance and exact provider-run metadata, and includes sample and website regressions for the unsupported emergency relationship, the earlier Kafan splice, and the stale betrayal relationship label. The final corrective run passes 633 checks.
+The validator now compares Source→A→tag-stripped D for every turn, requires loaded-reference provenance and exact provider-run metadata, and includes sample and website regressions for the unsupported emergency relationship, the earlier Kafan splice, and the stale betrayal relationship label. The final corrective run passes 633 checks. The accepted corrective artifacts landed in commit `1b87fc0` while retaining embedded 0.3.0 provenance; the 0.3.0 changelog now backfills that history rather than inventing a 0.3.1 release.
 
 ### Model-output evaluation
 

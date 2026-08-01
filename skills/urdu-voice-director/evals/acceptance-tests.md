@@ -44,6 +44,8 @@ The description covers:
 - [ ] Literary vitality is not equated with ornament, Persianised diction, classical vocabulary, or named-author imitation.
 - [ ] Ordinary dialogue is allowed to remain ordinary.
 - [ ] Performance cues are short, actionable, local, and restrained.
+- [ ] Performance form, delivery range, and naturalistic/stylized treatment are separate; grounded is not treated as emotionless and stylized is not treated as louder.
+- [ ] Drama/dubbing, documentary/explainer, and animation/game character work have distinct guidance.
 
 ## Output safety
 
@@ -60,7 +62,8 @@ The description covers:
 ## Linguistic coverage
 
 - [ ] Urdu `۔`, `؟`, `،`, `!`, colon, dash, ellipses, line breaks, and incomplete sentences are covered.
-- [ ] Selective diacritics and ambiguity examples are covered.
+- [ ] Ambiguity-first provider diacritics cover every material locus without polluting captions.
+- [ ] `ت/ٹ`, `د/ڈ`, `ر/ڑ`, aspiration, and vowel length are evaluated as distinct pronunciation dimensions.
 - [ ] `آپ`/`تم`/`تُو` and agreement are covered.
 - [ ] Children do not default to adult or baby speech.
 - [ ] Religious language guidance is respectful and non-preachy.
@@ -74,6 +77,7 @@ The description covers:
 - [ ] Every provider claim has an official source and status date.
 - [ ] Eleven v3 is distinguished from Eleven v2/Flash.
 - [ ] Eleven v3’s open-ended detailed tags and mid-utterance placement are supported without treating exact free-form phrases or scope as guaranteed.
+- [ ] Eleven v3 inline IPA and pronunciation dictionaries are documented as exact-target, listening-dependent pronunciation controls.
 - [ ] OpenAI instruction-capable models are distinguished from `tts-1`/`tts-1-hd`.
 - [ ] Google Gemini-TTS `ur-PK` is labeled Preview.
 - [ ] Google Chirp 3 `ur-IN` pause and pronunciation limits are stated.
@@ -97,6 +101,7 @@ The description covers:
 - [ ] Contrastive benchmark compares released, revised, and generic-prompt arms with blinded property scoring.
 - [ ] Ablation protocol distinguishes clean text, punctuation, direction, context, provider control, and pronunciation intervention.
 - [ ] Human protocol requires native listening with actual voices.
+- [ ] Human protocol compares canonical, diacritized, IPA/dictionary, and alternate-voice variants for known pronunciation failures.
 - [ ] Human protocol records reviewer variation and exact provider/model/surface/locale/voice/payload metadata.
 - [ ] Results manifest distinguishes specified cases from executed results.
 - [ ] Default refinement tests unknown gender, full-turn code-switching, religious-form fidelity, and no-added-turn behavior.
