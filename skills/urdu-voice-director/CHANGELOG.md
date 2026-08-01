@@ -12,6 +12,28 @@ Provider documentation and listening observations must include an “as of” da
 
 No unreleased changes.
 
+## [0.5.0] - 2026-08-01
+
+### Changed
+
+- Made routed-reference loading an explicit pre-action requirement while keeping the core skill at 81 lines. Runs identify the performance form and issues, open every matching reference, and record the filenames in working notes.
+- Clarified that Eleven v3 inline IPA replaces the canonical token at that provider-text locus; sending the Urdu spelling followed by `/IPA/` is now an explicit failure.
+- Added a pause-source inventory across punctuation, directions, segmentation, renderer gaps, and padding. Continuous same-speaker thoughts remain one utterance unless a real routing, synchronization, or provider constraint requires a split.
+- Made the evidence boundary explicit in the core: ASR is diagnostic only, text review cannot prove pronunciation/prosody, and one stochastic generation cannot establish a stable fix.
+
+### Added
+
+- Added `scripts/validate-production.mjs`, which audits JSON and trusted default-exported JavaScript adapters plus optional direction/provenance notes. It emits machine-readable or human-readable diagnostics and supports strict warning enforcement.
+- Added hard production errors for caption drift, provider leakage, spelling-plus-IPA duplication, missing pronunciation ledgers, absent reference receipts, incomplete runtime declarations, and ASR success claims without completed listening evidence.
+- Added heuristic production warnings for every-turn/dense tags, stacked pause controls, same-speaker turn gaps, long renderer tails, and untraced identity, direction, or religious-attribution assertions.
+- Added clean and defective production fixtures plus an executable regression test, and expanded provider cases through UVD-P43 and regression invariants through UVD-R79.
+
+### Evidence
+
+- The production validator accepts the clean fixture and reports 25 diagnostics on the defective fixture, including every intended hard-failure and warning family.
+- A read-only run against the reported downstream Eleven v3 project detected the duplicated IPA, missing runtime/reference records, ASR overclaiming, every-turn tags, stacked same-speaker pause controls, and untraced assertions that motivated this release.
+- Final validation passed skill packaging, seven sample-fidelity bundles, 964 repository checks, the clean/defective production-validator fixtures, the 26-case benchmark schema, TypeScript, the production website build, local skill discovery, and whitespace checks. No native-listener or provider-audio improvement is claimed.
+
 ## [0.4.0] - 2026-08-01
 
 ### Changed

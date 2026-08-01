@@ -38,6 +38,7 @@ The description covers:
 - [ ] The skill discourages unnecessary questions.
 - [ ] Changing intent within one line has a beat method.
 - [ ] Silence types are distinguished.
+- [ ] Every matching routed reference is opened before action and recorded in working notes.
 - [ ] Emotion is not equated with volume or speed.
 - [ ] Literary depth excludes unrequested narration.
 - [ ] Urdu is the semantic reference rather than the surface translation of an English or Hindi interpretation.
@@ -78,6 +79,9 @@ The description covers:
 - [ ] Eleven v3 is distinguished from Eleven v2/Flash.
 - [ ] Eleven v3’s open-ended detailed tags and mid-utterance placement are supported without treating exact free-form phrases or scope as guaranteed.
 - [ ] Eleven v3 inline IPA and pronunciation dictionaries are documented as exact-target, listening-dependent pronunciation controls.
+- [ ] Inline IPA replaces rather than follows the canonical token in provider text.
+- [ ] Punctuation, tags, segmentation, renderer gaps, and padding are inventoried before pause tuning.
+- [ ] ASR is diagnostic only and one generation never establishes a stable pronunciation fix.
 - [ ] OpenAI instruction-capable models are distinguished from `tts-1`/`tts-1-hd`.
 - [ ] Google Gemini-TTS `ur-PK` is labeled Preview.
 - [ ] Google Chirp 3 `ur-IN` pause and pronunciation limits are stated.
@@ -106,6 +110,8 @@ The description covers:
 - [ ] Results manifest distinguishes specified cases from executed results.
 - [ ] Default refinement tests unknown gender, full-turn code-switching, religious-form fidelity, and no-added-turn behavior.
 - [ ] Provider tests distinguish canonical utterance from provider request payload and exact API surface.
+- [ ] The production validator accepts JSON and trusted default-exported JavaScript adapters.
+- [ ] Its clean fixture passes and its defective fixture catches duplicated IPA, caption drift, missing provenance, ASR overclaiming, every-turn tags, and stacked pauses.
 
 ## Release evidence
 

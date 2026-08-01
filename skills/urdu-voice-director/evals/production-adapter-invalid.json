@@ -1,0 +1,50 @@
+{
+  "uvd": {
+    "claims": [
+      "Whisper verified that the IPA fix worked correctly."
+    ]
+  },
+  "timing": {
+    "gapTurn": 0.7,
+    "tail": 1.45
+  },
+  "voices": {
+    "child": {
+      "backend": "elevenlabs",
+      "speaker": "example-voice-id",
+      "lang": "ur",
+      "providerOptions": {
+        "model": "eleven_v3",
+        "stability": 0.5
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "stacked-pauses",
+      "vo": [
+        {
+          "who": "child",
+          "text": "میں ابھی...",
+          "synthesisText": "[young boy, angry, frustrated, cuts himself off] میں ابھی..."
+        },
+        {
+          "who": "child",
+          "text": "اصل طاقتور وہ ہے...",
+          "synthesisText": "[young boy, calm, gentle, thoughtful] اصل طاقتور /t̪ɑːqət̪ʋər/ وہ ہے..."
+        },
+        {
+          "who": "child",
+          "text": "جو خود کو قابو میں رکھے۔",
+          "caption": "جو اپنے آپ کو قابو میں رکھے۔",
+          "synthesisText": "[young boy, warm, soft, reassuring] جو خود کو قابُو میں رکھے۔"
+        },
+        {
+          "who": "child",
+          "text": "امام علیؑ فرماتے ہیں۔",
+          "synthesisText": "[young boy, respectful, warm, reverent] امام علیؑ فرماتے ہیں۔"
+        }
+      ]
+    }
+  ]
+}

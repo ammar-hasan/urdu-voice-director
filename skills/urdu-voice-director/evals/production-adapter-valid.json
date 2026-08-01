@@ -1,0 +1,35 @@
+{
+  "uvd": {
+    "referencesLoaded": [
+      "provider-capabilities.md"
+    ],
+    "runtime": {
+      "provider": "ElevenLabs",
+      "model": "eleven_v3",
+      "surface": "POST /v1/text-to-speech/:voice_id",
+      "locale": "unresolved",
+      "voice": "example-voice-id",
+      "languageCode": "ur",
+      "voiceSettings": {
+        "stability": 0.5
+      },
+      "seed": "deliberately omitted",
+      "textNormalization": "deliberately omitted",
+      "pronunciationDictionaries": [],
+      "outputFormat": "mp3_44100_128"
+    }
+  },
+  "scenes": [
+    {
+      "id": "ordinary-line",
+      "vo": [
+        {
+          "who": "speaker",
+          "text": "میں کل آؤں گا۔",
+          "caption": "میں کل آؤں گا۔",
+          "synthesisText": "میں کل آؤں گا۔"
+        }
+      ]
+    }
+  ]
+}

@@ -20,7 +20,7 @@ Treat the Urdu source—not an English or Hindi paraphrase—as canonical. Do no
 
 ## Load only what the task needs
 
-Do not preload every reference. Open the smallest relevant set and follow a cross-link only when that issue actually appears.
+Do not preload every reference. Before acting, identify the task’s performance form and issues, then open every matching reference in the table; this step is required, not optional. Record the filenames in working notes, and follow a cross-link only when that issue actually appears.
 
 | Task or issue | Read |
 |---|---|
@@ -78,4 +78,4 @@ Provider markup never becomes the source text. If no exact target is known, keep
 
 ## Final check
 
-Compare the result with the source. Reject meaning drift, relationship or register drift, invented inner life, provider leakage into clean text, and undocumented controls. For poetry, scan the verse and inspect pause sites before directing it. For consequential or synthetic output, require a native-Urdu listening pass with the selected voice; text review cannot prove pronunciation or prosody.
+Compare the result with the source. Reject meaning drift, relationship or register drift, invented inner life, provider leakage into clean text, and undocumented controls. For poetry, scan the verse and inspect pause sites before directing it. For consequential or synthetic output, require a native-Urdu listening pass with the selected voice; text review and ASR cannot prove pronunciation or prosody, and one generation cannot establish a stable fix.

@@ -188,11 +188,11 @@ export const modes: { id: Mode; label: string; urdu: string }[] = [
 export const steps = [
   ["۱", "Choose form, range + treatment", "صنف اور انداز", "Choose the performance form, then a restrained, grounded, or heightened range and a naturalistic or stylized treatment."],
   ["۲", "Protect the source", "اصل محفوظ رکھیں", "Meaning, relationship, age, register, titles, religion, and switching stay intact."],
-  ["۳", "Load only relevant depth", "ضروری حوالہ کھولیں", "Nine focused references replace one oversized instruction file."],
+  ["۳", "Load only relevant depth", "ضروری حوالہ کھولیں", "Open every matching routed reference before acting and record the filenames in working notes."],
   ["۴", "Make the smallest change", "کم سے کم تبدیلی", "Leave good lines alone; refine or direct only where useful."],
   ["۵", "Separate the layers", "صورتیں الگ رکھیں", "Clean speech never inherits rehearsal notes or provider syntax."],
-  ["۶", "Adapt the exact model", "درست ماڈل کی صورت", "Keep captions canonical; test detailed delivery cues, ambiguity marks, IPA, or dictionaries only where supported."],
-  ["۷", "Validate and listen", "جانچیں اور سنیں", "Score text-side direction and pronunciation-risk handling; controlled native listening assesses realized consonants, delivery, and prosody."],
+  ["۶", "Adapt the exact model", "درست ماڈل کی صورت", "Keep captions canonical; inline IPA replaces rather than follows the provider token; test one supported control at a time."],
+  ["۷", "Audit and listen", "جانچیں اور سنیں", "Audit the actual adapter for provenance, tag, pause, caption, and pronunciation hazards; native listening assesses realized speech."],
 ];
 
 export const useCases = [
@@ -258,7 +258,7 @@ export const providers = [
     group: "Expressive inline",
     name: "Eleven v3",
     status: "Urdu documented",
-    detail: "Open-ended tags, inline IPA, and pronunciation dictionaries are documented; exact Urdu voice behavior still needs repeated listening tests.",
+    detail: "Open-ended tags, replacement inline IPA, and pronunciation dictionaries are documented; exact Urdu voice behavior still needs repeated listening tests.",
   },
   {
     group: "Prompt-steered",

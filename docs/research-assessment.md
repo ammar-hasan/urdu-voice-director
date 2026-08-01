@@ -1,4 +1,4 @@
-# Urdu Voice Director 0.4 release assessment
+# Urdu Voice Director 0.5 release assessment
 
 Research and provider review date: **2026-08-01**
 
@@ -6,7 +6,7 @@ Research and provider review date: **2026-08-01**
 
 Version 0.2.0 had valuable knowledge but asked every run to carry too much of it. Its 239-line `SKILL.md` mixed the core contract, editorial workflow, output schema, provider policy, literary craft, evidence labels, examples, and maintenance rules. That encouraged uniform treatment and made task-relevant depth harder to find.
 
-Version 0.3.0 reduced the core to 72 lines and moved the depth into nine flat, cited references. Version 0.4.0 remains compact at 81 lines while adding pronunciation-risk and performance-axis routing. The model opens only the smallest relevant set. No nested sub-skills or routing framework was added.
+Version 0.3.0 reduced the core to 72 lines and moved the depth into nine flat, cited references. Version 0.4.0 remained compact at 81 lines while adding pronunciation-risk and performance-axis routing. Version 0.5.0 keeps the same 81-line core but makes every matching reference mandatory and recorded before action. No nested sub-skills or routing framework was added.
 
 The non-negotiable contract remains:
 
@@ -121,7 +121,7 @@ No provider page proves correct Urdu prosody, code-switching, poetic metre, cult
 
 ## Evaluation mechanism
 
-Version 0.3.0 added executable checks; version 0.4.0 extends them for pronunciation risk, independent production axes, evidence completeness, and release consistency.
+Version 0.3.0 added executable checks; version 0.4.0 extended them for pronunciation risk, independent production axes, evidence completeness, and release consistency. Version 0.5.0 adds an audit of the actual production adapter rather than assuming repository validation covers downstream payloads.
 
 `scripts/validate-skill.mjs` checks:
 
@@ -136,6 +136,8 @@ Version 0.3.0 added executable checks; version 0.4.0 extends them for pronunciat
 - turn/speaker equivalence;
 - exact canonical-word equivalence between clean A and tag-stripped provider D;
 - machine-readable benchmark coverage.
+
+`scripts/validate-production.mjs` accepts JSON or a trusted default-exported JavaScript configuration plus optional direction/provenance notes. It reports hard failures for caption drift, provider leakage, spelling-plus-IPA duplication, absent pronunciation ledgers, unrecorded routed references, incomplete exact-target metadata, and ASR success claims without completed listening. It reports review warnings for every-turn/dense tags, stacked pause sources, same-speaker turn gaps, long renderer tails, and source assertions whose evidence is not supplied to the audit. These warnings are heuristics rather than linguistic verdicts; `--strict` promotes them to a failing exit status for release use.
 
 `scripts/benchmark.mjs` validates the 26-case/eleven-form/three-range/two-treatment suite, prepares deterministic blinded A/B packets and a separate private mapping file, and scores reviewer files back to baseline/candidate labels. Packet and frozen-run provenance hashes bind the public packet to its key, while the A/B mapping is recomputed from the private seed. The scorer rejects mismatched hashes, altered packets, stale mappings, incomplete dimensions, duplicate reviewer rows, malformed hard gates, and release coverage below two distinct reviewers per case. Reports retain raw evidence, hard-failure and preference rates, means, medians, disagreement, controlled-pair rows, and worst regressions. Per-range and per-treatment summaries are descriptive; same-source controlled pairs are the appropriate place to inspect axis changes.
 
@@ -154,9 +156,9 @@ The existing prose text/provider/regression suites remain useful coverage, but s
 
 ## Release truth
 
-Version 0.4.0 can claim a short selectively loaded architecture, cited research, executable structural/fidelity and release validation, a stricter machine-readable blind benchmark workflow, independent range/treatment modeling, and refreshed exact-target provider guidance.
+Version 0.5.0 can claim a short selectively loaded architecture with mandatory reference receipts, cited research, executable structural/fidelity and release validation, an actual-adapter audit, a stricter machine-readable blind benchmark workflow, independent range/treatment modeling, and refreshed exact-target provider guidance.
 
-Its new pronunciation, runtime, and performance-axis work is specification and mechanism work. It does not prove that diacritics, IPA, a dictionary, another voice, a wider delivery range, or stylized treatment improves any existing sample. The seven MP3s remain 0.3.0 artifacts and were not regenerated for 0.4.0.
+Its production validator detects structural hazards; it does not prove that a relationship, emotion, attribution, IPA string, pause, or voice is correct. The seven MP3s remain 0.3.0 artifacts and were not regenerated for 0.5.0.
 
 It cannot yet claim:
 

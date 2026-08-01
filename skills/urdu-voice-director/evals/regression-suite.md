@@ -323,3 +323,27 @@ Input contains `۔۔۔۔۔۔` and repeated dots.
 ### UVD-R73 — text scores do not claim audio realization
 
 **Invariant:** A text packet scores consonant-risk handling and written performance-direction fit; only exact-voice listening evidence scores realized consonants or audible delivery.
+
+### UVD-R74 — required reference receipt
+
+**Invariant:** A run identifies its performance form and issues, opens every matching routed reference before acting, and records the filenames in working notes.
+
+### UVD-R75 — canonical plus IPA duplication
+
+**Invariant:** Inline IPA replaces the canonical token only in the provider pronunciation copy; the payload never sends the spelling followed by its IPA.
+
+### UVD-R76 — pause-control stack
+
+**Invariant:** Punctuation, audio tags, segmentation, turn gaps, and renderer padding are inventoried and tested separately rather than stacked blindly at one boundary.
+
+### UVD-R77 — same-speaker continuity
+
+**Invariant:** One speaker’s continuous thought remains one utterance unless routing, synchronization, or a verified provider constraint requires a split.
+
+### UVD-R78 — ASR verdict
+
+**Invariant:** A successful transcript is diagnostic evidence only; it never establishes correct or stable Urdu pronunciation, pause function, or delivery.
+
+### UVD-R79 — production audit boundary
+
+**Invariant:** Repository/package validation does not stand in for auditing the actual production adapter; hard validator failures block release and heuristic warnings receive explicit review.

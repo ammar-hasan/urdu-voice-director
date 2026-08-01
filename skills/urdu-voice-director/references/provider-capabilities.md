@@ -122,11 +122,15 @@ Provider pronunciation copy: /ʈuːʈ/
 
 The canonical-to-IPA mapping must remain in the pronunciation ledger because the provider payload no longer contains the canonical spelling at that locus. Inline IPA is not an audio tag, clean Urdu, or caption text.
 
+Inline IPA **replaces** the canonical spelling at that locus in the provider pronunciation copy. Never send the spelling followed by its IPA, such as `ٹوٹ /ʈuːʈ/`; that can duplicate or destabilize the spoken token. The canonical spelling remains in the source, caption, and mapping ledger.
+
 The provider reports roughly 80–90% consistency for v3 IPA and explicitly recommends selective use, exact-voice testing, and multiple generations when consistency matters. Treat that percentage as the provider’s own current claim, not Urdu-specific validation.
 
 The Text to Speech API also accepts `pronunciation_dictionary_locators`. Current first-party guidance says non-English IPA/CMU dictionary rules require `eleven_v3`. Record dictionary ID, version ID, grapheme, phoneme/alias rule, language tag, exact voice, and result. A dictionary is preferable for a recurring verified word; inline IPA is useful for a local test or phrase-sensitive correction.
 
 Record the exact Eleven v3 runtime controls that were sent or deliberately omitted: `voice_settings` and stability, `seed`, `language_code`, text-normalization behavior, dictionary locators, and output format. A known Urdu language code and a regional accent/locale are different decisions. Historical runs that omitted `language_code` remain valid provenance; they do not establish omission as a preferred policy. Change one runtime variable at a time when diagnosing a pronunciation or delivery failure.
+
+Treat a production adapter as incomplete until provider, model, API/product surface, locale or accent target, voice, language code, voice settings, seed, normalization behavior, dictionary locators, and output format are each recorded as sent, deliberately omitted, or unresolved.
 
 For `ڑ`→`ر`, `ٹ`→`ت`, `ڈ`→`د`, lost aspiration, or another consonant substitution:
 

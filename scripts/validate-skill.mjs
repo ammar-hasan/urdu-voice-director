@@ -79,6 +79,8 @@ for (const phrase of [
   "Do not rewrite a line merely to show activity",
   "Keep clean spoken text separate",
   "Check the exact provider, model, surface, locale, and voice",
+  "open every matching reference in the table; this step is required, not optional",
+  "text review and ASR cannot prove pronunciation or prosody",
 ]) {
   check(skill.includes(phrase), `SKILL.md is missing contract phrase: ${phrase}`);
 }
@@ -107,6 +109,7 @@ for (const file of expectedReferences) {
 
 const pronunciationReference = read(join(referencesDir, "pronunciation.md"));
 const providerReference = read(join(referencesDir, "provider-capabilities.md"));
+const pauseReference = read(join(referencesDir, "hesitation-and-pauses.md"));
 const performanceReference = read(join(referencesDir, "literary-dialogue.md"));
 for (const phrase of [
   "Ambiguity-first diacritics",
@@ -120,6 +123,13 @@ for (const phrase of [
   check(pronunciationReference.includes(phrase), `pronunciation.md is missing: ${phrase}`);
 }
 for (const phrase of [
+  "inventory every mechanism acting at each intended boundary",
+  "Do not stack several mechanisms to create the same pause",
+  "continuous thought by one speaker should normally remain one utterance",
+]) {
+  check(pauseReference.includes(phrase), `hesitation-and-pauses.md is missing: ${phrase}`);
+}
+for (const phrase of [
   "inline `/IPA/`",
   "pronunciation_dictionary_locators",
   "80–90% consistency",
@@ -128,6 +138,8 @@ for (const phrase of [
   "`voice_settings`",
   "seed",
   "text-normalization",
+  "Inline IPA **replaces** the canonical spelling",
+  "Treat a production adapter as incomplete",
 ]) {
   check(providerReference.includes(phrase), `provider-capabilities.md is missing: ${phrase}`);
 }
@@ -371,6 +383,22 @@ check(/^\d+\.\d+\.\d+$/.test(version), `VERSION is not SemVer: ${version}`);
 check(packageJson.version === version, "package.json and skill VERSION differ");
 check(packageLock.version === version, "package-lock.json and skill VERSION differ");
 check(packageLock.packages?.[""]?.version === version, "package-lock root package and skill VERSION differ");
+for (const [path, label] of [
+  [join(root, "scripts", "validate-production.mjs"), "production validator"],
+  [join(root, "scripts", "test-production-validator.mjs"), "production validator test"],
+  [join(skillDir, "evals", "production-adapter-valid.json"), "valid production fixture"],
+  [join(skillDir, "evals", "production-adapter-invalid.json"), "invalid production fixture"],
+]) {
+  check(existsSync(path), `${label} is missing`);
+}
+check(
+  packageJson.scripts?.["validate:production"] === "node scripts/validate-production.mjs",
+  "package.json must expose the production validator",
+);
+check(
+  packageJson.scripts?.["test:production-validator"] === "node scripts/test-production-validator.mjs",
+  "package.json must expose the production validator regression test",
+);
 const readme = read(join(root, "README.md"));
 const app = read(join(root, "src", "App.tsx"));
 const assessment = read(join(root, "docs", "research-assessment.md"));
@@ -384,6 +412,7 @@ check(
 );
 check(app.includes(`v${version} · Structurally validated beta`), "website footer release differs from VERSION");
 check(app.includes(`<dt>${lines(skill)}</dt>`), "website core-line count differs from SKILL.md");
+check(/<strong>3<\/strong>\s*<span>executable validators<\/span>/.test(app), "website must report three executable validators");
 check(app.includes("<dt>11</dt>"), "website must report 11 performance forms");
 check(app.includes("<dt>26</dt>"), "website must report 26 executable benchmark cases");
 const releaseSeries = version.split(".").slice(0, 2).join(".");
@@ -396,8 +425,8 @@ check(resultsManifest.includes(`## Release ${version}`), "results manifest lacks
 
 const staticSuites = [
   ["text-eval-cases.md", "T", 57],
-  ["provider-contract-cases.md", "P", 39],
-  ["regression-suite.md", "R", 73],
+  ["provider-contract-cases.md", "P", 43],
+  ["regression-suite.md", "R", 79],
 ];
 for (const [file, prefix, expected] of staticSuites) {
   const suite = read(join(skillDir, "evals", file));

@@ -121,6 +121,16 @@ as separate records.
 
 Change one variable at a time when testing pause behavior. Record whether the pause was absent, too long, misplaced, audible as markup, or disruptive to word connection.
 
+Before synthesis, inventory every mechanism acting at each intended boundary:
+
+- punctuation or an explicit hesitation/cutoff token;
+- an inline audio tag or separate direction;
+- a segment or turn boundary;
+- renderer-added sentence/turn gaps;
+- scene lead, tail, or other padding.
+
+Do not stack several mechanisms to create the same pause and then tune them together. A continuous thought by one speaker should normally remain one utterance; split it only for a real routing, synchronization, or provider constraint. When a supported model needs a change inside that thought, compare a beat-local mid-utterance cue with the untagged baseline before introducing a new segment boundary.
+
 ## Sources
 
 - Saira Zahid, Ho-Young Lee, and Muhammad Asim Mahmood, “[Distribution and acoustic characteristics of filled pauses in spontaneous Urdu speech](https://doi.org/10.3390/languages11030034),” *Languages* 11(3), 2026.

@@ -471,7 +471,7 @@ function App() {
           </Reveal>
           <div className="proof-row">
             <div className="proof-total">
-              <strong>2</strong>
+              <strong>3</strong>
               <span>executable validators</span>
             </div>
             <dl>
@@ -593,7 +593,7 @@ function App() {
           </a>
         </div>
         <p className="copyright">
-          v0.4.0 · Structurally validated beta · Built from the Urdu scene
+          v0.5.0 · Structurally validated beta · Built from the Urdu scene
         </p>
       </footer>
     </div>

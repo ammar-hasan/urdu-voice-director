@@ -9,6 +9,7 @@ Load this reference when reviewing output, changing the skill, comparing version
 - [Delivery-range and treatment checks](#delivery-range-and-treatment-checks)
 - [Pronunciation checks](#pronunciation-checks)
 - [Automated validation](#automated-validation)
+- [Production-adapter audit](#production-adapter-audit)
 - [Benchmark workflow](#benchmark-mechanism)
 - [Release decisions](#release-decisions)
 - [Evolving the skill](#evolving-the-skill)
@@ -157,11 +158,31 @@ Run from the repository root:
 
 ```bash
 npm run validate:skill
+npm run test:production-validator
 npm run benchmark:validate
 npm test
 ```
 
 The validator checks structure, links, release metadata, exact reference topology, source sections, sample layer fidelity, and benchmark schema. It cannot judge naturalness, metre by ear, pronunciation, or provider compliance.
+
+## Production-adapter audit
+
+Repository validation does not inspect an arbitrary payload created in another project. Audit the actual JSON adapter or JavaScript configuration before production:
+
+```bash
+npm run validate:production -- path/to/adapter.json
+npm run validate:production -- path/to/reel.config.mjs \
+  --notes path/to/voice-direction.md \
+  --strict
+```
+
+The command accepts JSON and default-exported `.js`/`.mjs` configuration objects. Importing JavaScript executes that configuration, so audit only trusted local files. Use repeated `--notes` arguments for provenance or voice-direction records; use `--json` for machine-readable diagnostics.
+
+The optional top-level `uvd` record can carry `referencesLoaded`, exact `runtime` declarations, `pronunciationLedger`, completed `listeningTests`, `sourceFacts`, `directionEvidence`, and `claimsLedger`. Fields that do not apply should be recorded as deliberately omitted or unresolved rather than left implicit. See the passing [`production-adapter-valid.json`](../evals/production-adapter-valid.json) fixture for the minimum runtime shape. Companion Markdown may instead provide a `References loaded:` line and clearly headed pronunciation or claims ledgers.
+
+Errors cover objectively incomplete or unsafe artifacts: caption drift, provider syntax in canonical text, spelling-plus-IPA duplication, pronunciation controls without a ledger, unrecorded required references, missing runtime declarations, and ASR success claims without completed listening evidence. Warnings flag context-dependent risks: every-turn or dense tags, stacked pause mechanisms, same-speaker turn gaps, long global tails, and identity, direction, or religious-attribution assertions that lack a supplied evidence record. Resolve errors before release and review every warning; `--strict` makes warnings fail the command.
+
+The audit is intentionally conservative. It can verify that evidence was recorded, not whether a claimed relationship, emotion, IPA string, attribution, or performance choice is true. Native Urdu and source review remain responsible for those judgments.
 
 ## Benchmark mechanism
 
@@ -189,7 +210,7 @@ Use the same case prompts and generation settings. Save JSON maps keyed by case 
 ```json
 {
   "run": {
-    "skill_version": "0.4.0",
+    "skill_version": "0.5.0",
     "commit": "exact-git-commit",
     "model": "exact-model",
     "surface": "exact-surface",
@@ -210,7 +231,7 @@ node scripts/benchmark.mjs prepare \
   --candidate path/to/candidate.json \
   --out artifacts/packet.json \
   --key artifacts/private-key.json \
-  --seed release-0.4.0
+  --seed release-0.5.0
 ```
 
 The public packet randomizes A/B order deterministically and records the suite hash. The ordinary JSON mapping key is written separately; access control remains the operator’s responsibility.

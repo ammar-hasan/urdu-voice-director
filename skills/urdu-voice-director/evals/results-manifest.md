@@ -10,6 +10,7 @@ This file records executed evaluations. Test specifications are not test results
 | 0.2.0 | passed | not run | not run | not run | not run | statically validated beta |
 | 0.3.0 | passed | sample generation executed; 16-case benchmark not run | not run | not run | seven revised clips generated; native listening not run | structurally validated beta |
 | 0.4.0 | passed | 26-case benchmark not run | not run | not run | 0.3.0 clips retained; no 0.4.0 generation | structurally validated beta |
+| 0.5.0 | passed | production-adapter fixtures executed; 26-case benchmark not run | not run | not run | 0.3.0 clips retained; no 0.5.0 generation | structurally validated beta |
 
 Allowed evidence labels are:
 
@@ -22,6 +23,77 @@ Allowed evidence labels are:
 - production validated.
 
 Do not promote the skill on the strength of specifications or static validation alone.
+
+## Release 0.5.0
+
+### Specification and mechanism inventory
+
+```text
+Status: specification and production-audit mechanism implemented; native listening not run
+Skill version: 0.5.0
+Core SKILL.md: 81 lines
+Selective references: 9, with mandatory per-task receipts
+Performance forms: 11
+Delivery ranges: restrained / grounded / heightened
+Treatments: naturalistic / stylized
+Text cases: UVD-T01–UVD-T57 (57)
+Provider cases: UVD-P01–UVD-P43 (43)
+Regression invariants: UVD-R01–UVD-R79 (79)
+Machine-readable benchmark: 26 cases / 11 performance forms / 3 delivery ranges / 2 treatments
+Production audit: JSON and trusted default-exported JavaScript adapters, optional provenance notes
+Existing sample audio: seven 0.3.0 clips retained; not regenerated for 0.5.0
+```
+
+The release responds to a real downstream failure in which the main skill was loaded without its matched pause, pronunciation, provider, and evaluation references. The resulting adapter stacked ellipses, audio directions, same-speaker segments, turn gaps, and scene padding; tagged every line; appended inline IPA after canonical Urdu; left exact runtime fields implicit; and treated an ASR transcript as evidence of a stable pronunciation fix.
+
+The core now makes matching-reference loading mandatory without moving provider detail back into `SKILL.md`. The references explicitly forbid canonical-plus-IPA payloads, require complete runtime declarations, and require a one-variable pause-source inventory. These are structural and procedural corrections, not evidence that any provider voice improved.
+
+### Production-validator regression
+
+```text
+Run ID: uvd-0.5.0-production-validator-2026-08-01
+Skill version: 0.5.0
+Date: 2026-08-01
+Evaluator: automated fixture runner plus read-only downstream audit
+Evaluator type: automated structural audit
+Test type: production-adapter validation
+Fixtures: production-adapter-valid.json / production-adapter-invalid.json
+Result: clean fixture accepted; defective fixture produced 9 errors and 16 warnings
+Native listening: not run
+```
+
+The defective fixture triggered 25 diagnostics covering caption drift, duplicated canonical-plus-IPA, missing pronunciation/reference/runtime records, ASR-as-verdict, dense/every-turn tags, unsourced identity/direction/religious attribution, cutoff-versus-ellipsis mismatch, long global tail, same-speaker turn gaps, and stacked pause mechanisms. A read-only run against the motivating downstream configuration also failed on the intended categories. This proves detector coverage on those artifacts, not linguistic correctness or audio quality.
+
+### Structural validation
+
+```text
+Run ID: uvd-0.5.0-structural-2026-08-01
+Skill version: 0.5.0
+Date: 2026-08-01
+Evaluator: Codex
+Evaluator type: automated repository checks
+Test type: structural / static / build / benchmark-schema / production-validator fixtures
+Result: pass
+Native review: not run
+Provider audio: not generated
+```
+
+Commands and results:
+
+1. `uv run --with pyyaml python …/skill-creator/scripts/quick_validate.py skills/urdu-voice-director`
+   - passed: skill frontmatter, naming, and package structure are valid.
+2. `node scripts/generate-samples.mjs --validate`
+   - passed: all seven retained sample bundles preserve A/D speakers, turns, and tag-stripped canonical words.
+3. `npm test`
+   - passed: 964 structural/fidelity/release checks across seven samples and nine references; clean production fixture accepted; defective fixture triggered 25 expected diagnostics; 26 benchmark cases validated across eleven forms, three ranges, and two treatments; TypeScript and Vite production build completed with 20 modules transformed.
+4. `npm run validate:production -- …/taqatwar-kon/reel.config.mjs --notes …/voice-direction.md --notes …/claims.md --json`
+   - expected failure: the latest motivating downstream artifact produced 10 errors and 10 warnings across duplicated IPA, reference/runtime provenance, ASR evidence, tag density, untraced assertions, same-speaker turn gaps, stacked boundaries, and global tail padding. This was a read-only detector check, not a repair or listening evaluation.
+5. `npx --yes skills add . --list`
+   - passed: local repository validation discovered exactly one installable skill, `urdu-voice-director`.
+6. `git diff --check`
+   - passed: no whitespace errors.
+
+No model-output benchmark, native-reader review, native-listener review, or new provider-audio result is implied.
 
 ## Release 0.4.0
 

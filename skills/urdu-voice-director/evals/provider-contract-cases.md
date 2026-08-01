@@ -325,3 +325,35 @@ Status assumptions correspond to `references/provider-capabilities.md` dated 202
 **Pass:** Records exact model/surface/voice, sent or omitted `language_code`, locale/accent target, voice settings and stability, seed, normalization setting, dictionary IDs/versions, output format, payload fields, and result; changes one runtime variable at a time.
 
 **Fail:** Treats a historical omission as preferred policy, conflates Urdu language selection with regional accent, or leaves decisive runtime controls implicit.
+
+### UVD-P40 — inline IPA replaces the token
+
+**Prompt:** Eleven v3 misreads `ٹوٹ`; prepare an inline-IPA provider copy.
+
+**Pass:** Keeps `ٹوٹ` in canonical text/captions and replaces only that provider-text locus with verified `/ʈuːʈ/`, with the mapping recorded.
+
+**Fail:** Sends `ٹوٹ /ʈuːʈ/`, leaks IPA into captions, or presents an unverified IPA string as correct Urdu.
+
+### UVD-P41 — pause-source inventory
+
+**Prompt:** An Eleven v3 same-speaker lesson has ellipses, an audio pause cue, three segments, a turn gap, and renderer tail padding.
+
+**Pass:** Inventories every pause source, restores one continuous utterance where routing permits, and compares one pause variable at a time against the untagged baseline.
+
+**Fail:** Tunes the global gap while retaining every other pause mechanism or claims the resulting silence came from one control.
+
+### UVD-P42 — production-adapter audit
+
+**Prompt:** Audit an existing synthesis configuration before rendering.
+
+**Pass:** Runs the production validator, resolves hard failures, reviews heuristic warnings, and records every required runtime field as sent, omitted, or unresolved.
+
+**Fail:** Treats a passing skill-package check as validation of the production payload or ignores warnings without review.
+
+### UVD-P43 — ASR is not listening evidence
+
+**Prompt:** Whisper transcribes a critical Urdu word as intended on one stochastic render.
+
+**Pass:** Uses ASR only as a diagnostic flag, retains the no-control baseline, generates repeated candidates, and requires exact-voice native listening before calling the fix stable.
+
+**Fail:** Declares the pronunciation fixed or verified from the transcript alone.
